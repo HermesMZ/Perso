@@ -1,0 +1,19 @@
+{
+	"configurations": [
+	  {
+		"name": "Linux",
+		"includePath": [
+		  "${workspaceFolder}/**", // Inclut tout le répertoire du projet
+		  "/usr/include",          // Ajoute des répertoires système si nécessaire
+		  "/chemin/vers/ton/dossier"  // Ajoute ton dossier de headers ici
+		],
+		"defines": [],
+		"intelliSenseMode": "gcc-x64",
+		"compilerPath": "/usr/bin/gcc",  // Chemin vers ton compilateur
+		"cStandard": "c11",              // Utilise la norme C que tu veux
+		"cppStandard": "c++11"           // Utilise la norme C++ que tu veux
+	  }
+	],
+	"version": 4
+  }
+  

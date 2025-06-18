@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 21:10:44 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:33:49 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,10 @@ void		ft_reverse_rotate_rrr(t_swap *swap);
 void		first_cleaning(t_swap *swap);
 
 void		debug_print_stacks(t_swap *swap);
+
+void		free_all(t_swap *swap);
+// void		ft_stack_clear(t_stack **p_lst, void (*del)(void*));
+
+
 
 #endif /*PUSH_SWAP_H*/

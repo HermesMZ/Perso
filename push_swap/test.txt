@@ -1,3 +1,10 @@
+elem = 1
+elem = 1
+elem = 1
+elem = 1
+elem = 1
+elem = 1
+elem = 1
 
  ========================== NEW CALL ==============================
 
@@ -154,6 +161,13 @@ current index 8 pivot 5 push
          4          5
          2          9
 commands done : 11
+elem = 8
+elem = 8
+elem = 8
+elem = 8
+elem = 8
+elem = 8
+elem = 8
 
  ========================== NEW CALL ==============================
 
@@ -233,6 +247,13 @@ current index 9 pivot 7 push
          4 
          2 
 commands done : 16
+elem = 9
+elem = 9
+elem = 9
+elem = 9
+elem = 9
+elem = 9
+elem = 9
 
  ========================== NEW CALL ==============================
 
@@ -288,6 +309,13 @@ current index 8 pivot 8 push
          2 
          7 
 commands done : 19
+elem = 8
+elem = 8
+elem = 8
+elem = 8
+elem = 8
+elem = 8
+elem = 8
 
  ========================== NEW CALL ==============================
 
@@ -328,6 +356,13 @@ current index 9 pivot 9 push
          2 
          7 
 commands done : 21
+elem = 9
+elem = 9
+elem = 9
+elem = 9
+elem = 9
+elem = 9
+elem = 9
 
  ========================== NEW CALL ==============================
 
@@ -344,6 +379,13 @@ commands done : 21
 commands done : 21
  ==================================================================
 swap
+elem = 6
+elem = 6
+elem = 6
+elem = 6
+elem = 6
+elem = 6
+elem = 6
 
  ========================== NEW CALL ==============================
 
@@ -360,6 +402,13 @@ swap
 commands done : 22
  ==================================================================
  ================== fin de recursive ==================
+elem = 1
+elem = 1
+elem = 1
+elem = 1
+elem = 1
+elem = 1
+elem = 1
 
  ========================== NEW CALL ==============================
 
@@ -376,6 +425,13 @@ commands done : 22
 commands done : 22
  ==================================================================
  ================== fin de recursive ==================
+elem = 6
+elem = 6
+elem = 6
+elem = 6
+elem = 6
+elem = 6
+elem = 6
 
  ========================== NEW CALL ==============================
 

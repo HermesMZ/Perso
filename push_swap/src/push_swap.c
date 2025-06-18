@@ -6,11 +6,13 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/18 20:54:45 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:49:54 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// make && clear && valgrind --track-origins=yes ./push_swap 1 0 9 5 3 4 6 7 2 8 > test.txt 
 
 int	main(int argc, char *argv[])
 {
@@ -27,6 +29,8 @@ int	main(int argc, char *argv[])
 	quick_sort_stack(swap, swap->stack_a->first, len);
 	debug_print_stacks(swap);
 
+
+	free_all(swap);
 	return (0);
 }
 // stocker les instructions avant de les imprimer pour faire du tri
@@ -36,6 +40,7 @@ int	main(int argc, char *argv[])
 // check malloc
 // hard 5
 // optimiser les rotations au moment du split en fonction du nombre de push ?
+
 
 	// first_cleaning(swap);
 	// algo à implémenter

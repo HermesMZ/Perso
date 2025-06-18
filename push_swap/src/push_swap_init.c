@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 16:46:38 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 20:43:52 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:35:33 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,19 +147,8 @@ t_swap	*swap_init(t_swap *swap, char *argv[], size_t len)
 	swap->stack_a->first->prev = swap->stack_a->last;
 	swap->stack_a->last->next = swap->stack_a->first;
 	set_min_max(swap);
-	// swap->best_start = find_best_start(swap);
 	fill_index(swap->stack_a);
 	swap->move = move;
 
-	// i = 0;
-	// t_swap_int *current = swap->stack_a->first;
-	// while (i < len)
-	// {
-	// 	ft_printf("stack_a[%d] = %d\n", current->index, current->value);
-	// 	i++;
-	// 	current = current->next;
-	// }
-
 	return (swap);
-	
 }

@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 23:49:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/17 21:24:36 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:45:20 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,13 @@ int	r_or_rr(t_swap_int *target)
 void	rotate_to(t_swap *swap, t_swap_int *elem)
 {
 	int	start;
-
+ft_printf("elem = %d\n", elem->value);
+ft_printf("elem = %d\n", elem->value);
+ft_printf("elem = %d\n", elem->value);
+ft_printf("elem = %d\n", elem->value);
+ft_printf("elem = %d\n", elem->value);
+ft_printf("elem = %d\n", elem->value);
+ft_printf("elem = %d\n", elem->value);
 	start = r_or_rr(elem);
 	{
 		while (elem->stack->first != elem)

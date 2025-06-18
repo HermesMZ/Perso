@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:54:18 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 21:10:47 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:40:54 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,30 @@ t_stack	*ft_stack_init(void)
 	return (new_stack);
 }
 
+t_swap_int	*new_swap_int(int value)
+{
+	t_swap_int	*new_elem;
+
+	new_elem = malloc(sizeof(t_swap_int));
+	if (!new_elem)
+		return (NULL);
+	new_elem->value = value;
+	new_elem->index = 0;
+	new_elem->stack = NULL;
+	new_elem->next = NULL;
+	new_elem->prev = NULL;
+	return (new_elem);
+}
+
 void	ft_stack_add_back(t_stack *stack, int value)
 {
 	t_swap_int	*new_elem;
 
 	if (!stack)
 		return ;
-	new_elem = malloc(sizeof(t_swap_int));
+	new_elem = new_swap_int(value);
 	if (!new_elem)
 		return ;
-	new_elem->value = value;
 	if (stack->len == 0)
 	{
 		stack->first = new_elem;
@@ -50,7 +64,6 @@ void	ft_stack_add_back(t_stack *stack, int value)
 		new_elem->next = stack->first;
 		stack->first->prev = new_elem;
 	}
-	// new_elem->sorted
 	stack->len++;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:39:06 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/17 18:42:27 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 19:35:38 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_swap(t_swap *swap, t_swap_int *elem)
 
 	if (!swap || !elem || elem->stack->len < 2)
 		return ;
-	first = elem;
+	first = elem->stack->first;
 	second = first->next;
 	third = second->next;
 	first->next = third;

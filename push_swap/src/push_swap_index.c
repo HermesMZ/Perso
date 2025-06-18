@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:56:11 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/17 19:58:53 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:23:09 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	swap(int *a, int *b)
 	*b = tmp;
 }
 
-static void	quick_sort(int tab[], int first, int last)
+void	quick_sort(int tab[], int first, int last)
 {
 	int	pivot;
 	int	i;
@@ -86,7 +86,27 @@ void	fill_index(t_stack *stack)
 	free(array);
 }
 
+t_swap_int	*find_median(t_swap_int *first, int count)
+{
+	int			*array;
+	int			i;
+	t_swap_int	*median;
 
+	array = malloc((sizeof(int)) * (count + 1));
+	if (!array)
+		return (NULL);
+	i = 0;
+	while (i < count)
+	{
+		array[i++] = first->index;
+		first = first->next;
+	}
+	array[i] = '\0';
+	quick_sort(array, 0, i - 1);
+	median = find_index(first->stack, array[i / 2]);
+	free (array);
+	return (median);
+}
 	// 	i = 0;
 	// while (i++ < stack->len)
 	// {
@@ -101,3 +121,4 @@ void	fill_index(t_stack *stack)
 	// 	z++;
 	// }
 	// ft_printf("\n");
+

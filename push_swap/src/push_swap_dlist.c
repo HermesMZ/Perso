@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:54:18 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/16 21:14:22 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 21:10:47 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_stack_add_back(t_stack *stack, int value)
 		new_elem->next = stack->first;
 		stack->first->prev = new_elem;
 	}
+	// new_elem->sorted
 	stack->len++;
 }
 

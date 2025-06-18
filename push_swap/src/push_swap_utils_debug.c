@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/16 19:38:18 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 21:03:33 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	debug_print_stacks(t_swap *swap)
 	stack_b = swap->stack_b;
 	a = stack_a->first;
 	b = stack_b->first;
-	ft_printf("Debug - print stacks\n%10c %10c\n%10d %10d\n\n", 'a', 'b',
-		stack_a->len, stack_b->len);
+	// ft_printf("Debug - print stacks\n%10c %10c\n", 'a', 'b');
+	ft_printf("\n%10c %10c\n%10d %10d\n\n", 'a', 'b', stack_a->len, stack_b->len);
 	i = 0;
 	while (i < stack_a->len || i < stack_b->len)
 	{
@@ -50,4 +50,5 @@ void	debug_print_stacks(t_swap *swap)
 		ft_printf("\n");
 		i++;
 	}
+	ft_printf("commands done : %d\n", ft_lstsize(swap->move));
 }

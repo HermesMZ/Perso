@@ -3,80 +3,106 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:27:14 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 14:31:10 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/18 21:05:25 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_split(t_swap *swap, t_swap_int *first, int count)
+static t_swap_int	*stack_split(t_swap *swap, t_swap_int *pivot,
+	t_swap_int **current, int *push_count)
+{
+	t_swap_int	*last_pushed;
+
+	last_pushed = NULL;
+	ft_printf("current index %d pivot %d ", (*current)->index, pivot->index);
+	if ((*current)->index >= pivot->index)
+	{
+		ft_printf("push\n");
+		last_pushed = (*current);
+		(*current) = (*current)->next;
+		ft_push(swap, last_pushed);
+		(*push_count)++;
+	}
+	else if ((*current)->index < pivot->index)
+	{
+		ft_printf("rotate\n");
+
+		ft_rotate(swap, (*current));
+		(*current) = (*current)->next;
+	}
+	debug_print_stacks(swap);
+	return (last_pushed);
+}
+
+// static void	stack_merge(t_swap *swap, t_elem *elem, int count)
+// {
+	
+// }
+
+void	quick_sort_stack(t_swap *swap, t_swap_int *first, int count)
 {
 	t_swap_int	*pivot;
 	t_swap_int	*current;
 	int			i;
-	static int	z = 0;
+	int			push_count;
+	t_swap_int	*last_pushed;
 
-	while (z < 1)
-	{
-		
+	push_count = 0;
 	i = 0;
 	rotate_to(swap, first);
-	if (count > 2)
+		ft_printf("\n ========================== NEW CALL ==============================\n");
+		
+		debug_print_stacks(swap);
+		ft_printf(" ==================================================================\n");
+	
+	if (count > 1)
 	{
-	z++;
-
-		pivot = first;
-		current = pivot->stack->first;
+		pivot = find_median(first, count);
+		ft_printf(" =========================== pivot : %d count : %d ===========================\n", pivot->value, count);
+		current = first;
 		while (i < count)
 		{
-			ft_printf("current : %d, pivot : %d\n", current->value, pivot->value);
-			while (current->index >= pivot->index)
-			{
-				// ft_printf("stack_split if\n");
-				
-				ft_push(swap, current);
-				current = current->next;
-			}
-			while (current->index < pivot->index)
-			{
-				debug_print_stacks(swap);
-				ft_rotate(swap, pivot);
-				current = current->next;
-			}
+			last_pushed = stack_split(swap, pivot, &current, &push_count);
 			i++;
 		}
-				ft_printf("stack_split else\n");
-
-		
-				stack_split(swap, swap->stack_b->first, count);
-				stack_split(swap, swap->stack_a->first, count);
-
+		// debug_print_stacks(swap);
+		quick_sort_stack(swap, last_pushed, push_count);
+		quick_sort_stack(swap, current, count - push_count);
+		ft_printf(" ================== fin de recursive ==================\n");
 	}
-	else if (current->value > current->next->value)
+	else
 	{
-		ft_printf("stack_split swap\n");
-		ft_swap(swap, current);
+	if (first->index > first->next->index && first->stack == swap->stack_a)
+	{
+		ft_printf("swap\n");
+		ft_swap(swap, first);
 	}
+	if (first->index < first->next->index && first->stack == swap->stack_b)
+	{
+		ft_printf("swap\n");
+		ft_swap(swap, first);
 	}
-	
+}
 }
 
 void	hard_sort_3(t_swap *swap, t_swap_int *elem)
 {
-	if (elem->stack == swap->stack_a)
+	if (elem->index > elem->next->index)
 	{
-		if (elem->index > elem->next->index)
-			ft_swap(swap, elem);
-		if (elem->next->index > elem->next->next->index)
-		{
-			ft_rotate(swap, elem);
-			ft_swap(swap, elem);
-			ft_reverse_rotate(swap, elem);
-		}
-		if (elem->index > elem->next->index)
-			ft_swap(swap, elem);
+		ft_swap(swap, elem);
+		elem = elem->stack->first;
 	}
+	if (elem->next->index > elem->next->next->index)
+	{
+		ft_rotate(swap, elem);
+		ft_swap(swap, elem);
+		ft_reverse_rotate(swap, elem);
+		elem = elem->stack->first;
+	}
+	if (elem->index > elem->next->index)
+		ft_swap(swap, elem);
 }

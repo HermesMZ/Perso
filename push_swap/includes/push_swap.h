@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/17 21:27:03 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/18 21:10:44 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_swap_int
 	struct s_swap_int	*next;
 	int					value;
 	int					index;
-	int					sorted;
+// int					sorted;
 	struct s_stack		*stack;
 }	t_swap_int;
 
@@ -50,10 +50,14 @@ void		ft_stack_add_front(t_stack *stack, int value);
 t_swap		*swap_init(t_swap *swap, char *argv[], size_t len);
 void		fill_index(t_stack *stack);
 t_swap_int	*find_index(t_stack *stack, int i);
+void		quick_sort(int tab[], int first, int last);
+t_swap_int	*find_median(t_swap_int *first, int count);
 
 int			is_sorted(size_t length, t_swap_int *elem);
 int			is_circularly_sorted(t_stack *stack);
-void		stack_split(t_swap *swap, t_swap_int *first, int count);
+void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
+void		hard_sort_3(t_swap *swap, t_swap_int *elem);
+
 
 void		rotate_to(t_swap *swap, t_swap_int *elem);
 int			r_or_rr(t_swap_int *target);

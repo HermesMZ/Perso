@@ -1,0 +1,422 @@
+
+ ========================== NEW CALL ==============================
+
+         a          b
+        10          0
+
+         1 
+         0 
+         9 
+         5 
+         3 
+         4 
+         6 
+         7 
+         2 
+         8 
+commands done : 1
+ ==================================================================
+ =========================== pivot : 5 count : 10 ===========================
+current index 1 pivot 5 rotate
+
+         a          b
+        10          0
+
+         0 
+         9 
+         5 
+         3 
+         4 
+         6 
+         7 
+         2 
+         8 
+         1 
+commands done : 2
+current index 0 pivot 5 rotate
+
+         a          b
+        10          0
+
+         9 
+         5 
+         3 
+         4 
+         6 
+         7 
+         2 
+         8 
+         1 
+         0 
+commands done : 3
+current index 9 pivot 5 push
+
+         a          b
+         9          1
+
+         5          9
+         3 
+         4 
+         6 
+         7 
+         2 
+         8 
+         1 
+         0 
+commands done : 4
+current index 5 pivot 5 push
+
+         a          b
+         8          2
+
+         3          5
+         4          9
+         6 
+         7 
+         2 
+         8 
+         1 
+         0 
+commands done : 5
+current index 3 pivot 5 rotate
+
+         a          b
+         8          2
+
+         4          5
+         6          9
+         7 
+         2 
+         8 
+         1 
+         0 
+         3 
+commands done : 6
+current index 4 pivot 5 rotate
+
+         a          b
+         8          2
+
+         6          5
+         7          9
+         2 
+         8 
+         1 
+         0 
+         3 
+         4 
+commands done : 7
+current index 6 pivot 5 push
+
+         a          b
+         7          3
+
+         7          6
+         2          5
+         8          9
+         1 
+         0 
+         3 
+         4 
+commands done : 8
+current index 7 pivot 5 push
+
+         a          b
+         6          4
+
+         2          7
+         8          6
+         1          5
+         0          9
+         3 
+         4 
+commands done : 9
+current index 2 pivot 5 rotate
+
+         a          b
+         6          4
+
+         8          7
+         1          6
+         0          5
+         3          9
+         4 
+         2 
+commands done : 10
+current index 8 pivot 5 push
+
+         a          b
+         5          5
+
+         1          8
+         0          7
+         3          6
+         4          5
+         2          9
+commands done : 11
+
+ ========================== NEW CALL ==============================
+
+         a          b
+         5          5
+
+         1          8
+         0          7
+         3          6
+         4          5
+         2          9
+commands done : 11
+ ==================================================================
+ =========================== pivot : 7 count : 5 ===========================
+current index 8 pivot 7 push
+
+         a          b
+         6          4
+
+         8          7
+         1          6
+         0          5
+         3          9
+         4 
+         2 
+commands done : 12
+current index 7 pivot 7 push
+
+         a          b
+         7          3
+
+         7          6
+         8          5
+         1          9
+         0 
+         3 
+         4 
+         2 
+commands done : 13
+current index 6 pivot 7 rotate
+
+         a          b
+         7          3
+
+         7          5
+         8          9
+         1          6
+         0 
+         3 
+         4 
+         2 
+commands done : 14
+current index 5 pivot 7 rotate
+
+         a          b
+         7          3
+
+         7          9
+         8          6
+         1          5
+         0 
+         3 
+         4 
+         2 
+commands done : 15
+current index 9 pivot 7 push
+
+         a          b
+         8          2
+
+         9          6
+         7          5
+         8 
+         1 
+         0 
+         3 
+         4 
+         2 
+commands done : 16
+
+ ========================== NEW CALL ==============================
+
+         a          b
+         8          2
+
+         9          6
+         7          5
+         8 
+         1 
+         0 
+         3 
+         4 
+         2 
+commands done : 16
+ ==================================================================
+ =========================== pivot : 8 count : 3 ===========================
+current index 9 pivot 8 push
+
+         a          b
+         7          3
+
+         7          9
+         8          6
+         1          5
+         0 
+         3 
+         4 
+         2 
+commands done : 17
+current index 7 pivot 8 rotate
+
+         a          b
+         7          3
+
+         8          9
+         1          6
+         0          5
+         3 
+         4 
+         2 
+         7 
+commands done : 18
+current index 8 pivot 8 push
+
+         a          b
+         6          4
+
+         1          8
+         0          9
+         3          6
+         4          5
+         2 
+         7 
+commands done : 19
+
+ ========================== NEW CALL ==============================
+
+         a          b
+         6          4
+
+         1          8
+         0          9
+         3          6
+         4          5
+         2 
+         7 
+commands done : 19
+ ==================================================================
+ =========================== pivot : 9 count : 2 ===========================
+current index 8 pivot 9 rotate
+
+         a          b
+         6          4
+
+         1          9
+         0          6
+         3          5
+         4          8
+         2 
+         7 
+commands done : 20
+current index 9 pivot 9 push
+
+         a          b
+         7          3
+
+         9          6
+         1          5
+         0          8
+         3 
+         4 
+         2 
+         7 
+commands done : 21
+
+ ========================== NEW CALL ==============================
+
+         a          b
+         7          3
+
+         9          6
+         1          5
+         0          8
+         3 
+         4 
+         2 
+         7 
+commands done : 21
+ ==================================================================
+swap
+
+ ========================== NEW CALL ==============================
+
+         a          b
+         7          3
+
+         1          6
+         9          5
+         0          8
+         3 
+         4 
+         2 
+         7 
+commands done : 22
+ ==================================================================
+ ================== fin de recursive ==================
+
+ ========================== NEW CALL ==============================
+
+         a          b
+         7          3
+
+         1          6
+         9          5
+         0          8
+         3 
+         4 
+         2 
+         7 
+commands done : 22
+ ==================================================================
+ ================== fin de recursive ==================
+
+ ========================== NEW CALL ==============================
+
+         a          b
+         7          3
+
+         1          6
+         9          5
+         0          8
+         3 
+         4 
+         2 
+         7 
+commands done : 22
+ ==================================================================
+ =========================== pivot : 6 count : 2 ===========================
+current index 6 pivot 6 push
+
+         a          b
+         8          2
+
+         6          5
+         1          8
+         9 
+         0 
+         3 
+         4 
+         2 
+         7 
+commands done : 23
+current index 5 pivot 6 rotate
+
+         a          b
+         8          2
+
+         6          8
+         1          5
+         9 
+         0 
+         3 
+         4 
+         2 
+         7 
+commands done : 24

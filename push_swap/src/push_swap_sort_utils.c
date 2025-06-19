@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 23:49:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 22:45:20 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/19 00:31:35 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ int	r_or_rr(t_swap_int *target)
 	int			rr_count;
 	t_swap_int	*current;
 
-	if (!target || target->stack->len == 0)
+	if (!target || !target->stack || target->stack->len == 0)
 		return (0);
 	r_count = 0;
 	current = target->stack->first;
-	while (current != target)
+	while (current && current != target)
 	{
 		current = current->next;
 		r_count++;
@@ -98,20 +98,16 @@ int	r_or_rr(t_swap_int *target)
 void	rotate_to(t_swap *swap, t_swap_int *elem)
 {
 	int	start;
-ft_printf("elem = %d\n", elem->value);
-ft_printf("elem = %d\n", elem->value);
-ft_printf("elem = %d\n", elem->value);
-ft_printf("elem = %d\n", elem->value);
-ft_printf("elem = %d\n", elem->value);
-ft_printf("elem = %d\n", elem->value);
-ft_printf("elem = %d\n", elem->value);
+	
+	if (!elem || elem == elem->stack->first)
+		return ;
 	start = r_or_rr(elem);
 	{
 		while (elem->stack->first != elem)
 		{
 			if (start < 0)
 				ft_reverse_rotate(swap, elem);
-			if (start > 0)
+			else if (start > 0)
 				ft_rotate(swap, elem);
 		}
 	}

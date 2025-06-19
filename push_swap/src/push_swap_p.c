@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:09:05 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/17 18:40:15 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/19 00:57:37 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_push(t_swap *swap, t_swap_int *elem)
 		to = swap->stack_a;
 	ft_push_from_to(from, to);
 	if (from == swap->stack_a)
-		ft_lstadd_back(&swap->move, ft_lstnew("pb\n"));
+		ft_lstadd_back(&swap->move, ft_lstnew(ft_strdup("pb\n")));
 	else
-		ft_lstadd_back(&swap->move, ft_lstnew("pa\n"));
+		ft_lstadd_back(&swap->move, ft_lstnew(ft_strdup("pa\n")));
 }

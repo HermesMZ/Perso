@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:11:53 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/18 22:33:40 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/19 00:45:48 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_del_swapint(t_swap_int *p_elem, void (*del)(void*))
+static void	ft_del_swapint(t_swap_int *p_elem)
 {
-	if (!p_elem || !del)
+	if (!p_elem)
 		return ;
-	del((void *)(long long)p_elem->value);
 	free(p_elem);
 }
 
@@ -38,7 +37,7 @@ static void	ft_stack_clear(t_stack **p_lst, void (*del)(void*))
 	while (current)
 	{
 		next_elem = current->next;
-		ft_del_swapint(current, del);
+		ft_del_swapint(current);
 		current = next_elem;
 	}
 	free(*p_lst);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_r.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 16:42:18 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/17 18:40:42 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/19 00:56:27 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_rotate(t_swap *swap, t_swap_int *elem)
 	elem->stack->first = elem->stack->first->next;
 	elem->stack->last = elem->stack->last->next;
 	if (elem->stack == swap->stack_a)
-		ft_lstadd_back(&swap->move, ft_lstnew("ra\n"));
+		ft_lstadd_back(&swap->move, ft_lstnew(ft_strdup("ra\n")));
 	else
-		ft_lstadd_back(&swap->move, ft_lstnew("rb\n"));
+		ft_lstadd_back(&swap->move, ft_lstnew(ft_strdup("rb\n")));
 }
 
 void	ft_rotate_rr(t_swap *swap)

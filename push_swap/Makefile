@@ -18,6 +18,7 @@ SRCS = \
 	push_swap_s.c \
 	push_swap_sort_utils.c \
 	push_swap_sort.c \
+	push_swap_hard_sort.c \
 	push_swap_utils_debug.c \
 	push_swap_utils.c \
 	push_swap.c \

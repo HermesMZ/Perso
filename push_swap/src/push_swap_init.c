@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 16:46:38 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 22:35:33 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/19 00:58:42 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ t_swap	*swap_init(t_swap *swap, char *argv[], size_t len)
 	size_t	i;
 	t_list	*move;
 
-	move = ft_lstnew("start");
+	move = ft_lstnew(ft_strdup("start"));
 	swap = malloc(sizeof(t_swap));
 	if (!swap)
 		return (NULL);

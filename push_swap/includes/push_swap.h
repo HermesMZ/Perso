@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 22:33:49 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/19 01:16:55 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_swap_int	*find_median(t_swap_int *first, int count);
 int			is_sorted(size_t length, t_swap_int *elem);
 int			is_circularly_sorted(t_stack *stack);
 void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
+void		hard_sort(t_swap *swap, t_swap_int *elem, int count);
 void		hard_sort_3(t_swap *swap, t_swap_int *elem);
 
 

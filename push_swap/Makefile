@@ -10,6 +10,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = \
 	push_swap_init.c \
+	push_swap_cost.c \
 	push_swap_index.c \
 	push_swap_dlist.c \
 	push_swap_p.c \

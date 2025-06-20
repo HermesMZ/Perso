@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:09:05 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/19 00:57:37 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/20 18:02:36 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	ft_push(t_swap *swap, t_swap_int *elem)
 	else
 		to = swap->stack_a;
 	ft_push_from_to(from, to);
+	update_min_max(swap, elem);
 	if (from == swap->stack_a)
 		ft_lstadd_back(&swap->move, ft_lstnew(ft_strdup("pb\n")));
 	else

@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 23:49:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/19 00:31:35 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/20 04:40:29 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	rotate_to(t_swap *swap, t_swap_int *elem)
 {
 	int	start;
 	
-	if (!elem || elem == elem->stack->first)
+	if (!swap || !elem || elem == elem->stack->first)
 		return ;
 	start = r_or_rr(elem);
 	{

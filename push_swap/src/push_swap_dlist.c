@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_dlist.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:54:18 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 22:40:54 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/20 04:53:26 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_swap_int	*new_swap_int(int value)
 	new_elem->stack = NULL;
 	new_elem->next = NULL;
 	new_elem->prev = NULL;
+	new_elem->locked = 0;
 	return (new_elem);
 }
 
@@ -64,6 +65,7 @@ void	ft_stack_add_back(t_stack *stack, int value)
 		new_elem->next = stack->first;
 		stack->first->prev = new_elem;
 	}
+	new_elem->stack = stack;
 	stack->len++;
 }
 

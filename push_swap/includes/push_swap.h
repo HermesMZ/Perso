@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/19 01:16:55 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/20 17:52:25 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,32 @@
 # include <stdlib.h>
 # include "libft.h"
 
+
+
 typedef struct s_swap_int
 {
 	struct s_swap_int	*prev;
 	struct s_swap_int	*next;
 	int					value;
 	int					index;
-// int					sorted;
+	int					locked;
 	struct s_stack		*stack;
 }	t_swap_int;
+
+typedef struct s_cost
+{
+	int			rot_a;
+	int			rot_b;
+	int			total;
+	t_swap_int	*node_b;
+}	t_cost;
 
 typedef struct s_stack
 {
 	t_swap_int	*first;
 	t_swap_int	*last;
+	int			min;
+	int			max;
 	size_t		len;
 }	t_stack;
 
@@ -55,10 +67,9 @@ t_swap_int	*find_median(t_swap_int *first, int count);
 
 int			is_sorted(size_t length, t_swap_int *elem);
 int			is_circularly_sorted(t_stack *stack);
-void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
+// void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
 void		hard_sort(t_swap *swap, t_swap_int *elem, int count);
 void		hard_sort_3(t_swap *swap, t_swap_int *elem);
-
 
 void		rotate_to(t_swap *swap, t_swap_int *elem);
 int			r_or_rr(t_swap_int *target);
@@ -71,13 +82,22 @@ void		ft_rotate_rr(t_swap *swap);
 void		ft_reverse_rotate(t_swap *swap, t_swap_int *elem);
 void		ft_reverse_rotate_rrr(t_swap *swap);
 
+t_cost		calc_cost_to_insert(t_swap *swap, t_swap_int *node_b);
+
 void		first_cleaning(t_swap *swap);
 
 void		debug_print_stacks(t_swap *swap);
+void		debug_print_stack_from(t_swap *swap, t_swap_int *start);
+
+void		recursive_split_call(t_swap *swap, t_swap_int *first, int count, int depth);
+void 		quick_sort_stack(t_swap *swap, t_swap_int *first, int count, int depth);
+
 
 void		free_all(t_swap *swap);
 // void		ft_stack_clear(t_stack **p_lst, void (*del)(void*));
 
+void		update_min_max(t_swap *swap, t_swap_int *elem);
+void		set_min_max(t_stack *stack);
 
 
 #endif /*PUSH_SWAP_H*/

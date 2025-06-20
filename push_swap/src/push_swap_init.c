@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 16:46:38 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/19 00:58:42 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/20 17:52:11 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,41 @@
 // ft_printf("====== best_start %d, max_count %d\n",
 // best_start->value, max_count);
 
-static void	set_min_max(t_swap *swap)
+#include "push_swap.h"
+
+void	update_min_max_on_push(t_swap_int *elem)
+{
+	if (!elem)
+		return;
+
+	if (elem->index < elem->stack->min)
+		elem->stack->min = elem->index;
+	if (elem->index > elem->stack->max)
+		elem->stack->max = elem->index;
+}
+
+void	update_min_max_on_pop(t_swap *swap, t_swap_int *elem)
+{
+	t_stack	*prev;
+
+	if (!elem)
+		return;
+	if (elem->stack == swap->stack_a)
+		prev = swap->stack_b;
+	else
+		prev = swap->stack_a;	
+	if (elem->index == prev->min || elem->index == prev->max)
+		set_min_max(prev);
+}
+
+void	update_min_max(t_swap *swap, t_swap_int *elem)
+{
+	update_min_max_on_pop(swap, elem);
+	update_min_max_on_push(elem);
+}
+
+
+void	set_min_max(t_stack *stack)
 {
 	int			min;
 	int			max;
@@ -108,10 +142,10 @@ static void	set_min_max(t_swap *swap)
 	t_swap_int	*current;
 
 	i = 0;
-	min = swap->stack_a->first->value;
-	max = swap->stack_a->first->value;
-	current = swap->stack_a->first;
-	while (i <= swap->stack_a->len)
+	min = stack->first->value;
+	max = stack->first->value;
+	current = stack->first;
+	while (i <= stack->len)
 	{
 		if (current->value < min)
 			min = current->value;
@@ -120,8 +154,8 @@ static void	set_min_max(t_swap *swap)
 		current = current->next;
 		i++;
 	}
-	swap->max = max;
-	swap->min = min;
+	stack->max = max;
+	stack->min = min;
 }
 
 t_swap	*swap_init(t_swap *swap, char *argv[], size_t len)
@@ -139,16 +173,13 @@ t_swap	*swap_init(t_swap *swap, char *argv[], size_t len)
 		return (NULL);
 	i = 1;
 	while (i <= len)
-	{
-		ft_stack_add_back(swap->stack_a, ft_atoi(argv[i]));
-		swap->stack_a->last->stack = swap->stack_a;
-		i++;
-	}
+		ft_stack_add_back(swap->stack_a, ft_atoi(argv[i++]));
 	swap->stack_a->first->prev = swap->stack_a->last;
 	swap->stack_a->last->next = swap->stack_a->first;
-	set_min_max(swap);
+	set_min_max(swap->stack_a);
+	swap->stack_b->max = 0;
+	swap->stack_b->min = 0;
 	fill_index(swap->stack_a);
 	swap->move = move;
-
 	return (swap);
 }

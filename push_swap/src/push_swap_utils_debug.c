@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils_debug.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/18 21:03:33 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:50:52 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	debug_print_stack_from(t_swap *swap, t_swap_int *start)
+{
+	if (!start || !start->stack)
+	{
+		ft_printf("Invalid stack.\n");
+		return ;
+	}
+	if (start->stack == swap->stack_a)
+		ft_printf("=== STACK A ===\n");
+	else
+		ft_printf("=== STACK B ===\n");
+}
+
 
 void	debug_print_stacks(t_swap *swap)
 {

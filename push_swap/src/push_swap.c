@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/18 22:49:54 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/20 05:32:58 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ int	main(int argc, char *argv[])
 		return (0);
 	len = argc - 1;
 	swap = swap_init(swap, argv, len);
+
 	// ft_swap(swap, swap->stack_a->first);
 	// hard_sort_3(swap, swap->stack_a->first);
-	quick_sort_stack(swap, swap->stack_a->first, len);
+	// quick_sort_stack(swap, swap->stack_a->first, len);
+	quick_sort_stack(swap, swap->stack_a->first, len, 0);
+
 	debug_print_stacks(swap);
 
 

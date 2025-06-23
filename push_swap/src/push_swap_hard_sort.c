@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_hard_sort.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:15:54 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/20 16:35:07 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/23 16:32:35 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	hard_sort_3_a(t_swap *swap, t_swap_int *elem)
 void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 {
 	t_swap_int	*to;
+
+	ft_printf("hard_sort elem->value %d count %d\n", elem->value, count);
 	if (!elem || !count)
 		return ;
 	if (elem->stack == swap->stack_b)
@@ -59,7 +61,8 @@ void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 		to = swap->stack_a->first;
 	if (count == 2)
 	{
-		if ((to->index > to->next->index && to->stack == swap->stack_a) || (to->index < to->next->index && to->stack == swap->stack_b))
+		if ((to->index > to->next->index && to->stack == swap->stack_a)
+			|| (to->index < to->next->index && to->stack == swap->stack_b))
 			ft_swap(swap, to);
 	}
 	else if (count == 3)
@@ -69,5 +72,4 @@ void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 		else
 			hard_sort_3_b(swap, to);
 	}
-	
 }

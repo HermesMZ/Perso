@@ -3,306 +3,186 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:27:14 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/20 18:19:41 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/23 18:40:05 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	merge_stacks_count(t_swap *swap, t_swap_int *dst, int count, t_swap_int *src)
+
+void	merge_stacks_count(t_swap *swap, t_swap_int *src, t_swap_int *dst, int count)
 {
-	ft_printf("+3");
-	ft_printf("dst->value %d, count %d; src->value %d\n", dst->value, count, src->value);
-	ft_printf("dst stack ");
-	debug_print_stack_from(swap, dst);
-	ft_printf("\nsrc stack ");
+	int			i;
+	t_swap_int	*next;
+
+	ft_printf("src->value %d, count %d; dst->value %d\n", src->value, src->value, count);
+	ft_printf("\nsrc stack %d ", src->value);
 	debug_print_stack_from(swap, src);
-	
-	int				i;
-	t_swap_int		*next;
+	ft_printf("dst stack %d ", dst->value);
+	debug_print_stack_from(swap, dst);
 
 	i = 0;
 	if (!src || count <= 0)
 		return ;
-	rotate_to(swap, dst);
-	rotate_to(swap, src);
+	ft_printf("Rotate to heads");
+	// rotate_to(swap, src);
+	// rotate_to(swap, dst);
 	debug_print_stacks(swap);
-	ft_printf("debuuuuuuuuuug\n");
+	i = 0;
 	while (i < count && src)
 	{
+		ft_printf("%d - merge count : %d\n", i + 1, count);
 		next = src->next;
-		if (src->index > dst->index && src->stack == swap->stack_a)
+		if (src->value == swap->max)
+		{
+			while (src->index - dst->stack->first->index < 5)
+				ft_rotate(swap, dst);
 			ft_push(swap, src);
-		else if (src->index < dst->index && src->stack == swap->stack_b)
+			i++;
+		}
+		// else if ()
+		else if ((src->stack == swap->stack_b && src->stack->first->index
+				< dst->stack->first->index))
+		{
 			ft_push(swap, src);
-
+			i++;
+		}
+		else if ((src->stack == swap->stack_a && src->stack->first->index
+				> dst->stack->first->index))
+		{
+			ft_push(swap, src);
+			i++;
+		}
+		else
+			ft_rotate(swap, dst);
+		debug_print_stacks(swap);
+	ft_printf("head pushed %d head rem %d pushed %d rem %d\n", src->value, dst->value);
+			
 		src = next;
-		i++;
 	}
-	// ft_printf("3-");
-
+	if (dst->stack == swap->stack_a)
+		rotate_to(swap, dst);
+	else
+		rotate_to(swap, src);
 }
 
-t_swap_int *stack_split(t_swap *swap, t_swap_int *pivot, t_swap_int *current, int *push_count)
+// ft_printf("pivot : %d, current : %d\n", pivot->index, current->index);
+t_heads	**stack_split(t_swap *swap, t_swap_int *pivot, t_swap_int *current,
+	t_heads **heads)
 {
-	// ft_printf("+2");
-	ft_printf("pivot : %d, current : %d\n", pivot->index, current->index);
-	t_swap_int *last_pushed = NULL;
+
 	if (current->index > pivot->index && !current->locked)
 	{
 		ft_push(swap, current);
-		last_pushed = current;
-		(*push_count)++;
+		// ft_printf("push %d\n", current->value);
+		(*heads)->pushed = current;
+		(*heads)->push_count++;
 	}
 	else
+	{
 		ft_rotate(swap, current);
-	// ft_printf("2-\n");
-	
-	return last_pushed;
+		if (!(*heads)->remaining)
+			(*heads)->remaining = current;
+		// ft_printf("rotate %d\n", current->value);
+	}
+	return (heads);
 }
 
-void	recursive_split_call(t_swap *swap, t_swap_int *first, int count, int depth)
+void	recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 {
-	ft_printf("+1");
-
 	t_swap_int	*pivot;
 	t_swap_int	*current;
-	t_swap_int	*last_pushed;
 	int			i;
-	int			push_count;
+	t_heads		*heads;
 
+	heads = malloc(sizeof(t_heads));
+	if (!heads)
+		return ;
+		
+	ft_printf("before split\n");
 	debug_print_stacks(swap);
 	pivot = find_median(first, count);
-	pivot->locked = 1;
+	ft_printf("pivot %d\n", pivot->value);
+	// ft_printf("heads %d %d\n", heads->pushed->value, heads->remaining->index);
+	pivot->locked = 0;
 	current = first;
-	last_pushed = NULL;
-	push_count = 0;
+	heads->pushed = NULL;
+	heads->remaining = NULL;
+	heads->push_count = 0;
+	heads->remaining_count = 0;
 	i = 0;
+	// if (heads->pushed && heads->remaining)
+	// {
+	// 	rotate_to(swap, heads->pushed);
+	// 	rotate_to(swap, heads->remaining);
+	// }
 	while (i < count)
 	{
-		t_swap_int *res = stack_split(swap, pivot, current, &push_count);
-		if (res)
-			last_pushed = res;
+		stack_split(swap, pivot, current, &heads);
 		current = pivot->stack->first;
 		i++;
 	}
-	// Partie triée avec push
-	if (push_count > 3)
-		quick_sort_stack(swap, last_pushed, push_count, depth + 1);
-	else
-		hard_sort(swap, last_pushed, push_count);
-	// Partie restante
-	if ((count - push_count) > 3)
-		quick_sort_stack(swap, current->prev, count - push_count, depth + 1);
-	else
-		hard_sort(swap, current->prev, count - push_count);
-	pivot->locked = 0;
-	merge_stacks_count(swap, current->prev, push_count, last_pushed);
-ft_printf("1-\n");
+	heads->remaining_count = count - heads->push_count;
 
+	ft_printf("after split\n");
 	debug_print_stacks(swap);
+
+
+	ft_printf("count %d, push_count %d, remaining %d\n", count, heads->push_count, heads->remaining_count);
+	// last_pushed->locked = 0;
+
+
+	if (heads->push_count > 3)
+	{
+		ft_printf("recursif sur les pushs\n");
+		quick_sort_stack(swap, heads->pushed, heads->push_count);
+	}
+	if ((heads->remaining_count) > 3)
+	{
+		ft_printf("recursif sur le restant\n");
+		quick_sort_stack(swap, heads->remaining, heads->remaining_count);
+	}
+	pivot->locked = 0;
+	// last_pushed->locked = 0;
+	if (heads->push_count <= 3)
+	{
+		hard_sort(swap, heads->pushed, heads->push_count);
+		heads->pushed = heads->pushed->stack->first;
+	}
+	if (heads->remaining_count <= 3)
+	{
+		ft_printf("last_pushed:%i\tadam_test_head:%i\n", heads->pushed->value, heads->remaining->value);
+		rotate_to(swap, heads->remaining);
+		hard_sort(swap, heads->remaining, heads->remaining_count);
+		heads->remaining = heads->remaining->stack->first;
+	}
+	ft_printf("head pushed %d head rem %d pushed %d rem %d\n", heads->pushed->value, heads->remaining->value, heads->push_count, heads->remaining_count);
+	ft_printf("after sort\n");
+	debug_print_stacks(swap);
+	merge_stacks_count(swap, heads->pushed, heads->remaining, heads->push_count);
+	heads->remaining = heads->remaining->stack->first;
+
+	ft_printf("after merge\n");
+	ft_printf("head pushed %d head rem %d pushed %d rem %d\n", heads->pushed->value, heads->remaining->value, heads->push_count, heads->remaining_count);
+	// rotate_to(swap, heads->pushed);
+	debug_print_stacks(swap);
+	free(heads);
 }
 
 
 
 
-void	quick_sort_stack(t_swap *swap, t_swap_int *first, int count, int depth)
+void	quick_sort_stack(t_swap *swap, t_swap_int *first, int count)
 {
+
 	if (!first || count <= 1)
+		return ;
+	if (is_circularly_sorted(swap->stack_a) == 1
+		&& is_circularly_sorted(swap->stack_b) == -1)
 		return ;
 	rotate_to(swap, first);
 	if (count > 2)
-		recursive_split_call(swap, first, count, depth);
+		recursive_split_call(swap, first, count);
 }
-
-
-
-// void merge_stacks_count(t_swap *swap, t_swap_int *dst, t_swap_int *src, int count)
-// {
-// 	int i;
-	
-// 	i = 0;
-	
-// 	ft_printf("meeeeeeeeeeeeeeeeeeeeeeeerge\n");
-
-// 	if (!src || count <= 0)
-// 		return;
-// 	rotate_to(swap, dst);
-// 	rotate_to(swap, src);
-// 	while (i < count && src)
-// 	{
-// 		t_swap_int *next = src->next;
-
-// 		// Si on fusionne vers A (ordre croissant)
-// 		if (dst->stack == swap->stack_a)
-// 		{
-// 			while (dst->stack->first && src->index > dst->stack->first->index)
-// 				ft_rotate(swap, dst->stack->first);
-// 		}
-// 		// Si on fusionne vers B (ordre décroissant)
-// 		else
-// 		{
-// 			while (dst->stack->first && src->index < dst->stack->first->index)
-// 				ft_rotate(swap, dst->stack->first);
-// 		}
-
-// 		ft_push(swap, src); // push src vers dst
-// 		src = next;
-// 		i++;
-// 	}
-// 	debug_print_stacks(swap);
-// }
-
-
-// t_swap_int	*stack_split(t_swap *swap, t_swap_int *pivot, t_swap_int *current, int *push_count)
-// {
-// 	t_swap_int	*last_pushed;
-// 	last_pushed = NULL;
-// 	if (current->index > pivot->index && !current->locked)
-// 	{
-// 		ft_push(swap, current);
-// 		last_pushed = current;
-// 		(*push_count)++;
-// 	}
-// 	else
-// 		ft_rotate(swap, current);
-// 	return (last_pushed);
-// }
-
-
-
-// void recursive_split_call(t_swap *swap, t_swap_int *first, int count, int depth)
-// {
-//     t_swap_int *pivot;
-//     t_swap_int *current;
-//     t_swap_int *last_pushed;
-//     int i;
-//     int push_count;
-
-//     pivot = find_median(first, count);
-//     pivot->locked = 1;
-
-//     ft_printf("\n\n== [DEPTH %d] RECURSIVE SPLIT ==\n", depth);
-//     ft_printf("Stack: %s | Pivot value: %d (Index: %d) | Count: %d\n",
-//         (pivot->stack == swap->stack_a) ? "A" : "B",
-//         pivot->value,
-//         pivot->index,
-//         count
-//     );
-
-//     current = first;
-//     push_count = 0;
-//     last_pushed = NULL;
-//     i = 0;
-
-//     while (i < count)
-//     {
-//         t_swap_int *result = stack_split(swap, pivot, current, &push_count);
-//         if (result)
-//             last_pushed = result;
-//         current = pivot->stack->first;
-//         i++;
-//     }
-
-//     ft_printf("[DEPTH %d] Split done. Pushed: %d | Remaining: %d\n", depth, push_count, count - push_count);
-// 	// Trie récursivement
-// 	if (push_count <= 3)
-// 		hard_sort(swap, last_pushed, push_count);
-// 	else
-// 		quick_sort_stack(swap, last_pushed, push_count, depth + 1);
-
-// 	if ((count - push_count) <= 3)
-// 		hard_sort(swap, current->prev, count - push_count);
-// 	else
-// 		quick_sort_stack(swap, current->prev, count - push_count, depth + 1);
-
-// 	pivot->locked = 0;
-	
-// 	merge_stacks_count(swap, current->stack->first, last_pushed->stack->first, push_count);
-// }
-
-// void quick_sort_stack(t_swap *swap, t_swap_int *first, int count, int depth)
-// {
-//     if (!first || count <= 1)
-//         return;
-
-//     ft_printf("=== [DEPTH %d] QUICK_SORT ===\n", depth);
-//     ft_printf("Stack: %s | First value: %d | Index: %d | Count: %d\n",
-//         (first->stack == swap->stack_a) ? "A" : "B",
-//         first->value,
-//         first->index,
-//         count
-//     );
-
-//     rotate_to(swap, first);
-
-//     if (count > 2)
-//         recursive_split_call(swap, first, count, depth + 1);
-
-// }
-
-
-// t_swap_int	*stack_split(t_swap *swap, t_swap_int *pivot, t_swap_int *current, int *push_count)
-// {
-// 	t_swap_int	*last_pushed;
-// 	last_pushed = NULL;
-// 	if (current->index > pivot->index && !current->locked)
-// 	{
-// 		ft_push(swap, current);
-// 		last_pushed = current;
-// 		(*push_count)++;
-// 	}
-// 	else
-// 		ft_rotate(swap, current);
-// 	return (last_pushed);
-// }
-
-// void	recursive_split_call(t_swap *swap, t_swap_int *first, int count)
-// {
-// 	t_swap_int	*pivot;
-// 	t_swap_int	*current;
-// 	t_swap_int	*last_pushed;
-// 	int			i;
-// 	int			push_count;
-
-// 	// pivot = first;
-// 	pivot = find_median(first, count);
-// 	pivot->locked = 1;
-// 	current = first;
-// 	push_count = 0;
-// 	last_pushed = NULL;
-// 	i = 0;
-// 	while (i < count)
-// 	{
-// 		t_swap_int *result;
-		
-// 		result = stack_split(swap, pivot, current, &push_count);
-// 		if (result != NULL)
-// 			last_pushed = result; 
-// 		current = pivot->stack->first;
-// 		i++;
-// 	}
-// 	if (push_count > 0)
-// 		quick_sort_stack(swap, last_pushed, push_count);
-// 	if (count - push_count > 0)
-// 		quick_sort_stack(swap, current->prev, count - push_count);
-// 	pivot->locked = 0;
-// }
-
-// void	quick_sort_stack(t_swap *swap, t_swap_int *first, int count)
-// {
-// 	if (!first || count <= 1)
-// 		return ;
-// 	rotate_to(swap, first);
-// 	if (count > 2)
-// 	{
-// 		ft_printf("%d count\n", count);
-// 		recursive_split_call(swap, first, count);
-// 	}
-// 	else
-// 		return ;
-// }
-
-// 	// debug_print_stacks(swap);

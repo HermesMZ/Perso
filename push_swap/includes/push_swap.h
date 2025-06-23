@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/20 17:52:25 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/23 17:44:14 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ typedef struct s_swap_int
 	int					locked;
 	struct s_stack		*stack;
 }	t_swap_int;
+
+typedef struct s_heads
+{
+	t_swap_int	*pushed;
+	t_swap_int	*remaining;
+	int			push_count;
+	int			remaining_count;
+}	t_heads;
 
 typedef struct s_cost
 {
@@ -89,12 +97,11 @@ void		first_cleaning(t_swap *swap);
 void		debug_print_stacks(t_swap *swap);
 void		debug_print_stack_from(t_swap *swap, t_swap_int *start);
 
-void		recursive_split_call(t_swap *swap, t_swap_int *first, int count, int depth);
-void 		quick_sort_stack(t_swap *swap, t_swap_int *first, int count, int depth);
-
+void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
+void		recursive_split_call(t_swap *swap, t_swap_int *first,
+				int count);
 
 void		free_all(t_swap *swap);
-// void		ft_stack_clear(t_stack **p_lst, void (*del)(void*));
 
 void		update_min_max(t_swap *swap, t_swap_int *elem);
 void		set_min_max(t_stack *stack);

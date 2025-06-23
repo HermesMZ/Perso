@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils_debug.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/20 16:50:52 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/23 10:40:16 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void	debug_print_stacks(t_swap *swap)
 	stack_b = swap->stack_b;
 	a = stack_a->first;
 	b = stack_b->first;
-	// ft_printf("Debug - print stacks\n%10c %10c\n", 'a', 'b');
 	ft_printf("\n%10c %10c\n%10d %10d\n\n", 'a', 'b', stack_a->len, stack_b->len);
+	ft_printf("min-a %4d min-b %4d\n", swap->stack_a->min, swap->stack_b->min);
+	ft_printf("max-a %4d max-b %4d\n\n", swap->stack_a->max, swap->stack_b->max);
 	i = 0;
 	while (i < stack_a->len || i < stack_b->len)
 	{

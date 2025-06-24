@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:27:14 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 17:51:38 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:14:42 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,37 +54,75 @@ t_swap_int	*find_max_in_split(t_swap_int *elem, int count)
 	return (max);
 }
 
-t_swap_int	*find_pushed_head_split(t_swap *swap, t_swap_int *pivot, int count)
+t_swap_int	*find_pushed_head_split(t_swap_int *pivot, int count)
 {
 	t_swap_int	*current;
-
+	int			i;
+	t_swap_int	*pushed;
+	
+	i = 0;
 	ft_printf("pus\n");
 	current = pivot->stack->first;
+	pushed = current;
 	ft_printf("pivot %d\n", pivot->value);
-	if (pivot->stack == swap->stack_a)
-		current = find_index(pivot->stack, pivot->index + 1);
-	else
-		current = find_max_in_split(pivot->stack->first, count);
+	while (i < count)
+	{
+		if (current->value > pushed->value)
+			pushed = current;
+		current = current->next;
+		i++;
+	}
 	ft_printf("hed\n");
 
 	return (current);
 }
 
-t_swap_int	*find_remaining_head_split(t_swap *swap, t_swap_int *pivot, int count)
+t_swap_int	*find_remaining_head_split(t_swap_int *pivot)
 {
 	t_swap_int	*current;
 
 	ft_printf("bouh\n");
 	current = pivot->stack->first;
 	ft_printf("pivot %d\n", pivot->value);
-	if (pivot->stack == swap->stack_a)
-		find_min_in_split(pivot->stack->first, count);
-	else
-		current = pivot;
+	while (current->index > pivot->index)
+		current = current->next;
 	ft_printf("teille\n");
 
 	return (current);
 }
+
+// prendre les heads finales 
+// t_swap_int	*find_pushed_head_split(t_swap *swap, t_swap_int *pivot, int count)
+// {
+// 	t_swap_int	*current;
+
+// 	ft_printf("pus\n");
+// 	current = pivot->stack->first;
+// 	ft_printf("pivot %d\n", pivot->value);
+// 	if (pivot->stack == swap->stack_a)
+// 		current = find_index(pivot->stack, pivot->index + 1);
+// 	else
+// 		current = find_max_in_split(pivot->stack->first, count);
+// 	ft_printf("hed\n");
+
+// 	return (current);
+// }
+
+// t_swap_int	*find_remaining_head_split(t_swap *swap, t_swap_int *pivot, int count)
+// {
+// 	t_swap_int	*current;
+
+// 	ft_printf("bouh\n");
+// 	current = pivot->stack->first;
+// 	ft_printf("pivot %d\n", pivot->value);
+// 	if (pivot->stack == swap->stack_a)
+// 		find_min_in_split(pivot->stack->first, count);
+// 	else
+// 		current = pivot;
+// 	ft_printf("teille\n");
+
+// 	return (current);
+// }
 
 
 
@@ -182,8 +220,8 @@ t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 	pivot = find_median(first, count);
 	pivot->locked = 0;
 	current = first;
-	heads->pushed = find_pushed_head_split(swap, pivot, count);
-	heads->remaining = find_remaining_head_split(swap, pivot, count);
+	heads->pushed = find_pushed_head_split(pivot, count);
+	heads->remaining = find_remaining_head_split(pivot);
 	heads->push_count = 0;
 	heads->remaining_count = 0;
 	i = 0;
@@ -200,7 +238,7 @@ t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 		i++;
 	}
 	ft_printf(" **************** SPLIT FINISHED **************** \n");
-	debug_print_split((heads));
+	// debug_print_split((heads));
 	// debug_print_stacks(swap);
 	// debug_print_split(heads);
 	if (heads->push_count > 3)
@@ -284,11 +322,14 @@ t_heads	**stack_split(t_swap *swap, t_swap_int *pivot, t_swap_int *current,
 	{
 		ft_push(swap, current);
 		// (*heads)->pushed = current;
+		debug_print_stacks(swap);
 		(*heads)->push_count++;
 	}
 	else
 	{
 		ft_rotate(swap, current);
+		debug_print_stacks(swap);
+
 		(*heads)->remaining_count++;
 	}
 

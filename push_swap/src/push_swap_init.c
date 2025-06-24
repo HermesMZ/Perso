@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 16:46:38 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/23 12:23:04 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:08:46 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,15 +143,15 @@ void	set_min_max(t_stack *stack)
 	if (stack->len == 0)
 		return ;
 	i = 0;
-	min = stack->first->value;
-	max = stack->first->value;
+	min = stack->first->index;
+	max = stack->first->index;
 	current = stack->first;
 	while (i <= stack->len)
 	{
-		if (current->value < min)
-			min = current->value;
-		if (current->value > max)
-			max = current->value;
+		if (current->index < min)
+			min = current->index;
+		if (current->index > max)
+			max = current->index;
 		current = current->next;
 		i++;
 	}
@@ -177,12 +177,13 @@ t_swap	*swap_init(t_swap *swap, char *argv[], size_t len)
 		ft_stack_add_back(swap->stack_a, ft_atoi(argv[i++]));
 	swap->stack_a->first->prev = swap->stack_a->last;
 	swap->stack_a->last->next = swap->stack_a->first;
-	set_min_max(swap->stack_a);
 	swap->stack_b->max = 0;
 	swap->stack_b->min = 0;
+	fill_index(swap->stack_a);
+	set_min_max(swap->stack_a);
 	swap->min = swap->stack_a->min;
 	swap->max = swap->stack_a->max;
-	fill_index(swap->stack_a);
+	// find_index(swap->stack_a, swap->max)->locked = 1;
 	swap->move = move;
 	return (swap);
 }

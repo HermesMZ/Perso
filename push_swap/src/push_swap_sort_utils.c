@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 23:49:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/20 04:40:29 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/24 10:22:52 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	is_circularly_sorted(t_stack *stack)
 	i = 0;
 	while (i < stack->len)
 	{
-		if (current->value > current->next->value)
+		if (current->index > current->next->index)
 			asc_breaks++;
-		if (current->value < current->next->value)
+		if (current->index < current->next->index)
 			desc_breaks++;
 		current = current->next;
 		i++;
@@ -53,13 +53,13 @@ int	is_sorted(size_t len, t_swap_int *elem)
 	if (!elem || len <= 1)
 		return (1);
 	current = elem;
-	order = current->value - current->next->value;
+	order = current->index - current->next->index;
 	i = 0;
 	while (i < len - 1 && order)
 	{
-		if (current->value > current->next->value && order < 0)
+		if (current->index > current->next->index && order < 0)
 			return (0);
-		if (current->value < current->next->value && order > 0)
+		if (current->index < current->next->index && order > 0)
 			return (0);
 		current = current->next;
 		i++;
@@ -98,7 +98,7 @@ int	r_or_rr(t_swap_int *target)
 void	rotate_to(t_swap *swap, t_swap_int *elem)
 {
 	int	start;
-	
+
 	if (!swap || !elem || elem == elem->stack->first)
 		return ;
 	start = r_or_rr(elem);

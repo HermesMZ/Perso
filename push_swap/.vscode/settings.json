@@ -3,6 +3,7 @@
 		"libft.h": "c",
 		"ft_printf.h": "c",
 		"unistd.h": "c",
-		"concepts": "c"
+		"concepts": "c",
+		"limits": "c"
 	}
 }

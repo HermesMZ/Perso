@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/23 13:41:18 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:08:17 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,34 @@
 
 // make && clear && valgrind --track-origins=yes ./push_swap 1 0 9 5 3 4 6 7 2 8 > test.txt 
 
+// begin when the last split has been done
 void final_merge(t_swap *swap)
 {
 	ft_printf("before final rotate\n");
 	debug_print_stacks(swap);
-
-	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
-	rotate_to(swap, find_index(swap->stack_b, swap->stack_b->max));
+	ft_printf("min %d, max %d\n", swap->min, swap->max);
+	ft_printf("a-min %d, a-max %d\n", swap->stack_a->min, swap->stack_a->max);
+	ft_printf("b-min %d, b-max %d\n", swap->stack_b->min, swap->stack_b->max);
+	rotate_to(swap, find_index(swap->stack_a, swap->min));
+	rotate_to(swap, find_index(swap->stack_b, swap->max));
+	ft_push(swap, swap->stack_b->first);
+	
+	
 	ft_printf("after final rotate\n");
 	debug_print_stacks(swap);
-	int first_a;
-	int first_b;
+	// ft_push(swap, swap->stack_b->first);
+	debug_print_stacks(swap);
 
-	while (swap->stack_b->len)
+	while (swap->stack_b->len > 0)
 	{
-		ft_printf("a %d b %d\n",first_a, first_b);
-		debug_print_stacks(swap);
-		first_a = swap->stack_a->first->index;
-		first_b = swap->stack_b->first->index;
-		if (first_b > swap->stack_a->max || (first_b < first_a && first_b > swap->stack_a->last->index))
-			ft_push(swap, swap->stack_b->first);
-		else
-			ft_rotate(swap, find_index(swap->stack_a, first_b + 1));
-			
+		ft_printf(" ==================== while loop ==================== \n");
+		rotate_to(swap, find_index(swap->stack_b, swap->stack_a->first->index - 1));
+		ft_push(swap, swap->stack_b->first);
+		ft_printf("len b %d\n", swap->stack_b->len);
+	debug_print_stacks(swap);
 	}
-	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
+	rotate_to(swap, find_index(swap->stack_a, swap->min));
+	
 }
 
 int	main(int argc, char *argv[])
@@ -56,7 +59,7 @@ int	main(int argc, char *argv[])
 	// hard_sort_3(swap, swap->stack_a->first);
 	// quick_sort_stack(swap, swap->stack_a->first, len);
 	quick_sort_stack(swap, swap->stack_a->first, len);
-	ft_printf("============== CIRC SORTED ==============\n");
+	ft_printf("============== END RECURSIVE==============\n");
 	final_merge(swap);
 	debug_print_stacks(swap);
 

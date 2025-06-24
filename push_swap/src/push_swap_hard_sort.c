@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:15:54 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/23 16:32:35 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/24 10:04:32 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 {
 	t_swap_int	*to;
 
-	ft_printf("hard_sort elem->value %d count %d\n", elem->value, count);
+	// ft_printf("hard_sort elem->value %d count %d\n", elem->value, count);
 	if (!elem || !count)
 		return ;
 	if (elem->stack == swap->stack_b)

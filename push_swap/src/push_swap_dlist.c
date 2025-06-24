@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_dlist.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:54:18 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/20 04:53:26 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/24 10:35:17 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_stack	*ft_stack_init(void)
 	new_stack->first = NULL;
 	new_stack->last = NULL;
 	new_stack->len = 0;
+	new_stack->min = 0;
+	new_stack->max = 0;
 	return (new_stack);
 }
 

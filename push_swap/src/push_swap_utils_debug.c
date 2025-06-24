@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/23 10:40:16 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:30:07 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,36 @@ void	debug_print_stack_from(t_swap *swap, t_swap_int *start)
 		ft_printf("=== STACK B ===\n");
 }
 
+void	debug_print_split(t_heads *heads)
+{
+	int			i;
+	int			j;
+	t_swap_int	*pushed;
+	t_swap_int	*remaining;
+
+	pushed = heads->pushed;
+	remaining = heads->remaining;
+	ft_printf(" =========================================================================== \n");
+	ft_printf("splitted groups :\n");
+	i = 0;
+	j = 0;
+	ft_printf("pushed :");
+	while (i < heads->push_count)
+	{
+		ft_printf("%d ", pushed->value);
+		pushed = pushed->next;
+		i++;
+	}
+	ft_printf("\nremaining :");
+	while (j < heads->remaining_count)
+	{
+		ft_printf("%d ", remaining->value);
+		remaining = remaining->next;
+		j++;
+	}
+	ft_printf("\n =========================================================================== \n");
+	ft_printf("\n");
+}
 
 void	debug_print_stacks(t_swap *swap)
 {

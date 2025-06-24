@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 11:30:07 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:33:12 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,23 @@ void	debug_print_split(t_heads *heads)
 	pushed = heads->pushed;
 	remaining = heads->remaining;
 	ft_printf(" =========================================================================== \n");
-	ft_printf("splitted groups :\n");
+	ft_printf("splitted groups : push %d, remain %d\n", heads->push_count, heads->remaining_count);
 	i = 0;
 	j = 0;
-	ft_printf("pushed :");
-	while (i < heads->push_count)
-	{
-		ft_printf("%d ", pushed->value);
-		pushed = pushed->next;
-		i++;
-	}
-	ft_printf("\nremaining :");
-	while (j < heads->remaining_count)
-	{
-		ft_printf("%d ", remaining->value);
-		remaining = remaining->next;
-		j++;
-	}
+	ft_printf("pushed : %d", heads->pushed->value);
+	// while (i < heads->push_count)
+	// {
+	// 	ft_printf("%d ", pushed->value);
+	// 	pushed = pushed->next;
+	// 	i++;
+	// }
+	ft_printf(" remaining : %d", heads->remaining->value);
+	// while (j < heads->remaining_count)
+	// {
+	// 	ft_printf("%d ", remaining->value);
+	// 	remaining = remaining->next;
+	// 	j++;
+	// }
 	ft_printf("\n =========================================================================== \n");
 	ft_printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 11:25:54 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:36:47 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ void		debug_print_split(t_heads *heads);
 
 
 void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
-void		recursive_split_call(t_swap *swap, t_swap_int *first,
-				int count);
+t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count);
 
 void		free_all(t_swap *swap);
 

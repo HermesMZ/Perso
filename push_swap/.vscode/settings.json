@@ -4,6 +4,7 @@
 		"ft_printf.h": "c",
 		"unistd.h": "c",
 		"concepts": "c",
-		"limits": "c"
+		"limits": "c",
+		"push_swap.h": "c"
 	}
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_sort.c                                   :+:      :+:    :+:   */
+/*   .save_push_swap_sort.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:27:14 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/25 14:25:46 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:24:06 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,12 +250,12 @@ t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 	}
 	pivot->locked = 0;
 	
-	// if (swap->stack_a->len <= 3)
 	merge_stacks_count(swap, &heads);
 	heads->remaining = heads->remaining->stack->first;
 	debug_print_split(heads);
 	debug_print_stacks(swap);
-	if (swap->stack_b->len == 0)
+	if (swap->stack_a->len <= 3)
+	// if (swap->stack_b->len == 0)
 	{
 		free(heads);
 		return (NULL);

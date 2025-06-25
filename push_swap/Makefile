@@ -9,19 +9,23 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = \
-	push_swap_init.c \
+	heads.c \
+	split.c \
+	merge.c \
+	split_utils.c \
+	init.c \
 	push_swap_cost.c \
 	push_swap_index.c \
-	push_swap_dlist.c \
+	stack.c \
 	push_swap_p.c \
 	push_swap_r.c \
 	push_swap_rr.c \
 	push_swap_s.c \
-	push_swap_sort_utils.c \
-	push_swap_sort.c \
-	push_swap_hard_sort.c \
-	push_swap_utils_debug.c \
-	push_swap_utils.c \
+	sort_utils.c \
+	sort.c \
+	hard_sort.c \
+	utils_debug.c \
+	stack_utils.c \
 	push_swap.c \
 
 SRCS_PATHS = $(addprefix $(SRCS_DIR)/, $(SRCS))

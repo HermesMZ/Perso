@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/25 14:31:15 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/25 22:02:06 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdlib.h>
 # include "libft.h"
-
-
 
 typedef struct s_swap_int
 {
@@ -77,11 +75,32 @@ int			is_sorted(size_t length, t_swap_int *elem);
 int			is_circularly_sorted(t_stack *stack);
 // void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
 void		hard_sort(t_swap *swap, t_swap_int *elem, int count);
-void		hard_sort_3(t_swap *swap, t_swap_int *elem);
-
 void		rotate_to(t_swap *swap, t_swap_int *elem);
 int			r_or_rr(t_swap_int *target);
 
+t_cost		calc_cost_to_insert(t_swap *swap, t_swap_int *node_b);
+
+void		first_cleaning(t_swap *swap);
+
+void		free_all(t_swap *swap);
+
+void		update_min_max(t_swap *swap, t_swap_int *elem);
+void		set_min_max(t_stack *stack);
+
+// sort
+void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
+
+// split
+t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count);
+
+// heads
+t_heads		*init_heads(int count, t_swap_int *pivot);
+t_heads		*update_heads_for_merge(t_swap *swap, t_heads *heads);
+
+// merge
+void		merge_stacks_count(t_swap *swap, t_heads **heads);
+
+// operations
 void		ft_push(t_swap *swap, t_swap_int *elem);
 void		ft_swap(t_swap *swap, t_swap_int *elem);
 void		ft_swap_ss(t_swap *swap);
@@ -90,22 +109,15 @@ void		ft_rotate_rr(t_swap *swap);
 void		ft_reverse_rotate(t_swap *swap, t_swap_int *elem);
 void		ft_reverse_rotate_rrr(t_swap *swap);
 
-t_cost		calc_cost_to_insert(t_swap *swap, t_swap_int *node_b);
-
-void		first_cleaning(t_swap *swap);
-
+// debug
 void		debug_print_stacks(t_swap *swap);
 void		debug_print_stack_from(t_swap *swap, t_swap_int *start);
 void		debug_print_split(t_heads *heads);
 
-
-void		quick_sort_stack(t_swap *swap, t_swap_int *first, int count);
-t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count);
-
-void		free_all(t_swap *swap);
-
-void		update_min_max(t_swap *swap, t_swap_int *elem);
-void		set_min_max(t_stack *stack);
+// split utils
+t_swap_int	*find_min_in_split(t_swap_int *elem, int count);
 t_swap_int	*find_max_in_split(t_swap_int *elem, int count);
+t_swap_int	*find_pushed_head_split(t_swap_int *pivot, int count);
+t_swap_int	*find_remaining_head_split(t_swap_int *pivot);
 
 #endif /*PUSH_SWAP_H*/

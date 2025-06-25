@@ -1,58 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_hard_sort.c                              :+:      :+:    :+:   */
+/*   hard_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:15:54 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 10:04:32 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/25 23:49:39 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	hard_sort_3_b(t_swap *swap, t_swap_int *elem)
+static void	hard_sort_3(t_swap *swap, t_swap_int *elem, int ascending)
 {
-	if (elem->index < elem->next->index)
+	if ((ascending && elem->index > elem->next->index)
+		|| (!ascending && elem->index < elem->next->index))
 	{
 		ft_swap(swap, elem);
 		elem = elem->stack->first;
 	}
-	if (elem->next->index < elem->next->next->index)
+	if ((ascending && elem->next->index > elem->next->next->index)
+		|| (!ascending && elem->next->index < elem->next->next->index))
 	{
 		ft_rotate(swap, elem);
 		ft_swap(swap, elem);
 		ft_reverse_rotate(swap, elem);
 		elem = elem->stack->first;
 	}
-	if (elem->index < elem->next->index)
-		ft_swap(swap, elem);
-}
-
-void	hard_sort_3_a(t_swap *swap, t_swap_int *elem)
-{
-	if (elem->index > elem->next->index)
-	{
-		ft_swap(swap, elem);
-		elem = elem->stack->first;
-	}
-	if (elem->next->index > elem->next->next->index)
-	{
-		ft_rotate(swap, elem);
-		ft_swap(swap, elem);
-		ft_reverse_rotate(swap, elem);
-		elem = elem->stack->first;
-	}
-	if (elem->index > elem->next->index)
+	if ((ascending && elem->index > elem->next->index)
+		|| (!ascending && elem->index < elem->next->index))
 		ft_swap(swap, elem);
 }
 
 void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 {
 	t_swap_int	*to;
-
-	// ft_printf("hard_sort elem->value %d count %d\n", elem->value, count);
+	
+	rotate_to(swap, elem);
+	ft_printf("SORT\n");
+	debug_print_stacks(swap);
 	if (!elem || !count)
 		return ;
 	if (elem->stack == swap->stack_b)
@@ -65,11 +52,8 @@ void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 			|| (to->index < to->next->index && to->stack == swap->stack_b))
 			ft_swap(swap, to);
 	}
-	else if (count == 3)
-	{
-		if (to->stack == swap->stack_a)
-			hard_sort_3_a(swap, to);
-		else
-			hard_sort_3_b(swap, to);
-	}
+	if (count == 3)
+		hard_sort_3(swap, elem, elem->stack == swap->stack_a);
+	ft_printf("SORTiiiiiiii");
+	debug_print_stacks(swap);
 }

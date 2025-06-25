@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:09:05 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/23 10:51:55 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/26 00:15:56 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,5 @@ void	ft_push(t_swap *swap, t_swap_int *elem)
 		ft_lstadd_back(&swap->move, ft_lstnew(ft_strdup("pb\n")));
 	else
 		ft_lstadd_back(&swap->move, ft_lstnew(ft_strdup("pa\n")));
-	// ft_printf("debug push min max\n");
-	// debug_print_stacks(swap);
 }
+

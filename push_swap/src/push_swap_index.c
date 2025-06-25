@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:56:11 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 10:47:46 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/25 20:56:16 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,23 +105,7 @@ t_swap_int	*find_median(t_swap_int *first, int count)
 		cursor = cursor->next;
 	}
 	quick_sort(array, 0, i - 1);
-	median = find_index(stack, array[i / 2 - 1]);
+	median = find_index(stack, array[(i - 1) / 2]);
 	free(array);
 	return (median);
 }
-
-	// 	i = 0;
-	// while (i++ < stack->len)
-	// {
-	// 	ft_printf("array[%d] = %d\n", current->index, current->value);
-	// 	current = current->next;
-	// }
-
-	// ft_printf("pivot tab[%d] %d\n", pivot, tab[pivot]);
-	// while (z < last)
-	// {
-	// 	ft_printf("%d ", tab[z]);
-	// 	z++;
-	// }
-	// ft_printf("\n");
-

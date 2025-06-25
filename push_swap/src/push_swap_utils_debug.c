@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 17:33:12 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:20:20 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	debug_print_stack_from(t_swap *swap, t_swap_int *start)
 		return ;
 	}
 	if (start->stack == swap->stack_a)
-		ft_printf("=== STACK A ===\n");
+		ft_printf("=== src = STACK A ===\n");
 	else
-		ft_printf("=== STACK B ===\n");
+		ft_printf("=== src = STACK B ===\n");
 }
 
 void	debug_print_split(t_heads *heads)

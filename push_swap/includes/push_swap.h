@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 15:36:47 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:31:15 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ void		free_all(t_swap *swap);
 
 void		update_min_max(t_swap *swap, t_swap_int *elem);
 void		set_min_max(t_stack *stack);
-
+t_swap_int	*find_max_in_split(t_swap_int *elem, int count);
 
 #endif /*PUSH_SWAP_H*/

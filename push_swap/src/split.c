@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:38:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 00:57:19 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 01:48:34 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static t_heads	*split_with_pivot(t_swap *swap, t_swap_int *pivot,
 	t_swap_int	*current;
 	int			i;
 	
-	ft_printf("DEBUT DU SPLIT\n");
-	debug_print_stacks(swap);
+	// ft_printf("DEBUT DU SPLIT\n");
+	// // debug_print_stacks(swap);
 	current = pivot->stack->first;
 	i = 0;
 	while (i < count)
@@ -37,9 +37,9 @@ static t_heads	*split_with_pivot(t_swap *swap, t_swap_int *pivot,
 		current = pivot->stack->first;
 		i++;
 	}
-	debug_print_stacks(swap);
-	ft_printf("FIN DU SPLIT\n");
-	debug_print_split(heads);
+	// debug_print_stacks(swap);
+	// ft_printf("FIN DU SPLIT\n");
+	// debug_print_split(heads);
 	return (heads);
 }
 
@@ -65,7 +65,6 @@ t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 	t_swap_int	*result;
 
 	pivot = find_median(first, count);
-	ft_printf("pivot %d\n", pivot->index);
 	heads = init_heads(count, pivot);
 	split_with_pivot(swap, pivot, heads, count);
 	if (heads->push_count > 2)

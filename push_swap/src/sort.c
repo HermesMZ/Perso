@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:27:14 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 00:11:33 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 01:48:17 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	quick_sort_stack(t_swap *swap, t_swap_int *first, int count)
 	static int	i = 0;
 
 	tmp = NULL;
-	ft_printf("qs_stack call count : %d\n", i);
+	// ft_printf("qs_stack call count : %d\n", i);
 	i++;
 	if (!first || count <= 1)
 		return ;

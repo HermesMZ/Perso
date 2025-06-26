@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:15:54 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/25 23:49:39 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 01:34:29 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 	t_swap_int	*to;
 	
 	rotate_to(swap, elem);
-	ft_printf("SORT\n");
-	debug_print_stacks(swap);
+	// ft_printf("SORT\n");
+	// debug_print_stacks(swap);
 	if (!elem || !count)
 		return ;
 	if (elem->stack == swap->stack_b)
@@ -54,6 +54,6 @@ void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 	}
 	if (count == 3)
 		hard_sort_3(swap, elem, elem->stack == swap->stack_a);
-	ft_printf("SORTiiiiiiii");
-	debug_print_stacks(swap);
+	// ft_printf("SORTiiiiiiii");
+	// debug_print_stacks(swap);
 }

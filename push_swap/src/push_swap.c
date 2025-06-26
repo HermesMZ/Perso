@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/25 22:44:35 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 02:08:04 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,43 @@
 // make && clear && valgrind --track-origins=yes ./push_swap 1 0 9 5 3 4 6 7 2 8 > test.txt 
 
 // begin when the last split has been done
-// void final_merge(t_swap *swap)
-// {
-// 	ft_printf("before final rotate\n");
-// 	debug_print_stacks(swap);
-// 	ft_printf("min %d, max %d\n", swap->min, swap->max);
-// 	ft_printf("a-min %d, a-max %d\n", swap->stack_a->min, swap->stack_a->max);
-// 	ft_printf("b-min %d, b-max %d\n", swap->stack_b->min, swap->stack_b->max);
-// 	rotate_to(swap, find_max_in_split(swap->stack_a->first, swap->stack_a->len));
-// 	// rotate_to(swap, find_index(swap->stack_b, swap->max));
-// 	ft_push(swap, swap->stack_b->first);
-	
-	
-// 	// ft_printf("after final rotate\n");
-// 	// debug_print_stacks(swap);
-// 	// // ft_push(swap, swap->stack_b->first);
+void final_merge(t_swap *swap)
+{
+	ft_printf("before final rotate\n");
+	debug_print_stacks(swap);
+	ft_printf("min %d, max %d\n", swap->min, swap->max);
+	ft_printf("a-min %d, a-max %d\n", swap->stack_a->min, swap->stack_a->max);
+	ft_printf("b-min %d, b-max %d\n", swap->stack_b->min, swap->stack_b->max);
+	rotate_to(swap, find_max_in_split(swap->stack_a->first, swap->stack_a->len));
+	ft_push(swap, swap->stack_b->first);
+	while (swap->stack_b->len > 0)
+	{
+		rotate_to(swap, find_index(swap->stack_b, swap->stack_a->first->index - 1));
+		ft_push(swap, swap->stack_b->first);
+		ft_printf("len b %d\n", swap->stack_b->len);
+	debug_print_stacks(swap);
+	}
+	ft_printf("bouh\n");
+	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
+	debug_print_stacks(swap);
+}
+void	print_moves(t_list *move)
+{
+	t_list	*current;
+	int		total_commands;
 
-// 	while (swap->stack_b->len > 0)
-// 	{
-// 		ft_printf(" ==================== while loop ==================== \n");
-// 		rotate_to(swap, find_index(swap->stack_b, swap->stack_a->first->index - 1));
-// 		ft_push(swap, swap->stack_b->first);
-// 		ft_printf("len b %d\n", swap->stack_b->len);
-// 	debug_print_stacks(swap);
-// 	}
-// 	ft_printf("bouh\n");
-// 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
-// 	debug_print_stacks(swap);
-	
-// }
-
+	total_commands = 0;
+	current = move;
+	current = current->next;
+	while (current)
+	{
+		ft_printf("%s", current->content);
+		total_commands++;
+		current = current->next;
+	}
+	ft_printf("count : %d\n", total_commands);
+}
+#include <stdio.h>
 int	main(int argc, char *argv[])
 {
 	size_t		len;
@@ -56,10 +63,10 @@ int	main(int argc, char *argv[])
 	len = argc - 1;
 	swap = swap_init(swap, argv, len);
 	quick_sort_stack(swap, swap->stack_a->first, len);
-	ft_printf("============== END RECURSIVE==============\n");
-	// final_merge(swap);
+	final_merge(swap);
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
-	debug_print_stacks(swap);
+	printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
+	print_moves(swap->move);
 	free_all(swap);
 	return (0);
 }

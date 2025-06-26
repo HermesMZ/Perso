@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hard_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:15:54 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 02:18:08 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 22:10:59 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,14 @@ void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 {
 	t_swap_int	*to;
 
-	rotate_to(swap, elem);
+	ft_printf("before sort\n");
+	// debug_print_stacks(swap);
+	// rotate_to(swap, elem);
 	if (!elem || !count)
+	{
+		ft_printf("after sort\n");
 		return ;
+	}
 	if (elem->stack == swap->stack_b)
 		to = swap->stack_b->first;
 	else
@@ -52,4 +57,7 @@ void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 	}
 	if (count == 3)
 		hard_sort_3(swap, elem, elem->stack == swap->stack_a);
+	ft_printf("after sort\n");
+	// debug_print_stacks(swap);
 }
+

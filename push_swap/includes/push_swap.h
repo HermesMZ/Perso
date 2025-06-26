@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 16:36:06 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 21:51:14 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,9 @@ t_heads		*init_heads(int count, t_swap_int *pivot);
 t_heads		*update_heads_for_merge(t_swap *swap, t_heads *heads);
 
 // merge
+void		merge_to_stack(t_swap *swap, t_heads **heads, t_stack *from, t_stack *to);
 void		merge_stacks_count(t_swap *swap, t_heads **heads);
+void		anticipate_merge(t_swap *swap, t_heads **heads);
 
 // operations
 void		ft_push(t_swap *swap, t_swap_int *elem);
@@ -112,18 +114,22 @@ void		ft_reverse_rotate_rrr(t_swap *swap);
 // lock
 int			to_lock(t_swap_int *elem);
 t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem);
-
+void		head_update(t_heads *heads);
+void		lock_all(t_swap *swap, t_heads *heads);
+// void		lock_all(t_stack *stack_a);
 
 // debug
 void		debug_print_stacks(t_swap *swap);
 void		debug_print_stack_from(t_swap *swap, t_swap_int *start);
 void		debug_print_split(t_heads *heads);
+void		debug_print_locked(t_swap *swap);
 
 // split utils
 t_swap_int	*find_min_in_split(t_swap_int *elem, int count);
 t_swap_int	*find_max_in_split(t_swap_int *elem, int count);
 t_swap_int	*find_pushed_head_split(t_swap_int *pivot, int count);
 t_swap_int	*find_remaining_head_split(t_swap_int *pivot);
+t_swap_int	*find_first_free(t_stack *stack_a);
 
 // min_max
 void		set_min_max(t_stack *stack);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/26 02:18:35 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 22:28:14 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ int	main(int argc, char *argv[])
 		return (0);
 	len = argc - 1;
 	swap = swap_init(swap, argv, len);
+	// size_t i = 0;
+	// while (i < swap->stack_a->len)
+	// {
+	// 	if (swap->stack_a->first->locked)
+	// 		ft_rotate(swap, swap->stack_a->first);
+	// 	ft_push(swap, swap->stack_a->first);
+	// 	i++;
+	// }
 	quick_sort_stack(swap, swap->stack_a->first, len);
 	// final_merge(swap);
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));

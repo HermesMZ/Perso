@@ -1,971 +1,522 @@
-pb
-ra
-pb
-ra
-pb
-ra
-pb
-ra
-ra
-pb
-pb
-ra
-ra
-pb
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-pb
-ra
-ra
-pb
-pb
-ra
-pb
-ra
-ra
-pb
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-pb
-ra
-ra
-pb
-pb
-ra
-ra
-pb
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-pb
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-ra
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-rb
-rb
-pa
-rb
-rb
-rb
-pa
-rb
-rb
-rb
-pa
-rb
-rb
-rb
-rb
-rb
-rb
-pa
-rb
-pa
-rb
-pa
-rb
-rb
-pa
-rb
-rb
-rb
-pa
-pa
-rb
-pa
-rb
-rb
-pa
-pa
-rb
-pb
-ra
-ra
-ra
-pb
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pa
-pa
-pa
-pa
-pa
-pa
-rb
-rb
-rb
-rr
-rr
-rr
-pb
-pb
-pb
-pa
-rb
-rb
-rrb
-rrb
-pb
-rra
-rra
-rra
-ra
-ra
-pb
-rra
-rra
-ra
-ra
-pa
-rra
-rra
-ra
-ra
-ra
-pa
-pa
-pa
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-pa
-pa
-pa
-rb
-rr
-rr
-pb
-rra
-rra
-ra
-ra
-pa
-rrb
-rrb
-rrb
-rb
-pa
-rb
-rrb
-rrb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-ra
-pb
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-ra
-pb
-pb
-pb
-pa
-pa
-rb
-rb
-rb
-pa
-ra
-ra
-pb
-rra
-rra
-sa
-ra
-ra
-pa
-rrb
-rrb
-rrb
-pa
-rb
-rb
-rrb
-rrb
-sb
-pb
-pb
-pb
-pb
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-ra
-ra
-pb
-ra
-ra
-pb
-pb
-pa
-rb
-rb
-rrb
-rrb
-sb
-pb
-rra
-rra
-rra
-rra
-ra
-ra
-pb
-pb
-sb
-rra
-rra
-ra
-ra
-pa
-pa
-rra
-rra
-ra
-ra
-ra
-ra
-pa
-pa
-pa
-rra
-rra
-rra
-rra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-pa
-pa
-pa
-pa
-pa
-pa
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-pa
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rra
-rb
-rb
-pa
-rb
-pa
-rb
-pa
-pa
-rb
-pa
-pa
-rb
-pa
-rb
-rb
-pa
-rb
-pa
-rb
-pa
-rb
-pa
-rb
-pa
-rr
-ra
-pb
-ra
-pb
-pb
-pb
-ra
-ra
-pb
-ra
-pb
-rb
-pa
-pa
-rb
-rb
-pa
-ra
-ra
-pb
-rra
-rra
-ra
-ra
-pa
-rrb
-rrb
-rrb
-rb
-pa
-rb
-rrb
-rrb
-pb
-pb
-pb
-pb
-rra
-rra
-rra
-rra
-rra
-rra
-pb
-ra
-pb
-pb
-ra
-rr
+before final rotate
 
-pa
-rb
-rrb
-rrb
-sb
-pb
-rra
-rra
-rra
-ra
-ra
-pb
-rra
-rra
-sa
-ra
-ra
-pa
-rra
-rra
-ra
-ra
-ra
-pa
-pa
-pa
-rra
-rra
-rra
-ra
-ra
-ra
-ra
-ra
-ra
-pa
-pa
-pa
-pa
-pa
-pa
-rra
-rra
-rra
-rra
-rra
-rra
-rb
-rb
-pa
-rb
-pa
-pa
-rb
-pa
-rb
-pa
-rb
-rb
-pa
-ra
-pb
-pb
-ra
-pb
-rr
+         a          b
+        98          2
 
-pa
-rb
-rrb
-rrb
-sb
-pb
-rra
-rra
-rra
-ra
-ra
-pb
-rra
-rra
-ra
-ra
-pa
-rra
-rra
-ra
-ra
-ra
-pa
-pa
-pa
-rra
-rra
-rra
-rb
-rb
-pa
-pa
-pa
-rr
-rr
-pb
-rra
-rra
-sa
-ra
-ra
-pa
-rra
-rra
-rb
-pa
-rb
-pa
-sa
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-ra
-ra
-pb
-ra
-ra
-ra
-pb
-pb
-ra
-pb
-ra
-pb
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-ra
-pb
-ra
-pb
-ra
-pb
-ra
-pb
-ra
-ra
-pb
-ra
-pb
-ra
-pb
-ra
-pb
-ra
-pb
-ra
-pb
-pb
-ra
-pb
-ra
-pb
-pb
-pb
-pb
-pb
-ra
-pa
-pa
-rb
-pa
-pa
-rb
-pa
-rb
-pa
-rb
-rb
-pa
-pa
-rb
-rb
-rb
-pa
-rb
-rb
-rb
-pa
-rb
-pa
-rb
-pa
-ra
-pb
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-pb
-pb
-pb
-pa
-pa
-pa
-rb
-rb
-rr
-pb
-ra
-rra
-rra
-ra
-ra
-pa
-rrb
-rrb
-rrb
-rb
-pa
-rb
-rrb
-rrb
-pb
-pb
-pb
-pb
-rra
-rra
-rra
-rra
-rra
-rra
-pb
-ra
-ra
-pb
-ra
-pb
-pa
-rb
-rb
-rrb
-rrb
-sb
-pb
-rra
-rra
-rra
-ra
-ra
-pb
-rra
-rra
-ra
-ra
-pa
-rra
-rra
-ra
-ra
-ra
-pa
-pa
-pa
-rra
-rra
-rra
-ra
-ra
-ra
-ra
-ra
-ra
-pa
-pa
-pa
-pa
-pa
-pa
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-pa
-rb
-rb
-pa
-rb
-pa
-rb
-pa
-rb
-pa
-rb
-rb
-pa
-ra
-ra
-pb
-pb
-ra
-pb
-pa
-rb
-rb
-rrb
-rrb
-pb
-rra
-rra
-rra
-ra
-ra
-pb
-rra
-rra
-ra
-ra
-pa
-rra
-rra
-ra
-ra
-ra
-pa
-pa
-pa
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
-pa
-rb
-pa
-rb
-pa
-rr
-rr
-pb
-rra
-rra
-ra
-ra
-pa
-rrb
-rrb
-rrb
-rrb
-pa
-rb
-rb
-pa
-sa
-rrb
-rrb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-ra
-pb
-ra
-pb
-ra
-ra
-pb
-ra
-ra
-ra
-pb
-ra
-pb
-pb
-ra
-ra
-pb
-pb
-ra
-ra
-pb
-pb
-pb
-pb
-ra
-pa
-rb
-pa
-pa
-rb
-pa
-rb
-pa
-rb
-rb
-pa
-rr
+min-a    0 min-b   50
+max-a   99 max-b   51
 
+         0         51
+        52         50
+        53 
+        54 
+        55 
+        56 
+        57 
+        58 
+        59 
+        60 
+        61 
+        62 
+        64 
+        65 
+        66 
+        67 
+        68 
+        69 
+        70 
+        71 
+        72 
+        73 
+        74 
+        75 
+        76 
+        77 
+        78 
+        79 
+        80 
+        81 
+        82 
+        83 
+        84 
+        85 
+        86 
+        87 
+        88 
+        89 
+        90 
+        91 
+        92 
+        93 
+        94 
+        95 
+        96 
+        97 
+        98 
+        99 
+       100 
+        25 
+        26 
+        27 
+        28 
+        29 
+        30 
+        31 
+        32 
+        33 
+        34 
+        35 
+        36 
+        37 
+        38 
+        39 
+        40 
+        41 
+        42 
+        43 
+        44 
+        45 
+        46 
+        47 
+        48 
+        49 
+        13 
+        14 
+        15 
+        16 
+        17 
+        18 
+        19 
+        20 
+        21 
+        22 
+        23 
+        24 
+         7 
+         8 
+         9 
+        10 
+        11 
+        12 
+         4 
+         5 
+         6 
+         3 
+         2 
+         1 
+commands done : 1238
+min 0, max 99
+a-min 0, a-max 99
+b-min 50, b-max 51
+len b 0
+
+         a          b
+       100          0
+
+min-a    0 min-b   50
+max-a   99 max-b   50
+
+        50 
+        51 
+       100 
+        25 
+        26 
+        27 
+        28 
+        29 
+        30 
+        31 
+        32 
+        33 
+        34 
+        35 
+        36 
+        37 
+        38 
+        39 
+        40 
+        41 
+        42 
+        43 
+        44 
+        45 
+        46 
+        47 
+        48 
+        49 
+        13 
+        14 
+        15 
+        16 
+        17 
+        18 
+        19 
+        20 
+        21 
+        22 
+        23 
+        24 
+         7 
+         8 
+         9 
+        10 
+        11 
+        12 
+         4 
+         5 
+         6 
+         3 
+         2 
+         1 
+         0 
+        52 
+        53 
+        54 
+        55 
+        56 
+        57 
+        58 
+        59 
+        60 
+        61 
+        62 
+        64 
+        65 
+        66 
+        67 
+        68 
+        69 
+        70 
+        71 
+        72 
+        73 
+        74 
+        75 
+        76 
+        77 
+        78 
+        79 
+        80 
+        81 
+        82 
+        83 
+        84 
+        85 
+        86 
+        87 
+        88 
+        89 
+        90 
+        91 
+        92 
+        93 
+        94 
+        95 
+        96 
+        97 
+        98 
+        99 
+commands done : 1288
+bouh
+
+         a          b
+       100          0
+
+min-a    0 min-b   50
+max-a   99 max-b   50
+
+         0 
+        52 
+        53 
+        54 
+        55 
+        56 
+        57 
+        58 
+        59 
+        60 
+        61 
+        62 
+        64 
+        65 
+        66 
+        67 
+        68 
+        69 
+        70 
+        71 
+        72 
+        73 
+        74 
+        75 
+        76 
+        77 
+        78 
+        79 
+        80 
+        81 
+        82 
+        83 
+        84 
+        85 
+        86 
+        87 
+        88 
+        89 
+        90 
+        91 
+        92 
+        93 
+        94 
+        95 
+        96 
+        97 
+        98 
+        99 
+        50 
+        51 
+       100 
+        25 
+        26 
+        27 
+        28 
+        29 
+        30 
+        31 
+        32 
+        33 
+        34 
+        35 
+        36 
+        37 
+        38 
+        39 
+        40 
+        41 
+        42 
+        43 
+        44 
+        45 
+        46 
+        47 
+        48 
+        49 
+        13 
+        14 
+        15 
+        16 
+        17 
+        18 
+        19 
+        20 
+        21 
+        22 
+        23 
+        24 
+         7 
+         8 
+         9 
+        10 
+        11 
+        12 
+         4 
+         5 
+         6 
+         3 
+         2 
+         1 
+commands done : 1336
+pb
 ra
 pb
 ra
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+rb
+rb
+pa
+rb
+rb
+rb
+pa
+rb
+rb
+rb
+pa
+rb
+rb
+rb
+rb
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+rb
+pa
+rb
+rb
+rb
+pa
+pa
+rb
+pa
+rb
+rb
+pa
+pa
+rb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pa
+pa
+pa
+pa
+pa
+pa
+rb
+rb
+rb
+rb
+rb
+rb
+ra
+ra
+ra
+pb
 pb
 pb
 pa
@@ -977,34 +528,98 @@ pb
 rra
 rra
 rra
+ra
+ra
+pb
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+ra
+ra
+ra
+pa
+pa
+pa
+rra
+rra
+rra
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pa
+pa
+pa
+rb
+rb
+rb
+ra
+ra
+pb
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+rrb
+rrb
+rrb
+rb
+pa
+rb
+rrb
+rrb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+ra
+pb
+ra
 pb
 ra
 ra
-rra
-rra
-ra
-ra
-pa
-rra
-rra
+pb
 ra
 ra
 ra
-pa
-pa
-pa
-rrb
-rrb
-rrb
-rrb
-rrb
-rrb
+pb
+pb
+pb
 pa
 pa
 rb
 rb
+rb
 pa
-rr
+ra
 ra
 pb
 rra
@@ -1013,6 +628,758 @@ sa
 ra
 ra
 pa
+rra
+rra
+rrb
+rrb
+rrb
+pa
+rb
+rb
+rrb
+rrb
+sb
+pb
+pb
+pb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+pa
+rb
+rb
+rrb
+rrb
+sb
+pb
+rra
+rra
+rra
+rra
+ra
+ra
+pb
+pb
+sb
+rra
+rra
+ra
+ra
+pa
+pa
+rra
+rra
+ra
+ra
+ra
+ra
+pa
+pa
+pa
+rra
+rra
+rra
+rra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+pa
+pa
+pa
+pa
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+pa
+rb
+pa
+pa
+rb
+pa
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+ra
+ra
+pb
+ra
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+rb
+pa
+pa
+rb
+rb
+pa
+ra
+ra
+pb
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+rrb
+rrb
+rrb
+rb
+pa
+rb
+rrb
+rrb
+pb
+pb
+pb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+pb
+ra
+pb
+pb
+ra
+ra
+rb
+pa
+rb
+rrb
+rrb
+sb
+pb
+rra
+rra
+rra
+ra
+ra
+pb
+rra
+rra
+sa
+ra
+ra
+pa
+rra
+rra
+ra
+ra
+ra
+pa
+pa
+pa
+rra
+rra
+rra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+pa
+pa
+pa
+pa
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rb
+rb
+pa
+rb
+pa
+pa
+rb
+pa
+rb
+pa
+rb
+rb
+pa
+ra
+pb
+pb
+ra
+pb
+ra
+rb
+pa
+rb
+rrb
+rrb
+sb
+pb
+rra
+rra
+rra
+ra
+ra
+pb
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+ra
+ra
+ra
+pa
+pa
+pa
+rra
+rra
+rra
+rb
+rb
+pa
+pa
+pa
+rb
+rb
+ra
+ra
+pb
+rra
+rra
+sa
+ra
+ra
+pa
+rra
+rra
+rb
+pa
+rb
+pa
+sa
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+pb
+pb
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+pb
+pb
+ra
+pb
+ra
+pb
+pb
+pb
+pb
+pb
+ra
+pa
+pa
+rb
+pa
+pa
+rb
+pa
+rb
+pa
+rb
+rb
+pa
+pa
+rb
+rb
+rb
+pa
+rb
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+pb
+pa
+pa
+pa
+rb
+rb
+rb
+ra
+pb
+ra
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+rrb
+rrb
+rrb
+rb
+pa
+rb
+rrb
+rrb
+pb
+pb
+pb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+pb
+ra
+ra
+pb
+ra
+pb
+pa
+rb
+rb
+rrb
+rrb
+sb
+pb
+rra
+rra
+rra
+ra
+ra
+pb
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+ra
+ra
+ra
+pa
+pa
+pa
+rra
+rra
+rra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+pa
+pa
+pa
+pa
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pa
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+rb
+pa
+ra
+ra
+pb
+pb
+ra
+pb
+pa
+rb
+rb
+rrb
+rrb
+pb
+rra
+rra
+rra
+ra
+ra
+pb
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+ra
+ra
+ra
+pa
+pa
+pa
+rra
+rra
+rra
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pa
+rb
+pa
+rb
+pa
+rb
+rb
+ra
+ra
+pb
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+rrb
+rrb
+rrb
+rrb
+pa
+rb
+rb
+pa
+sa
+rrb
+rrb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+pa
+rb
+pa
+pa
+rb
+pa
+rb
+pa
+rb
+rb
+pa
+rb
+ra
+ra
+pb
+ra
+pb
+pb
+pa
+rb
+rb
+rrb
+rrb
+pb
+rra
+rra
+rra
+pb
+ra
+ra
+rra
+rra
+ra
+ra
+pa
+rra
+rra
+ra
+ra
+ra
+pa
+pa
+pa
+rra
+rra
+rra
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pa
+pa
+rb
+rb
+pa
+rb
+ra
+ra
+pb
+rra
+rra
+sa
+ra
+ra
+pa
+rra
+rra
 rrb
 rrb
 rrb
@@ -1059,6 +1426,8 @@ rra
 ra
 ra
 pa
+rra
+rra
 rrb
 rrb
 rrb
@@ -1077,7 +1446,8 @@ pb
 pb
 ra
 pb
-rr
+ra
+rb
 rb
 pa
 rrb
@@ -1087,55 +1457,21 @@ pb
 ra
 pb
 ra
-ss
 ra
 ra
-pa
-pa
-ra
-ra
 ra
 ra
-ra
-ra
 pa
 pa
 pa
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
 pa
 pa
 pa
 pa
 pa
 pa
-ra
-ra
+rra
 ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
 pa
 pa
 pa
@@ -1148,43 +1484,8 @@ pa
 pa
 pa
 pa
-ra
-ra
-ra
+rra
 ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
 pa
 pa
 pa
@@ -1210,81 +1511,8 @@ pa
 pa
 pa
 pa
-ra
-ra
-ra
-ra
+rra
 ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
 pa
 pa
 pa
@@ -1335,7 +1563,7 @@ pa
 pa
 pa
 pa
-ra
+rra
 ra
 ra
 ra
@@ -1384,6 +1612,55 @@ ra
 ra
 ra
 ra
-ra
-count : 1430
-commands done : 1430
+pa
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+count : 1336
+commands done : 1336

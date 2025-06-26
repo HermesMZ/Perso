@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:38:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 01:48:34 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 02:19:25 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static t_heads	*split_with_pivot(t_swap *swap, t_swap_int *pivot,
 {
 	t_swap_int	*current;
 	int			i;
-	
-	// ft_printf("DEBUT DU SPLIT\n");
-	// // debug_print_stacks(swap);
+
 	current = pivot->stack->first;
 	i = 0;
 	while (i < count)
@@ -37,9 +35,6 @@ static t_heads	*split_with_pivot(t_swap *swap, t_swap_int *pivot,
 		current = pivot->stack->first;
 		i++;
 	}
-	// debug_print_stacks(swap);
-	// ft_printf("FIN DU SPLIT\n");
-	// debug_print_split(heads);
 	return (heads);
 }
 

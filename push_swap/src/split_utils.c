@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:25:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 20:23:26 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 00:22:10 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_swap_int	*find_first_free(t_stack *stack_a)
 	i = 0;
 	while (i < stack_a->len)
 	{
-		if (current->locked)
+		if (!current->locked)
 			return (current);
 		current = current->next;
 		i++;

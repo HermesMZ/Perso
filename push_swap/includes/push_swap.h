@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 21:51:14 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 00:25:32 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void		ft_reverse_rotate(t_swap *swap, t_swap_int *elem);
 void		ft_reverse_rotate_rrr(t_swap *swap);
 
 // lock
-int			to_lock(t_swap_int *elem);
+int	to_lock(t_swap *swap, t_swap_int *elem);
 t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem);
 void		head_update(t_heads *heads);
 void		lock_all(t_swap *swap, t_heads *heads);

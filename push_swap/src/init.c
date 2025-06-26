@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_init.c                                   :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 16:46:38 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 12:08:46 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/26 16:23:48 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,88 +102,40 @@
 
 #include "push_swap.h"
 
-void	update_min_max_on_push(t_swap_int *elem)
+void	init_stack_a(t_swap *swap, char *argv[], size_t len)
 {
-	if (!elem)
+	size_t	i;
+
+	i = 1;
+	swap->stack_a = ft_stack_init();
+	if (!swap->stack_a)
 		return ;
-	if (elem->index < elem->stack->min || elem->stack->len == 1)
-		elem->stack->min = elem->index;
-	if (elem->index > elem->stack->max || elem->stack->len == 1)
-		elem->stack->max = elem->index;
-}
-
-void	update_min_max_on_pop(t_swap *swap, t_swap_int *elem)
-{
-	t_stack	*prev;
-
-	if (!elem)
-		return ;
-	if (elem->stack == swap->stack_a)
-		prev = swap->stack_b;
-	else
-		prev = swap->stack_a;
-	if (elem->index == prev->min || elem->index == prev->max)
-		set_min_max(prev);
-}
-
-void	update_min_max(t_swap *swap, t_swap_int *elem)
-{
-	update_min_max_on_pop(swap, elem);
-	update_min_max_on_push(elem);
-}
-
-
-void	set_min_max(t_stack *stack)
-{
-	int			min;
-	int			max;
-	size_t		i;
-	t_swap_int	*current;
-
-	if (stack->len == 0)
-		return ;
-	i = 0;
-	min = stack->first->index;
-	max = stack->first->index;
-	current = stack->first;
-	while (i <= stack->len)
-	{
-		if (current->index < min)
-			min = current->index;
-		if (current->index > max)
-			max = current->index;
-		current = current->next;
-		i++;
-	}
-	stack->max = max;
-	stack->min = min;
+	while (i <= len)
+		ft_stack_add_back(swap->stack_a, ft_atoi(argv[i++]));
+	swap->stack_a->first->prev = swap->stack_a->last;
+	swap->stack_a->last->next = swap->stack_a->first;
 }
 
 t_swap	*swap_init(t_swap *swap, char *argv[], size_t len)
 {
-	size_t	i;
 	t_list	*move;
 
 	move = ft_lstnew(ft_strdup("start"));
 	swap = malloc(sizeof(t_swap));
 	if (!swap)
 		return (NULL);
-	swap->stack_a = ft_stack_init();
+	init_stack_a(swap, argv, len);
 	swap->stack_b = ft_stack_init();
 	if (!swap->stack_a || !swap->stack_b)
 		return (NULL);
-	i = 1;
-	while (i <= len)
-		ft_stack_add_back(swap->stack_a, ft_atoi(argv[i++]));
-	swap->stack_a->first->prev = swap->stack_a->last;
-	swap->stack_a->last->next = swap->stack_a->first;
 	swap->stack_b->max = 0;
 	swap->stack_b->min = 0;
 	fill_index(swap->stack_a);
 	set_min_max(swap->stack_a);
 	swap->min = swap->stack_a->min;
 	swap->max = swap->stack_a->max;
-	// find_index(swap->stack_a, swap->max)->locked = 1;
+	find_index(swap->stack_a, swap->min)->locked = 1;
+	find_index(swap->stack_a, swap->max)->locked = 1;
 	swap->move = move;
 	return (swap);
 }

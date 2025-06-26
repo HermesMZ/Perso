@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/25 22:02:06 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 16:36:06 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,11 @@ void		ft_rotate_rr(t_swap *swap);
 void		ft_reverse_rotate(t_swap *swap, t_swap_int *elem);
 void		ft_reverse_rotate_rrr(t_swap *swap);
 
+// lock
+int			to_lock(t_swap_int *elem);
+t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem);
+
+
 // debug
 void		debug_print_stacks(t_swap *swap);
 void		debug_print_stack_from(t_swap *swap, t_swap_int *start);
@@ -119,5 +124,11 @@ t_swap_int	*find_min_in_split(t_swap_int *elem, int count);
 t_swap_int	*find_max_in_split(t_swap_int *elem, int count);
 t_swap_int	*find_pushed_head_split(t_swap_int *pivot, int count);
 t_swap_int	*find_remaining_head_split(t_swap_int *pivot);
+
+// min_max
+void		set_min_max(t_stack *stack);
+void		update_min_max(t_swap *swap, t_swap_int *elem);
+void		update_min_max_on_push(t_swap_int *elem);
+void		update_min_max_on_pop(t_swap *swap, t_swap_int *elem);
 
 #endif /*PUSH_SWAP_H*/

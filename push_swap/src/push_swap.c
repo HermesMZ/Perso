@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/27 00:39:01 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/27 01:18:56 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,19 @@ int	main(int argc, char *argv[])
 		return (0);
 	len = argc - 1;
 	swap = swap_init(swap, argv, len);
+	// size_t i = 0;
+	// while (i < swap->stack_a->len)
+	// {
+	// 	if (swap->stack_a->first->locked)
+	// 		ft_rotate(swap, swap->stack_a->first);
+	// 	ft_push(swap, swap->stack_a->first);
+	// 	i++;
+	// }
 	quick_sort_stack(swap, swap->stack_a->first, len);
 	// final_merge(swap);
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
 	// printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
+	debug_print_stacks(swap);
 	debug_print_stacks(swap);
 	print_moves(swap->move);
 	free_all(swap);

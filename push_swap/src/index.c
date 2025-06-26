@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_index.c                                  :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:56:11 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/25 20:56:16 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 19:38:44 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,11 @@ t_swap_int	*find_median(t_swap_int *first, int count)
 	i = 0;
 	while (i < count && cursor)
 	{
-		array[i++] = cursor->index;
+		if (!cursor->locked)
+		{
+			array[i] = cursor->index;
+			i++;
+		}
 		cursor = cursor->next;
 	}
 	quick_sort(array, 0, i - 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_debug.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/25 22:14:36 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 18:12:43 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ void	debug_print_stacks(t_swap *swap)
 	{
 		if (a)
 		{
-			ft_printf("%10d ", a->value);
+			if (a->locked)
+				ft_printf("X%8dX ", a->value);
+			else
+				ft_printf("%10d ", a->value);
 			if (a->next && i + 1 < stack_a->len)
 				a = a->next;
 			else
@@ -93,6 +96,35 @@ void	debug_print_stacks(t_swap *swap)
 				b = b->next;
 			else
 				b = NULL;
+		}
+		ft_printf("\n");
+		i++;
+	}
+	ft_printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
+}
+
+void	debug_print_locked(t_swap *swap)
+{
+	t_swap_int	*a;
+	t_stack		*stack_a;
+	size_t		i;
+
+	stack_a = swap->stack_a;
+	a = stack_a->first;
+	ft_printf("\n ==================== LOCKED ==================== \n");
+	i = 0;
+	while (i < stack_a->len)
+	{
+		if (a)
+		{
+			if (a->locked)
+				ft_printf("%10d\n", a->value);
+			else
+				ft_printf("%10s\n");
+			if (a->next && i + 1 < stack_a->len)
+				a = a->next;
+			else
+				a = NULL;
 		}
 		ft_printf("\n");
 		i++;

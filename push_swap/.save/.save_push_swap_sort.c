@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   .save_push_swap_sort.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:27:14 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/25 19:24:06 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/26 22:29:59 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,7 @@ t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 		current = pivot->stack->first;
 		i++;
 	}
+	lock_all(swap, heads);
 	ft_printf(" **************** SPLIT FINISHED **************** \n");
 	// debug_print_stack_from(swap, first);
 	debug_print_split(heads);

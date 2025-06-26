@@ -12,6 +12,7 @@ SRCS = \
 	heads.c \
 	split.c \
 	merge.c \
+	lock.c \
 	split_utils.c \
 	init.c \
 	push_swap_cost.c \

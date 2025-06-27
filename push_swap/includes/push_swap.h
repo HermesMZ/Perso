@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 00:25:32 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/27 02:20:47 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@ typedef struct s_heads
 
 typedef struct s_cost
 {
-	int			rot_a;
-	int			rot_b;
+	int			ra_moves;
+	int			rb_moves;
+	int			rra_moves;
+	int			rrb_moves;
+	int			rr_moves;
+	int			rrr_moves;
 	int			total;
 	t_swap_int	*node_b;
 }	t_cost;

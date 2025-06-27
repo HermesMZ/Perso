@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:38:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 14:49:15 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:56:15 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_heads	*split_with_pivot(t_swap *swap, t_swap_int *pivot,
 	t_heads *heads,	int count)
 {
-ft_printf("enter split_with_pivot\n");
+ft_printf("\t\tenter split_with_pivot\n");
 
 	t_swap_int	*current;
 	int			i;
@@ -37,7 +37,7 @@ ft_printf("enter split_with_pivot\n");
 		current = pivot->stack->first;
 		i++;
 	}
-ft_printf("leave split_with_pivot\n");
+ft_printf("\t\tleave split_with_pivot\n");
 debug_print_stacks(swap);
 	return (heads);
 }
@@ -59,7 +59,7 @@ debug_print_stacks(swap);
 
 t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 {
-ft_printf("enter recursive_split_call\n");
+ft_printf("\tenter recursive_split_call\n");
 	
 	t_heads		*heads;
 	t_swap_int	*pivot;
@@ -84,7 +84,7 @@ ft_printf("enter recursive_split_call\n");
 	else
 		result = heads->remaining;
 	free(heads);
-ft_printf("leave recursive_split_call\n");
+ft_printf("\tleave recursive_split_call\n");
 
 	return (result);
 }

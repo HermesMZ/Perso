@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:29:43 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 00:43:15 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/27 14:57:32 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	merge_to_stack(t_swap *swap, t_heads **heads, t_stack *from, t_stack *to)
 
 void	merge_stacks_count(t_swap *swap, t_heads **heads)
 {
-	// ft_printf("DEBUT DU MERGE\n");
+	ft_printf("\t\tenter merge_stacks_count\n");
 	// debug_print_split(*heads);
 	
 	// debug_print_stacks(swap);
@@ -60,7 +60,7 @@ void	merge_stacks_count(t_swap *swap, t_heads **heads)
 		merge_to_stack(swap, heads, swap->stack_b, swap->stack_a);
 	else
 		merge_to_stack(swap, heads, swap->stack_a, swap->stack_b);
-	// ft_printf("FIN DU MERGE\n");
+	ft_printf("\t\tleave merge_stacks_count\n");
 	// debug_print_stacks(swap);
 }
 

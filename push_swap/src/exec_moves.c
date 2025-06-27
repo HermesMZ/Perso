@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:01:05 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/27 16:45:12 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:08:35 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,15 @@ static void	execute_rb(t_swap *swap, t_cost *cost)
 
 void	execute_optimal_moves(t_swap *swap, t_cost *cost)
 {
+	debug_print_stacks(swap);
+	ft_printf("enter exec cost->total t%d ra%d rb%d rr%d\n", cost->total, cost->ra, cost->rb, cost->rr);
 	execute_ra(swap, cost);
 	execute_rb(swap, cost);
 	execute_rr(swap, cost);
 	ft_push(swap, swap->stack_b->first);
+	ft_printf("end exec cost->total t%d ra%d rb%d rr%d\n", cost->total, cost->ra, cost->rb, cost->rr);
+	debug_print_stacks(swap);
+	
+	// swap->stack_a->first->locked = 1;
 }
+// probleme dermination de la cible / etablissement des ra / rra

@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:29:43 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 14:57:32 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:47:29 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	anticipate_merge(t_swap *swap, t_heads **heads)
 		ft_push(swap, swap->stack_b->first);
 		i++;
 	}
-	lock_all(swap, *heads);
+	// lock_all(swap, *heads);
 	head_update(*heads);
 }
 

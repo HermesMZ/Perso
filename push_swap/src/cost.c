@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 16:42:03 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:05:40 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *elem_b)
 {
 	t_cost		*cost;
 	t_swap_int	*target_a;
-
+	
 	target_a = get_target_in_a(swap->stack_a, elem_b);
+	ft_printf("enter calculate node cost target %d, elem %d\n", target_a->value, elem_b->value);
 	cost = init_empty_cost();
 	cost->ra = r_or_rr(target_a);
 	cost->rb = r_or_rr(elem_b);
@@ -49,6 +50,7 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *elem_b)
 		cost->rb -= cost->rr;
 	}
 	cost->total = ft_abs(cost->ra) + ft_abs(cost->rb) + ft_abs(cost->rr);
+	ft_printf("\t\tcost %d\n", cost->total);
 	cost->elem_b = elem_b;
 	return (cost);
 }
@@ -82,6 +84,7 @@ t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b)
 
 t_cost	*get_cost(t_cost *c1, t_cost *c2)
 {
+	ft_printf("get cost %d %d\n", c1->total, c2->total);
 	if (c1->total == -1)
 		return (c2);
 	if (c2->total == -1)
@@ -93,20 +96,25 @@ t_cost	*get_cost(t_cost *c1, t_cost *c2)
 
 void	push_back_to_a_optimized(t_swap *swap)
 {
+	ft_printf("enter push back\n");
 	t_swap_int	*current_b_node;
 	t_cost		*cheapest_cost;
 	t_cost		*current_cost;
+	size_t		i;
 
+	i = 0;
 	while (swap->stack_b->len > 0)
 	{
 		cheapest_cost = init_empty_cost();
 		current_b_node = swap->stack_b->first;
-		while (current_b_node)
+		while (i < swap->stack_b->len)
 		{
 			current_cost = calculate_node_cost(swap, current_b_node);
 			cheapest_cost = get_cost(cheapest_cost, current_cost);
 			current_b_node = current_b_node->next;
+			i++;
 		}
 		execute_optimal_moves(swap, cheapest_cost);
+		debug_print_stacks(swap);
 	}
 }

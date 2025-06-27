@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_cost.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 02:57:38 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/27 14:13:11 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,13 @@ t_cost	*get_cheapest_cost_struct(t_cost *c1, t_cost *c2)
 t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *node_b)
 {
 	t_cost	*cost;
-	int		index_b;
 	int		target_idx_a;
 	t_cost	*best_cost;
 
-	index_b = get_node_index(swap->stack_b, node_b);
 	target_idx_a = get_target_pos_in_a(swap->stack_a, node_b->value);
 	cost = init_empty_cost();
 	cost->ra = target_idx_a;
-	cost->rb = index_b;
+	cost->rb = node_b->index;
 	if (cost->ra > 0 && cost->rb > 0)
 	{
 		cost->rr = ft_min(cost->ra, cost->rb);
@@ -75,7 +73,7 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *node_b)
 	best_cost = cost;
 	cost = init_empty_cost();
 	cost->rra = (swap->stack_a->len - target_idx_a) % swap->stack_a->len;
-	cost->rrb = (swap->stack_b->len - index_b) % swap->stack_b->len;
+	cost->rrb = (swap->stack_b->len - node_b->index) % swap->stack_b->len;
 	if (cost->rra > 0 && cost->rrb > 0)
 	{
 		cost->rrr = ft_min(cost->rra, cost->rrb);
@@ -89,7 +87,7 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *node_b)
 
 	cost = init_empty_cost();
 	cost->ra = target_idx_a;
-	cost->rrb = (swap->stack_b->len - index_b) % swap->stack_b->len;
+	cost->rrb = (swap->stack_b->len - node_b->index) % swap->stack_b->len;
 	cost->total = cost->ra + cost->rrb;
 	cost->node_b = node_b;
 
@@ -97,7 +95,7 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *node_b)
 
 	cost = init_empty_cost();
 	cost->rra = (swap->stack_a->len - target_idx_a) % swap->stack_a->len;
-	cost->rb = index_b;
+	cost->rb = node_b->index;
 	cost->total = cost->rra + cost->rb;
 	cost->node_b = node_b;
 
@@ -106,30 +104,28 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *node_b)
 	return (best_cost);
 }
 
-int	get_target_pos_in_a(t_stack *a_stack, int val_to_insert)
+int	get_target_pos_in_a(t_stack *stack_a, int val_to_insert)
 {
 	t_swap_int	*current_a;
-	int			target_idx;
 	t_swap_int	*min_node;
 
-	target_idx = 0;
-	current_a = a_stack->first;
-	min_node = find_node_by_value(a_stack, a_stack->min);
-	if (a_stack->len == 0)
+	current_a = stack_a->first;
+	min_node = find_index(stack_a, stack_a->min);
+	if (stack_a->len == 0)
 		return (0);
-	if (val_to_insert < a_stack->min || val_to_insert > a_stack->max)
+	if (val_to_insert < stack_a->min || val_to_insert > stack_a->max)
 	{
-		if (val_to_insert > a_stack->max)
-			return (get_node_index(a_stack, a_stack->last));
-		return (get_node_index(a_stack, min_node));
+		if (val_to_insert > stack_a->max)
+			return (get_node_index(stack_a, stack_a->last));
+		return (get_node_index(stack_a, min_node));
 	}
 	while (current_a)
 	{
 		if (current_a->value < val_to_insert
 			&& current_a->next->value > val_to_insert)
-			return (get_node_index(a_stack, current_a) + 1);
-		if (current_a->value == a_stack->max && val_to_insert < a_stack->min)
-			return (get_node_index(a_stack, a_stack->last) + 1);
+			return (get_node_index(stack_a, current_a) + 1);
+		if (current_a->value == stack_a->max && val_to_insert < stack_a->min)
+			return (get_node_index(stack_a, stack_a->last) + 1);
 		current_a = current_a->next;
 	}
 	return (0);

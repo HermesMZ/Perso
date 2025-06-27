@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:01:05 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/27 16:19:51 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:45:12 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	execute_rr(t_swap *swap, t_cost *cost)
 		}
 		if (cost->ra < 0)
 		{
-			ft_reverse_rotate_rrr(swap);
+			ft_reverse_rotate_rr(swap);
 			cost->rr++;
 		}
 	}

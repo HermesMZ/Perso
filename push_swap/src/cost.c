@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_cost.c                                   :+:      :+:    :+:   */
+/*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 16:23:54 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:42:03 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 t_cost	*init_empty_cost(void)
 {
 	t_cost	*cost;
-
+	
+	cost = malloc(sizeof(t_cost));
+	if (!cost)
+		return (NULL);
 	cost->ra = 0;
 	cost->rb = 0;
 	cost->rr = 0;
@@ -28,9 +31,6 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *elem_b)
 {
 	t_cost		*cost;
 	t_swap_int	*target_a;
-	t_cost		*best_cost;
-	int			cost_a;
-	int			cost_b;
 
 	target_a = get_target_in_a(swap->stack_a, elem_b);
 	cost = init_empty_cost();
@@ -50,7 +50,7 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *elem_b)
 	}
 	cost->total = ft_abs(cost->ra) + ft_abs(cost->rb) + ft_abs(cost->rr);
 	cost->elem_b = elem_b;
-	return (best_cost);
+	return (cost);
 }
 
 t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b)
@@ -65,20 +65,30 @@ t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b)
 	if (elem_b->index < stack_a->min || elem_b->index > stack_a->max)
 	{
 		if (elem_b->index > stack_a->max)
-			return (stack_a->last);
-		return (stack_a->min);
+			return (find_index(stack_a, stack_a->max));
+		return (find_index(stack_a, stack_a->min));
 	}
 	while (current_a)
 	{
 		if (current_a->index < elem_b->index
 			&& current_a->next->index > elem_b->index)
 			return (current_a->next);
-			// a checker
 		if (current_a->index == stack_a->max && elem_b->index < stack_a->min)
-			return (find_index(stack_a, stack_a->last) + 1);
+			return (current_a);
 		current_a = current_a->next;
 	}
 	return (0);
+}
+
+t_cost	*get_cost(t_cost *c1, t_cost *c2)
+{
+	if (c1->total == -1)
+		return (c2);
+	if (c2->total == -1)
+		return (c1);
+	if (c1->total <= c2->total)
+		return (c1);
+	return (c2);
 }
 
 void	push_back_to_a_optimized(t_swap *swap)
@@ -99,5 +109,4 @@ void	push_back_to_a_optimized(t_swap *swap)
 		}
 		execute_optimal_moves(swap, cheapest_cost);
 	}
-	final_sort_a_at_end(swap->stack_a);
 }

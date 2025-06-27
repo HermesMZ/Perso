@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 16:28:20 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:45:05 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		ft_swap_ss(t_swap *swap);
 void		ft_rotate(t_swap *swap, t_swap_int *elem);
 void		ft_rotate_rr(t_swap *swap);
 void		ft_reverse_rotate(t_swap *swap, t_swap_int *elem);
-void		ft_reverse_rotate_rrr(t_swap *swap);
+void		ft_reverse_rotate_rr(t_swap *swap);
 
 // lock
 int			to_lock(t_swap *swap, t_swap_int *elem);

@@ -6,18 +6,11 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 16:05:04 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:23:54 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	ft_abs(int x)
-{
-	if (x < 0)
-		return (-x);
-	return (x);
-}
 
 t_cost	*init_empty_cost(void)
 {
@@ -29,33 +22,6 @@ t_cost	*init_empty_cost(void)
 	cost->total = -1;
 	cost->elem_b = NULL;
 	return (cost);
-}
-
-t_cost	*get_cheapest_cost_struct(t_cost *c1, t_cost *c2)
-{
-	if (c1->total == -1)
-		return (c2);
-	if (c2->total == -1)
-		return (c1);
-	if (c1->total <= c2->total)
-		return (c1);
-	return (c2);
-}
-
-int	ft_min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	else
-		return (b);
-}
-
-int	ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	else
-		return (b);
 }
 
 t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *elem_b)

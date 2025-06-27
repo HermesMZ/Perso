@@ -9,6 +9,7 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = \
+	exec_moves.c \
 	hard_sort.c \
 	heads.c \
 	index.c \
@@ -21,6 +22,7 @@ SRCS = \
 	push_swap_rr.c \
 	push_swap_s.c \
 	push_swap.c \
+	simple_math.c \
 	sort_utils.c \
 	sort.c \
 	split_utils.c \

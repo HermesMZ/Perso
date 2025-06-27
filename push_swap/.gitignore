@@ -2,3 +2,4 @@ objs/
 libft/obj/
 libft/libft.a
 push_swap
+test.txt

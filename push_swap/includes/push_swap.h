@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 02:35:46 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/27 16:45:05 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,9 @@ typedef struct s_cost
 {
 	int			ra;
 	int			rb;
-	int			rra;
-	int			rrb;
 	int			rr;
-	int			rrr;
 	int			total;
-	t_swap_int	*node_b;
+	t_swap_int	*elem_b;
 }	t_cost;
 
 typedef struct s_stack
@@ -113,10 +110,10 @@ void		ft_swap_ss(t_swap *swap);
 void		ft_rotate(t_swap *swap, t_swap_int *elem);
 void		ft_rotate_rr(t_swap *swap);
 void		ft_reverse_rotate(t_swap *swap, t_swap_int *elem);
-void		ft_reverse_rotate_rrr(t_swap *swap);
+void		ft_reverse_rotate_rr(t_swap *swap);
 
 // lock
-int	to_lock(t_swap *swap, t_swap_int *elem);
+int			to_lock(t_swap *swap, t_swap_int *elem);
 t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem);
 void		head_update(t_heads *heads);
 void		lock_all(t_swap *swap, t_heads *heads);
@@ -140,5 +137,19 @@ void		set_min_max(t_stack *stack);
 void		update_min_max(t_swap *swap, t_swap_int *elem);
 void		update_min_max_on_push(t_swap_int *elem);
 void		update_min_max_on_pop(t_swap *swap, t_swap_int *elem);
+
+// exec_moves
+void		execute_optimal_moves(t_swap *swap, t_cost *cost);
+
+// simple maths
+int			ft_abs(int x);
+int			ft_min(int a, int b);
+int			ft_max(int a, int b);
+
+// cost
+t_cost		*init_empty_cost(void);
+t_cost		*calculate_node_cost(t_swap *swap, t_swap_int *elem_b);
+t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b);
+void		push_back_to_a_optimized(t_swap *swap);
 
 #endif /*PUSH_SWAP_H*/

@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 14:13:11 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:41:19 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,28 +104,28 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *node_b)
 	return (best_cost);
 }
 
-int	get_target_pos_in_a(t_stack *stack_a, int val_to_insert)
+t_swap_int	*get_target_pos_in_a(t_stack *stack_a, t_swap_int *elem_b)
 {
 	t_swap_int	*current_a;
-	t_swap_int	*min_node;
+	t_swap_int	*min;
 
 	current_a = stack_a->first;
-	min_node = find_index(stack_a, stack_a->min);
+	min = find_index(stack_a, stack_a->min);
 	if (stack_a->len == 0)
 		return (0);
-	if (val_to_insert < stack_a->min || val_to_insert > stack_a->max)
+	if (elem_b->index < stack_a->min || elem_b->index > stack_a->max)
 	{
-		if (val_to_insert > stack_a->max)
-			return (get_node_index(stack_a, stack_a->last));
-		return (get_node_index(stack_a, min_node));
+		if (elem_b->index > stack_a->max)
+			return (stack_a->last);
+		return (stack_a->min);
 	}
 	while (current_a)
 	{
-		if (current_a->value < val_to_insert
-			&& current_a->next->value > val_to_insert)
-			return (get_node_index(stack_a, current_a) + 1);
-		if (current_a->value == stack_a->max && val_to_insert < stack_a->min)
-			return (get_node_index(stack_a, stack_a->last) + 1);
+		if (current_a->index < elem_b->index
+			&& current_a->next->index > elem_b->index)
+			return (find_index(stack_a, current_a->index) + 1);
+		if (current_a->index == stack_a->max && elem_b->index < stack_a->min)
+			return (find_index(stack_a, stack_a->last) + 1);
 		current_a = current_a->next;
 	}
 	return (0);

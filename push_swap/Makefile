@@ -16,7 +16,6 @@ SRCS = \
 	lock.c \
 	merge.c \
 	min_max.c \
-	push_swap_cost.c \
 	push_swap_p.c \
 	push_swap_r.c \
 	push_swap_rr.c \
@@ -29,6 +28,7 @@ SRCS = \
 	stack_utils.c \
 	stack.c \
 	utils_debug.c \
+	# push_swap_cost.c \
 
 SRCS_PATHS = $(addprefix $(SRCS_DIR)/, $(SRCS))
 OBJS = $(SRCS_PATHS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)

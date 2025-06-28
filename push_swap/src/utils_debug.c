@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 18:12:43 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 04:38:57 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ void	debug_print_stacks(t_swap *swap)
 			ft_printf("%11c", ' ');
 		if (b)
 		{
-			ft_printf("%10d", b->value);
+			if (b->locked)
+				ft_printf("X%8dX ", b->value);
+			else
+				ft_printf("%10d ", b->value);
 			if (b->next && i + 1 < stack_b->len)
 				b = b->next;
 			else
@@ -118,9 +121,9 @@ void	debug_print_locked(t_swap *swap)
 		if (a)
 		{
 			if (a->locked)
-				ft_printf("%10d\n", a->value);
+				ft_printf("%.10d\n", a->value);
 			else
-				ft_printf("%10s\n");
+				ft_printf("%.10s\n");
 			if (a->next && i + 1 < stack_a->len)
 				a = a->next;
 			else

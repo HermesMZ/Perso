@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:56:11 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 19:38:44 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 04:11:03 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,11 @@ t_swap_int	*find_median(t_swap_int *first, int count)
 	i = 0;
 	while (i < count && cursor)
 	{
-		if (!cursor->locked)
-		{
+		// if (!cursor->locked)
+		// {
 			array[i] = cursor->index;
 			i++;
-		}
+		// }
 		cursor = cursor->next;
 	}
 	quick_sort(array, 0, i - 1);

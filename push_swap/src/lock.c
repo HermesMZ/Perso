@@ -6,11 +6,37 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:24:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/28 02:08:06 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 03:46:24 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_all_locked(t_swap *swap)
+{
+	size_t		i;
+	t_swap_int	*current;
+
+	current = swap->stack_a->first;
+	i = 0;
+	while (i < swap->stack_a->len)
+	{
+		if (!current->locked)
+			return (0);
+		current = current->next;
+		i++;
+	}
+	current = swap->stack_b->first;
+	i = 0;
+	while (i < swap->stack_b->len)
+	{
+		if (!current->locked)
+			return (0);
+		current = current->next;
+		i++;
+	}
+	return (1);
+}
 
 void	head_update(t_heads *heads)
 {

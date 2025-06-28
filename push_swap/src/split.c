@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:38:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/28 02:12:28 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 04:43:00 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,10 @@ t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 	else
 		hard_sort(swap, heads->remaining, heads->remaining_count);
 	update_heads_for_merge(swap, heads);
-	merge_stacks_count(swap, &heads);
+	if (!is_all_locked(swap))
+		merge_stacks_count(swap, &heads);
 	heads->remaining = heads->remaining->stack->first;
-	if (swap->stack_b->len == 0)
+	if (swap->stack_b->len == 0 || is_all_locked(swap))
 		result = NULL;
 	else
 		result = heads->remaining;

@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/28 02:32:43 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 04:41:41 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,14 @@ int	main(int argc, char *argv[])
 	// 	i++;
 	// }
 	quick_sort_stack(swap, swap->stack_a->first, len);
-	// push_back_to_a_optimized(swap);
+	ft_printf("qs ended\n");
+	debug_print_stacks(swap);
+	
+	push_back_to_a_optimized(swap);
 	
 	// final_merge(swap);
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
 	// printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
-	// debug_print_stacks(swap);
 	print_moves(swap->move);
 	free_all(swap);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:25:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 00:22:10 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/28 04:37:28 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_swap_int	*find_min_in_split(t_swap_int *elem, int count)
 	i = 0;
 	while (i < count)
 	{
-		if (current->index < min->index && !current->locked)
+		if (current->index < min->index)
 			min = current;
 		current = current->next;
 		i++;
@@ -59,7 +59,7 @@ t_swap_int	*find_max_in_split(t_swap_int *elem, int count)
 	i = 0;
 	while (i < count)
 	{
-		if (current->index > max->index && !current->locked)
+		if (current->index > max->index)
 			max = current;
 		current = current->next;
 		i++;
@@ -78,7 +78,7 @@ t_swap_int	*find_pushed_head_split(t_swap_int *pivot, int count)
 	pushed = current;
 	while (i < count)
 	{
-		if (current->value > pivot->value && !current->locked)
+		if (current->value > pivot->value)
 			pushed = current;
 		current = current->next;
 		i++;
@@ -91,7 +91,7 @@ t_swap_int	*find_remaining_head_split(t_swap_int *pivot)
 	t_swap_int	*current;
 
 	current = pivot->stack->first;
-	while (current->index > pivot->index && !current->locked)
+	while (current->index > pivot->index)
 		current = current->next;
 	return (current);
 }

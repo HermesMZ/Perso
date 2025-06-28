@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 16:45:05 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 03:46:55 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ int			to_lock(t_swap *swap, t_swap_int *elem);
 t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem);
 void		head_update(t_heads *heads);
 void		lock_all(t_swap *swap, t_heads *heads);
+int			is_all_locked(t_swap *swap);
+
 // void		lock_all(t_stack *stack_a);
 
 // debug

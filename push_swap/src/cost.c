@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 16:42:03 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 05:05:20 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,19 @@ void	push_back_to_a_optimized(t_swap *swap)
 	t_swap_int	*current_b_node;
 	t_cost		*cheapest_cost;
 	t_cost		*current_cost;
+	size_t		i;
 
 	while (swap->stack_b->len > 0)
 	{
+		i = 0;
 		cheapest_cost = init_empty_cost();
 		current_b_node = swap->stack_b->first;
-		while (current_b_node)
+		while (i < swap->stack_b->len)
 		{
 			current_cost = calculate_node_cost(swap, current_b_node);
 			cheapest_cost = get_cost(cheapest_cost, current_cost);
 			current_b_node = current_b_node->next;
+			i++;
 		}
 		execute_optimal_moves(swap, cheapest_cost);
 	}

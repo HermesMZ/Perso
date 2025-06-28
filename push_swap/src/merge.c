@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:29:43 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 14:57:32 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 02:07:47 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,9 @@ void	merge_to_stack(t_swap *swap, t_heads **heads, t_stack *from, t_stack *to)
 
 void	merge_stacks_count(t_swap *swap, t_heads **heads)
 {
-	ft_printf("\t\tenter merge_stacks_count\n");
-	// debug_print_split(*heads);
-	
-	// debug_print_stacks(swap);
 	if ((*heads)->pushed->stack == swap->stack_b)
 		merge_to_stack(swap, heads, swap->stack_b, swap->stack_a);
 	else
 		merge_to_stack(swap, heads, swap->stack_a, swap->stack_b);
-	ft_printf("\t\tleave merge_stacks_count\n");
-	// debug_print_stacks(swap);
 }
 

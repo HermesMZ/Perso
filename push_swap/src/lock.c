@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lock.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:24:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 00:26:10 by zoum             ###   ########.fr       */
+/*   Updated: 2025/06/28 02:08:06 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,7 @@ t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem)
 	t_swap_int	*target;
 	t_swap_int	*current;
 	size_t		i;
-	
-// ft_printf("*************************** elem to push : %d\n", elem->value);
+
 	if (!stack_a || !stack_a->first || !elem || stack_a->len == 0)
 		return (NULL);
 	i = 0;
@@ -114,8 +113,6 @@ t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem)
 	target = find_index(stack_a, stack_a->max);
 	while (i < stack_a->len)
 	{
-// // ft_printf("*************************** current : %d target : %d\n", current->value, target->value);
-
 		if (current->locked && current->index > elem->index
 			&& current->index < target->index)
 			target = current;
@@ -123,7 +120,5 @@ t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem)
 		current = current->next;
 		i++;
 	}
-// ft_printf("*************************** target : %d\n", target->value);
-
 	return (target);
 }

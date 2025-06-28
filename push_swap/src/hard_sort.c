@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:15:54 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 14:59:03 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 02:11:23 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static void	hard_sort_3(t_swap *swap, t_swap_int *elem, int ascending)
 
 void	hard_sort(t_swap *swap, t_swap_int *elem, int count)
 {
-ft_printf("\t\tenter hard_sort\n");
-
 	t_swap_int	*to;
 
 	rotate_to(swap, elem);
@@ -54,6 +52,4 @@ ft_printf("\t\tenter hard_sort\n");
 	}
 	if (count == 3)
 		hard_sort_3(swap, elem, elem->stack == swap->stack_a);
-ft_printf("\t\tleave hard_sort\n");
-
 }

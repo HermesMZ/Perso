@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/27 16:45:44 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/06/28 02:07:20 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	print_moves(t_list *move)
 		total_commands++;
 		current = current->next;
 	}
-	ft_printf("count : %d\n", total_commands);
+	// ft_printf("count : %d\n", total_commands);
 }
 #include <stdio.h>
 int	main(int argc, char *argv[])
@@ -76,7 +76,7 @@ int	main(int argc, char *argv[])
 	// final_merge(swap);
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
 	// printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
-	debug_print_stacks(swap);
+	// debug_print_stacks(swap);
 	// print_moves(swap->move);
 	free_all(swap);
 	return (0);

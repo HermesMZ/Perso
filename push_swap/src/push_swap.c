@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/28 02:07:20 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 00:43:38 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int argc, char *argv[])
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
 	// printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
 	// debug_print_stacks(swap);
-	// print_moves(swap->move);
+	print_moves(swap->move);
 	free_all(swap);
 	return (0);
 }

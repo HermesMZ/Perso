@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/28 05:05:20 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 00:10:59 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,8 @@ t_cost	*calculate_node_cost(t_swap *swap, t_swap_int *elem_b)
 t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b)
 {
 	t_swap_int	*current_a;
-	t_swap_int	*min;
 
 	current_a = stack_a->first;
-	min = find_index(stack_a, stack_a->min);
 	if (stack_a->len == 0)
 		return (0);
 	if (elem_b->index < stack_a->min || elem_b->index > stack_a->max)

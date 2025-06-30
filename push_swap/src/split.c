@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:38:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/28 02:12:28 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 00:46:05 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 	else
 		hard_sort(swap, heads->remaining, heads->remaining_count);
 	update_heads_for_merge(swap, heads);
-	merge_stacks_count(swap, &heads);
+	// merge_stacks_count(swap, &heads);
 	heads->remaining = heads->remaining->stack->first;
 	if (swap->stack_b->len == 0)
 		result = NULL;

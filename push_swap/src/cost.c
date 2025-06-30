@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/01 00:10:59 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/01 00:51:39 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,15 @@ t_cost	*get_cost(t_cost *c1, t_cost *c2)
 	return (c2);
 }
 
-void	push_back_to_a_optimized(t_swap *swap)
+void	push_back_to_a_optimized(t_swap *swap, int count)
 {
 	t_swap_int	*current_b_node;
 	t_cost		*cheapest_cost;
 	t_cost		*current_cost;
 	size_t		i;
+	int			pushed;
 
-	while (swap->stack_b->len > 0)
+	while (swap->stack_b->len > 0 && pushed < count)
 	{
 		i = 0;
 		cheapest_cost = init_empty_cost();
@@ -109,5 +110,6 @@ void	push_back_to_a_optimized(t_swap *swap)
 			i++;
 		}
 		execute_optimal_moves(swap, cheapest_cost);
+		pushed++;
 	}
 }

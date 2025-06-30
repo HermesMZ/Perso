@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 16:45:05 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 00:54:04 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,6 @@ int			ft_max(int a, int b);
 t_cost		*init_empty_cost(void);
 t_cost		*calculate_node_cost(t_swap *swap, t_swap_int *elem_b);
 t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b);
-void		push_back_to_a_optimized(t_swap *swap);
+void		push_back_to_a_optimized(t_swap *swap, int count);
 
 #endif /*PUSH_SWAP_H*/

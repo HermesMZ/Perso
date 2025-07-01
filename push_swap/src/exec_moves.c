@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:01:05 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/27 16:45:12 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 02:03:45 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	execute_optimal_moves(t_swap *swap, t_cost *cost)
 	execute_rb(swap, cost);
 	execute_rr(swap, cost);
 	ft_push(swap, swap->stack_b->first);
+	swap->stack_a->first->locked = 1;
 }

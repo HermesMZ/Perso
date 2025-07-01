@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 23:27:14 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/28 02:12:05 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:06:57 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	quick_sort_stack(t_swap *swap, t_swap_int *first, int count)
 	tmp = NULL;
 	if (!first || count <= 1)
 		return ;
+	if (count < 20 || swap->stack_a->len < 20)
+		return ;
 	if (is_circularly_sorted(swap->stack_a) == 1
 		&& is_circularly_sorted(swap->stack_b) == -1)
 		return ;
@@ -27,5 +29,6 @@ void	quick_sort_stack(t_swap *swap, t_swap_int *first, int count)
 	{
 		tmp = recursive_split_call(swap, first, count);
 	}
-	rotate_to(swap, tmp);
+	if (tmp)
+		rotate_to(swap, tmp);
 }

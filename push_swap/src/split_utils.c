@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:25:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 00:22:10 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/01 01:41:09 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,66 +67,49 @@ t_swap_int	*find_max_in_split(t_swap_int *elem, int count)
 	return (max);
 }
 
-t_swap_int	*find_pushed_head_split(t_swap_int *pivot, int count)
+void	find_pushed_head_split(t_heads *heads, t_swap_int *pivot, int count)
 {
 	t_swap_int	*current;
 	int			i;
-	t_swap_int	*pushed;
 
 	i = 0;
 	current = pivot->stack->first;
-	pushed = current;
+	heads->pushed = current;
 	while (i < count)
 	{
 		if (current->value > pivot->value && !current->locked)
-			pushed = current;
+		{
+			heads->pushed = current;
+			heads->push_count++;
+		}
 		current = current->next;
 		i++;
 	}
-	return (pushed);
 }
 
-t_swap_int	*find_remaining_head_split(t_swap_int *pivot)
+void	find_remaining_head_split(t_heads *heads, t_swap_int *pivot, int count)
 {
 	t_swap_int	*current;
+	int			i;
+	int			j;
 
+	i = 0;
 	current = pivot->stack->first;
-	while (current->index > pivot->index && !current->locked)
+	heads->remaining_count = 0;
+	while (i < count && current->index > pivot->index && !current->locked)
+	{
 		current = current->next;
-	return (current);
+		i++;
+	}
+	heads->remaining = current;
+
+	j = 0;
+	while (i + j < count)
+	{
+		if (current->value <= pivot->value && !current->locked)
+			heads->remaining_count++;
+
+		current = current->next;
+		j++;
+	}
 }
-
-// prendre les heads finales 
-// t_swap_int	*find_pushed_head_split(t_swap *swap, t_swap_int *pivot, int count)
-// {
-// 	t_swap_int	*current;
-
-// 	ft_printf("pus\n");
-// 	current = pivot->stack->first;
-// 	ft_printf("pivot %d\n", pivot->value);
-// 	if (pivot->stack == swap->stack_a)
-// 		current = find_index(pivot->stack, pivot->index + 1);
-// 	else
-// 		current = find_max_in_split(pivot->stack->first, count);
-// 	ft_printf("hed\n");
-
-// 	return (current);
-// }
-
-// t_swap_int	*find_remaining_head_split(t_swap *swap, t_swap_int *pivot, int count)
-// {
-// 	t_swap_int	*current;
-
-// 	ft_printf("bouh\n");
-// 	current = pivot->stack->first;
-// 	ft_printf("pivot %d\n", pivot->value);
-// 	if (pivot->stack == swap->stack_a)
-// 		find_min_in_split(pivot->stack->first, count);
-// 	else
-// 		current = pivot;
-// 	ft_printf("teille\n");
-
-// 	return (current);
-// }
-
-

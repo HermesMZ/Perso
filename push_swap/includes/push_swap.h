@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/01 00:54:04 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/01 15:22:53 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ t_heads		*init_heads(int count, t_swap_int *pivot);
 t_heads		*update_heads_for_merge(t_swap *swap, t_heads *heads);
 
 // merge
-void		merge_to_stack(t_swap *swap, t_heads **heads, t_stack *from, t_stack *to);
+void		merge_to_stack(t_swap *swap, t_heads **heads,
+				t_stack *from, t_stack *to);
 void		merge_stacks_count(t_swap *swap, t_heads **heads);
 void		anticipate_merge(t_swap *swap, t_heads **heads);
 
@@ -128,9 +129,11 @@ void		debug_print_locked(t_swap *swap);
 // split utils
 t_swap_int	*find_min_in_split(t_swap_int *elem, int count);
 t_swap_int	*find_max_in_split(t_swap_int *elem, int count);
-t_swap_int	*find_pushed_head_split(t_swap_int *pivot, int count);
-t_swap_int	*find_remaining_head_split(t_swap_int *pivot);
 t_swap_int	*find_first_free(t_stack *stack_a);
+void		find_pushed_head_split(t_heads *heads, t_swap_int *pivot,
+				int count);
+void		find_remaining_head_split(t_heads *heads,
+				t_swap_int *pivot, int count);
 
 // min_max
 void		set_min_max(t_stack *stack);
@@ -150,6 +153,6 @@ int			ft_max(int a, int b);
 t_cost		*init_empty_cost(void);
 t_cost		*calculate_node_cost(t_swap *swap, t_swap_int *elem_b);
 t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b);
-void		push_back_to_a_optimized(t_swap *swap, int count);
+void		push_back_to_a_optimized(t_swap *swap);
 
 #endif /*PUSH_SWAP_H*/

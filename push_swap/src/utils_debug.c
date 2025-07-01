@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_debug.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 18:12:43 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 02:51:27 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,22 @@ void	debug_print_split(t_heads *heads)
 	ft_printf("pushed :    ");
 	while (i < heads->push_count)
 	{
-		ft_printf("%2d ", pushed->value);
+		if (!pushed->locked)
+		{
+			ft_printf("%2d ", pushed->value);
+			i++;
+		}
 		pushed = pushed->next;
-		i++;
 	}
 	ft_printf("\nremaining : ");
-	while (j < heads->remaining_count)
+	while (j < heads->remaining_count && !remaining->locked)
 	{
-		ft_printf("%2d ", remaining->value);
+		if (!remaining->locked)
+		{
+			ft_printf("%2d ", remaining->value);
+			j++;
+		}
 		remaining = remaining->next;
-		j++;
 	}
 	ft_printf("\n =========================================================================== \n");
 	ft_printf("\n");

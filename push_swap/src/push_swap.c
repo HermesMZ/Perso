@@ -6,35 +6,12 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/01 00:43:38 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/01 15:24:57 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// make && clear && valgrind --track-origins=yes ./push_swap 1 0 9 5 3 4 6 7 2 8 > test.txt 
-
-// begin when the last split has been done
-// void final_merge(t_swap *swap)
-// {
-// 	ft_printf("before final rotate\n");
-// 	debug_print_stacks(swap);
-// 	ft_printf("min %d, max %d\n", swap->min, swap->max);
-// 	ft_printf("a-min %d, a-max %d\n", swap->stack_a->min, swap->stack_a->max);
-// 	ft_printf("b-min %d, b-max %d\n", swap->stack_b->min, swap->stack_b->max);
-// 	rotate_to(swap, find_max_in_split(swap->stack_a->first, swap->stack_a->len));
-// 	ft_push(swap, swap->stack_b->first);
-// 	while (swap->stack_b->len > 0)
-// 	{
-// 		rotate_to(swap, find_index(swap->stack_b, swap->stack_a->first->index - 1));
-// 		ft_push(swap, swap->stack_b->first);
-// 		ft_printf("len b %d\n", swap->stack_b->len);
-// 	debug_print_stacks(swap);
-// 	}
-// 	ft_printf("bouh\n");
-// 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
-// 	debug_print_stacks(swap);
-// }
 void	print_moves(t_list *move)
 {
 	t_list	*current;
@@ -49,9 +26,33 @@ void	print_moves(t_list *move)
 		total_commands++;
 		current = current->next;
 	}
-	// ft_printf("count : %d\n", total_commands);
 }
-#include <stdio.h>
+
+void	sort(t_swap *swap, t_swap_int *first, int count)
+{
+	t_swap_int	*pivot;
+	t_swap_int	*current;
+	int			i;
+
+	pivot = find_median(first, count);
+	i = 0;
+	pivot->locked = 1;
+	current = pivot->stack->first;
+	while (swap->stack_a->len > 3)
+	{
+		if (!current->locked)
+		{
+			ft_push(swap, current);
+			i++;
+		}
+		else
+			ft_rotate(swap, current);
+		current = swap->stack_a->first;
+	}
+	hard_sort(swap, swap->stack_a->first, 3);
+	push_back_to_a_optimized(swap);
+}
+
 int	main(int argc, char *argv[])
 {
 	size_t		len;
@@ -62,21 +63,10 @@ int	main(int argc, char *argv[])
 		return (0);
 	len = argc - 1;
 	swap = swap_init(swap, argv, len);
-	// size_t i = 0;
-	// while (i < swap->stack_a->len)
-	// {
-	// 	if (swap->stack_a->first->locked)
-	// 		ft_rotate(swap, swap->stack_a->first);
-	// 	ft_push(swap, swap->stack_a->first);
-	// 	i++;
-	// }
 	quick_sort_stack(swap, swap->stack_a->first, len);
-	push_back_to_a_optimized(swap);
-	
-	// final_merge(swap);
+	sort(swap, swap->stack_a->first, swap->stack_a->len);
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
-	// printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
-	// debug_print_stacks(swap);
+	debug_print_stacks(swap);
 	print_moves(swap->move);
 	free_all(swap);
 	return (0);
@@ -88,12 +78,3 @@ int	main(int argc, char *argv[])
 // check malloc
 // hard 5
 // optimiser les rotations au moment du split en fonction du nombre de push ?
-
-
-	// first_cleaning(swap);
-	// algo à implémenter
-	// while ((is_sorted(swap->stack_a->length, swap->stack_a->first) != 1)
-	// 		&& swap->stack_b->length != 0)
-		// push_swap(swap);
-	// ft_printf("sorted %d\n", is_circularly_sorted(swap->stack_a));
-	

@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:38:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/01 00:46:05 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/01 15:25:27 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_heads	*split_with_pivot(t_swap *swap, t_swap_int *pivot,
 	i = 0;
 	while (i < count)
 	{
-		if (current->index > pivot->index)
+		if (current->index > pivot->index && !current->locked)
 		{
 			ft_push(swap, current);
 			heads->push_count++;
@@ -62,24 +62,16 @@ t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 	pivot = find_median(first, count);
 	heads = init_heads(count, pivot);
 	split_with_pivot(swap, pivot, heads, count);
-	if (heads->push_count > 2)
+	if (heads->push_count > 20)
 		quick_sort_stack(swap, heads->pushed, heads->push_count);
-	else
-		hard_sort(swap, heads->pushed, heads->push_count);
-	if (heads->remaining_count > 2)
+	if (heads->remaining_count > 20)
 		quick_sort_stack(swap, heads->remaining, heads->remaining_count);
-	else
-		hard_sort(swap, heads->remaining, heads->remaining_count);
 	update_heads_for_merge(swap, heads);
-	// merge_stacks_count(swap, &heads);
 	heads->remaining = heads->remaining->stack->first;
-	if (swap->stack_b->len == 0)
+	if (heads->push_count < 20 || heads->remaining_count < 20)
 		result = NULL;
 	else
 		result = heads->remaining;
 	free(heads);
 	return (result);
 }
-
-	// if (swap->stack_a->len <= 3)
-	// if (heads->push_count <= 3 && heads->remaining_count <= 3)

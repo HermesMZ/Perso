@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/01 00:51:39 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/01 15:23:38 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_cost	*init_empty_cost(void)
 {
 	t_cost	*cost;
-	
+
 	cost = malloc(sizeof(t_cost));
 	if (!cost)
 		return (NULL);
@@ -58,21 +58,11 @@ t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b)
 	t_swap_int	*current_a;
 
 	current_a = stack_a->first;
-	if (stack_a->len == 0)
-		return (0);
-	if (elem_b->index < stack_a->min || elem_b->index > stack_a->max)
-	{
-		if (elem_b->index > stack_a->max)
-			return (find_index(stack_a, stack_a->max));
-		return (find_index(stack_a, stack_a->min));
-	}
 	while (current_a)
 	{
 		if (current_a->index < elem_b->index
 			&& current_a->next->index > elem_b->index)
 			return (current_a->next);
-		if (current_a->index == stack_a->max && elem_b->index < stack_a->min)
-			return (current_a);
 		current_a = current_a->next;
 	}
 	return (0);
@@ -89,15 +79,14 @@ t_cost	*get_cost(t_cost *c1, t_cost *c2)
 	return (c2);
 }
 
-void	push_back_to_a_optimized(t_swap *swap, int count)
+void	push_back_to_a_optimized(t_swap *swap)
 {
 	t_swap_int	*current_b_node;
 	t_cost		*cheapest_cost;
 	t_cost		*current_cost;
 	size_t		i;
-	int			pushed;
-
-	while (swap->stack_b->len > 0 && pushed < count)
+// ft_printf("push_back_to_a_optimized\n");
+	while (swap->stack_b->len > 0)
 	{
 		i = 0;
 		cheapest_cost = init_empty_cost();
@@ -110,6 +99,5 @@ void	push_back_to_a_optimized(t_swap *swap, int count)
 			i++;
 		}
 		execute_optimal_moves(swap, cheapest_cost);
-		pushed++;
 	}
 }

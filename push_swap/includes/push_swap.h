@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/01 21:10:22 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/01 23:25:56 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ void		push_chunks(t_swap *swap, int nb_chunks);
 void		push_one_chunk(t_swap *swap, int chunk_min, int chunk_max);
 int			has_chunk(t_stack *stack, int chunk_min, int chunk_max);
 void		rotate_n_times(t_swap *swap, int n);
-
+t_swap_int	*find_next_chunk_elem(t_swap_int *current, int chunk_min,
+				int chunk_max);
 
 #endif /*PUSH_SWAP_H*/

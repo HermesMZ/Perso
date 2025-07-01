@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:09:45 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/01 22:04:50 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/02 00:46:07 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,68 @@ void	push_chunks(t_swap *swap, int nb_chunks)
 	}
 }
 
+// helper for push_one_chunk
+static void	process_chunk_element(t_swap *swap, t_swap_int *elem, int pivot)
+{
+	if (to_lock(swap, elem))
+	{
+		elem->locked = 1;
+	}
+	else
+	{
+		ft_push(swap, elem);
+		if (elem->index < pivot)
+			ft_rotate(swap, elem);
+	}
+}
+
+// helper for push_one_chunk
+static void	rotate_for_chunk_element(t_swap *swap, t_swap_int *elem)
+{
+	int	rotations;
+
+	rotations = r_or_rr(elem);
+	if (rotations > 0)
+	{
+		while (rotations--)
+			ft_rotate(swap, swap->stack_a->first);
+	}
+	else
+	{
+		while (rotations++)
+			ft_reverse_rotate(swap, swap->stack_a->first);
+	}
+}
+
 void	push_one_chunk(t_swap *swap, int chunk_min, int chunk_max)
 {
-	t_swap_int	*current;
-	int			rotations;
+	int			pivot;
+	t_swap_int	*target_elem;
 
+	pivot = chunk_min + (chunk_max - chunk_min) / 2;
 	while (has_chunk(swap->stack_a, chunk_min, chunk_max))
 	{
-		current = swap->stack_a->first;
-		rotations = 0;
-		while (!(current->index >= chunk_min && current->index <= chunk_max))
-		{
-			current = current->next;
-			rotations++;
-		}
-		rotate_n_times(swap, rotations);
-		ft_push(swap, current);
+		target_elem = find_next_chunk_elem(swap->stack_a->first,
+				chunk_min, chunk_max);
+		if (!target_elem)
+			break ;
+		rotate_for_chunk_element(swap, target_elem);
+		process_chunk_element(swap, swap->stack_a->first, pivot);
 	}
-	return ;
 }
+
+// void	push_one_chunk(t_swap *swap, int chunk_min, int chunk_max)
+// {
+// 	rotate_to(swap, find_next_chunk_elem(swap->stack_a->first,
+// 			chunk_min, chunk_max));
+// 	while (has_chunk(swap->stack_a, chunk_min, chunk_max))
+// 	{
+// 		rotate_to(swap, find_next_chunk_elem(swap->stack_a->first,
+// 				chunk_min, chunk_max));
+// 		ft_push(swap, swap->stack_a->first);
+// 	}
+// 	return ;
+// }
 
 int	has_chunk(t_stack *stack, int chunk_min, int chunk_max)
 {
@@ -62,7 +105,8 @@ int	has_chunk(t_stack *stack, int chunk_min, int chunk_max)
 	current = stack->first;
 	while (i < stack->len)
 	{
-		if (current->index >= chunk_min && current->index <= chunk_max)
+		if (current->index >= chunk_min && current->index <= chunk_max
+			&& !current->locked)
 			return (1);
 		current = current->next;
 		i++;
@@ -77,4 +121,34 @@ void	rotate_n_times(t_swap *swap, int n)
 		ft_rotate(swap, swap->stack_a->first);
 		n--;
 	}
+}
+
+t_swap_int	*find_next_chunk_elem(t_swap_int *current, int chunk_min,
+	int chunk_max)
+{
+	t_swap_int	*next;
+	t_swap_int	*prev;
+	size_t		i;
+
+	if (!current)
+		return (NULL);
+	i = 0;
+	next = current->next;
+	prev = current->prev;
+	if (current->index >= chunk_min && current->index <= chunk_max
+		&& !current->locked)
+		return (current);
+	while (i < current->stack->len / 2 + 1)
+	{
+		if (next->index >= chunk_min && next->index <= chunk_max
+			&& !next->locked)
+			return (next);
+		if (prev->index >= chunk_min && prev->index <= chunk_max
+			&& !prev->locked)
+			return (prev);
+		next = next->next;
+		prev = prev->prev;
+		i++;
+	}
+	return (NULL);
 }

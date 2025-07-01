@@ -5,6 +5,8 @@
 		"unistd.h": "c",
 		"concepts": "c",
 		"limits": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"chrono": "c",
+		"span": "c"
 	}
 }

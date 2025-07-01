@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/01 00:43:38 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/01 22:18:28 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,25 @@ void	print_moves(t_list *move)
 	}
 	// ft_printf("count : %d\n", total_commands);
 }
-#include <stdio.h>
+
+int	calculate_chunk_count(size_t len)
+{
+	if (len <= 100)
+		return (5);
+	else if (len <= 500)
+		return (len / 30);
+	else
+		return (len / 25);
+}
+
+void	sort(t_swap *swap)
+{
+	while (swap->stack_a->len > 2)
+		ft_push(swap, swap->stack_a->first);
+	// ft_printf("empty a\n");
+	// debug_print_stacks(swap);
+	push_back_to_a_optimized(swap);
+}
 int	main(int argc, char *argv[])
 {
 	size_t		len;
@@ -62,21 +80,12 @@ int	main(int argc, char *argv[])
 		return (0);
 	len = argc - 1;
 	swap = swap_init(swap, argv, len);
-	// size_t i = 0;
-	// while (i < swap->stack_a->len)
-	// {
-	// 	if (swap->stack_a->first->locked)
-	// 		ft_rotate(swap, swap->stack_a->first);
-	// 	ft_push(swap, swap->stack_a->first);
-	// 	i++;
-	// }
-	quick_sort_stack(swap, swap->stack_a->first, len);
-	push_back_to_a_optimized(swap);
+	push_chunks(swap, calculate_chunk_count(len));
+	sort(swap);
 	
-	// final_merge(swap);
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
-	// printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
-	// debug_print_stacks(swap);
+	debug_print_stacks(swap);
+	ft_printf("end sort\n");
 	print_moves(swap->move);
 	free_all(swap);
 	return (0);

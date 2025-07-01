@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lock.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:24:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/28 02:08:06 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 21:10:06 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	head_update(t_heads *heads)
 	}
 }
 
-void	lock_all(t_swap *swap, t_heads *heads)
+void	lock_all(t_swap *swap)
 {
 	size_t		i;
 	t_swap_int	*current;
@@ -55,7 +55,6 @@ void	lock_all(t_swap *swap, t_heads *heads)
 		current = current->next;
 		i++;
 	}
-	head_update(heads);
 }
 
 // void	lock_all(t_stack *stack_a)

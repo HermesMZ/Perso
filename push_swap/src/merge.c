@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   merge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:29:43 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/28 02:07:47 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 22:16:50 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	anticipate_merge(t_swap *swap, t_heads **heads)
-{
-	int	i;
+// void	anticipate_merge(t_swap *swap, t_heads **heads)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < (*heads)->remaining_count)
-	{
-		ft_push(swap, swap->stack_b->first);
-		i++;
-	}
-	lock_all(swap, *heads);
-	head_update(*heads);
-}
+// 	i = 0;
+// 	while (i < (*heads)->remaining_count)
+// 	{
+// 		ft_push(swap, swap->stack_b->first);
+// 		i++;
+// 	}
+// 	lock_all(swap, *heads);
+// 	head_update(*heads);
+// }
 
 void	merge_to_stack(t_swap *swap, t_heads **heads, t_stack *from, t_stack *to)
 {

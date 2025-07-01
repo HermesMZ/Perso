@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:01:05 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/06/27 16:45:12 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/01 22:13:29 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	execute_rr(t_swap *swap, t_cost *cost)
 			ft_rotate_rr(swap);
 			cost->rr--;
 		}
-		if (cost->ra < 0)
+		if (cost->rr < 0)
 		{
 			ft_reverse_rotate_rr(swap);
 			cost->rr++;
@@ -65,8 +65,11 @@ static void	execute_rb(t_swap *swap, t_cost *cost)
 
 void	execute_optimal_moves(t_swap *swap, t_cost *cost)
 {
+	// ft_printf("enter move\n");
+	
 	execute_ra(swap, cost);
 	execute_rb(swap, cost);
 	execute_rr(swap, cost);
 	ft_push(swap, swap->stack_b->first);
+	// ft_printf("move done\n");
 }

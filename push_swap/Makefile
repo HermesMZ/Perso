@@ -9,6 +9,7 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = \
+	chunks.c \
 	cost.c \
 	exec_moves.c \
 	hard_sort.c \

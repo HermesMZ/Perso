@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/01 23:25:56 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/02 21:29:13 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_cost
 	int			rb;
 	int			rr;
 	int			total;
-	t_swap_int	*elem_b;
+	t_swap_int	*elem;
 }	t_cost;
 
 typedef struct s_stack
@@ -150,7 +150,10 @@ int			ft_max(int a, int b);
 t_cost		*init_empty_cost(void);
 t_cost		*calculate_node_cost(t_swap *swap, t_swap_int *elem_b);
 t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b);
+t_swap_int	*get_target_in_b(t_stack *stack_b, t_swap_int *elem_a);
+
 void		push_back_to_a_optimized(t_swap *swap);
+void		free_cost_if_not_null(t_cost **cost);
 
 void		push_chunks(t_swap *swap, int nb_chunks);
 void		push_one_chunk(t_swap *swap, int chunk_min, int chunk_max);
@@ -158,5 +161,12 @@ int			has_chunk(t_stack *stack, int chunk_min, int chunk_max);
 void		rotate_n_times(t_swap *swap, int n);
 t_swap_int	*find_next_chunk_elem(t_swap_int *current, int chunk_min,
 				int chunk_max);
+
+t_cost		*calculate_cost_for_a_to_b(t_swap *swap, t_swap_int *elem_a);
+t_cost		*calculate_cost_for_b_to_a(t_swap *swap, t_swap_int *elem_b);
+t_swap_int	*get_target(t_swap *swap, t_swap_int *source);
+t_cost		*find_cheapest_element(t_swap *swap, t_stack *source_stack,
+				int chunk_min, int chunk_max);
+
 
 #endif /*PUSH_SWAP_H*/

@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/02 01:46:03 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/02 23:23:05 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_moves(t_list *move)
 int	calculate_chunk_count(size_t len)
 {
 	if (len <= 100)
-		return (2);
+		return (1);
 	else if (len <= 500)
 		return (4);
 	else
@@ -40,8 +40,15 @@ int	calculate_chunk_count(size_t len)
 
 void	sort(t_swap *swap)
 {
+	int			pivot;
+
+	pivot = swap->stack_a->min + (swap->stack_a->max - swap->stack_a->min) / 2;
 	while (swap->stack_a->len > 2)
+	{
 		ft_push(swap, swap->stack_a->first);
+		if (swap->stack_b->first->index < pivot)
+			ft_rotate(swap, swap->stack_b->first);
+	}
 	push_back_to_a_optimized(swap);
 }
 

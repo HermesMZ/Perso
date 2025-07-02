@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/02 23:23:05 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/03 01:15:44 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_moves(t_list *move)
 int	calculate_chunk_count(size_t len)
 {
 	if (len <= 100)
-		return (1);
+		return (2);
 	else if (len <= 500)
 		return (4);
 	else

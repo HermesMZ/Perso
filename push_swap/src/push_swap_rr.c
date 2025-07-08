@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_rr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:04:21 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/19 00:57:21 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 15:51:27 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,3 @@ void	ft_reverse_rotate_rr(t_swap *swap)
 	ft_reverse_rotate(swap, swap->stack_a->first);
 	ft_reverse_rotate(swap, swap->stack_b->first);
 }
-// traiter les rrr au tri de fin

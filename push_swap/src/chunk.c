@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:09:45 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 10:52:34 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:48:56 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,48 @@ void	push_chunks(t_swap *swap, int nb_chunks)
 		push_one_chunk(swap, chunk_min, chunk_max);
 		i++;
 	}
+}
+
+int	has_chunk(t_stack *stack, int chunk_min, int chunk_max)
+{
+	t_swap_int	*current;
+	size_t		i;
+
+	i = 0;
+	current = stack->first;
+	while (i < stack->len)
+	{
+		if (current->index >= chunk_min && current->index <= chunk_max)
+			return (1);
+		current = current->next;
+		i++;
+	}
+	return (0);
+}
+
+t_swap_int	*find_next_chunk_elem(t_swap_int *current, int chunk_min,
+	int chunk_max)
+{
+	t_swap_int	*next;
+	t_swap_int	*prev;
+	size_t		i;
+
+	if (!current)
+		return (NULL);
+	i = 0;
+	next = current->next;
+	prev = current->prev;
+	if (current->index >= chunk_min && current->index <= chunk_max)
+		return (current);
+	while (i < current->stack->len / 2 + 1)
+	{
+		if (next->index >= chunk_min && next->index <= chunk_max)
+			return (next);
+		if (prev->index >= chunk_min && prev->index <= chunk_max)
+			return (prev);
+		next = next->next;
+		prev = prev->prev;
+		i++;
+	}
+	return (NULL);
 }

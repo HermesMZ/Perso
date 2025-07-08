@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_r.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 16:42:18 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/20 05:07:37 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 15:51:18 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,3 @@ void	ft_rotate_rr(t_swap *swap)
 	ft_rotate(swap, swap->stack_a->first);
 	ft_rotate(swap, swap->stack_b->first);
 }
-// traiter les rr au tri de fin

@@ -1,0 +1,1115 @@
+
+         a          b
+        15          0
+
+min-a    0 min-b    0
+max-a   14 max-b    0
+
+        60 
+         6 
+        11 
+        81 
+        96 
+        97 
+        34 
+        54 
+        75 
+        58 
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 0
+pb
+
+         a          b
+        14          1
+
+min-a    0 min-b    8
+max-a   14 max-b    8
+
+         6         60
+        11 
+        81 
+        96 
+        97 
+        34 
+        54 
+        75 
+        58 
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 1
+rb
+
+         a          b
+        14          1
+
+min-a    0 min-b    8
+max-a   14 max-b    8
+
+         6         60
+        11 
+        81 
+        96 
+        97 
+        34 
+        54 
+        75 
+        58 
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 2
+pb
+
+         a          b
+        13          2
+
+min-a    0 min-b    2
+max-a   14 max-b    8
+
+        11          6
+        81         60
+        96 
+        97 
+        34 
+        54 
+        75 
+        58 
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 3
+pb
+
+         a          b
+        12          3
+
+min-a    0 min-b    2
+max-a   14 max-b    8
+
+        81         11
+        96          6
+        97         60
+        34 
+        54 
+        75 
+        58 
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 4
+pb
+
+         a          b
+        11          4
+
+min-a    0 min-b    2
+max-a   14 max-b   11
+
+        96         81
+        97         11
+        34          6
+        54         60
+        75 
+        58 
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 5
+rb
+
+         a          b
+        11          4
+
+min-a    0 min-b    2
+max-a   14 max-b   11
+
+        96         11
+        97          6
+        34         60
+        54         81
+        75 
+        58 
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 6
+pb
+
+         a          b
+        10          5
+
+min-a    0 min-b    2
+max-a   14 max-b   12
+
+        97         96
+        34         11
+        54          6
+        75         60
+        58         81
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 7
+rb
+
+         a          b
+        10          5
+
+min-a    0 min-b    2
+max-a   14 max-b   12
+
+        97         11
+        34          6
+        54         60
+        75         81
+        58         96
+X       2X 
+        12 
+X      99X 
+         3 
+        68 
+commands done : 8
+pb
+
+         a          b
+         9          6
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        34         97
+        54         11
+        75          6
+        58         60
+X       2X         81
+        12         96
+X      99X 
+         3 
+        68 
+commands done : 9
+rb
+
+         a          b
+         9          6
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        34         11
+        54          6
+        75         60
+        58         81
+X       2X         96
+        12         97
+X      99X 
+         3 
+        68 
+commands done : 10
+pb
+
+         a          b
+         8          7
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        54         34
+        75         11
+        58          6
+X       2X         60
+        12         81
+X      99X         96
+         3         97
+        68 
+commands done : 11
+pb
+
+         a          b
+         7          8
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        75         54
+        58         34
+X       2X         11
+        12          6
+X      99X         60
+         3         81
+        68         96
+                   97
+commands done : 12
+pb
+
+         a          b
+         6          9
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        58         75
+X       2X         54
+        12         34
+X      99X         11
+         3          6
+        68         60
+                   81
+                   96
+                   97
+commands done : 13
+rb
+
+         a          b
+         6          9
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        58         54
+X       2X         34
+        12         11
+X      99X          6
+         3         60
+        68         81
+                   96
+                   97
+                   75
+commands done : 14
+pb
+
+         a          b
+         5         10
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+X       2X         58
+        12         54
+X      99X         34
+         3         11
+        68          6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 15
+pb
+
+         a          b
+         4         11
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+        12          2
+X      99X         58
+         3         54
+        68         34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 16
+pb
+
+         a          b
+         3         12
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+X      99X         12
+         3          2
+        68         58
+                   54
+                   34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 17
+sa
+
+         a          b
+         3         12
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+         3         12
+X      99X          2
+        68         58
+                   54
+                   34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 18
+ra
+
+         a          b
+         3         12
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+X      99X         12
+        68          2
+         3         58
+                   54
+                   34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 19
+sa
+
+         a          b
+         3         12
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+        68         12
+X      99X          2
+         3         58
+                   54
+                   34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 20
+rra
+
+         a          b
+         3         12
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+         3         12
+        68          2
+X      99X         58
+                   54
+                   34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 21
+ra
+
+         a          b
+         3         12
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+        68         12
+X      99X          2
+         3         58
+                   54
+                   34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 22
+pa
+
+         a          b
+         4         11
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+        12          2
+        68         58
+X      99X         54
+         3         34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 23
+rra
+
+         a          b
+         4         11
+
+min-a    1 min-b    0
+max-a   14 max-b   13
+
+         3          2
+        12         58
+        68         54
+X      99X         34
+                   11
+                    6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 24
+pa
+
+         a          b
+         5         10
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+X       2X         58
+         3         54
+        12         34
+        68         11
+X      99X          6
+                   60
+                   81
+                   96
+                   97
+                   75
+commands done : 25
+rrr
+
+         a          b
+         5         10
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+         3         54
+        12         34
+        68         11
+X      99X          6
+X       2X         60
+                   81
+                   96
+                   97
+                   75
+                   58
+commands done : 26
+pa
+
+         a          b
+         6          9
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        54         34
+         3         11
+        12          6
+        68         60
+X      99X         81
+X       2X         96
+                   97
+                   75
+                   58
+commands done : 27
+rra
+
+         a          b
+         6          9
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+X       2X         34
+        54         11
+         3          6
+        12         60
+        68         81
+X      99X         96
+                   97
+                   75
+                   58
+commands done : 28
+pa
+
+         a          b
+         7          8
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        34         11
+X       2X          6
+        54         60
+         3         81
+        12         96
+        68         97
+X      99X         75
+                   58
+commands done : 29
+pa
+
+         a          b
+         8          7
+
+min-a    0 min-b    2
+max-a   14 max-b   13
+
+        11          6
+        34         60
+X       2X         81
+        54         96
+         3         97
+        12         75
+        68         58
+X      99X 
+commands done : 30
+pa
+
+         a          b
+         9          6
+
+min-a    0 min-b    7
+max-a   14 max-b   13
+
+         6         60
+        11         81
+        34         96
+X       2X         97
+        54         75
+         3         58
+        12 
+        68 
+X      99X 
+commands done : 31
+rra
+
+         a          b
+         9          6
+
+min-a    0 min-b    7
+max-a   14 max-b   13
+
+X      99X         60
+         6         81
+        11         96
+        34         97
+X       2X         75
+        54         58
+         3 
+        12 
+        68 
+commands done : 32
+pa
+
+         a          b
+        10          5
+
+min-a    0 min-b    7
+max-a   14 max-b   13
+
+        60         81
+X      99X         96
+         6         97
+        11         75
+        34         58
+X       2X 
+        54 
+         3 
+        12 
+        68 
+commands done : 33
+pa
+
+         a          b
+        11          4
+
+min-a    0 min-b    7
+max-a   14 max-b   13
+
+        81         96
+        60         97
+X      99X         75
+         6         58
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+        68 
+commands done : 34
+rrr
+
+         a          b
+        11          4
+
+min-a    0 min-b    7
+max-a   14 max-b   13
+
+        60         97
+X      99X         75
+         6         58
+        11         96
+        34 
+X       2X 
+        54 
+         3 
+        12 
+        68 
+        81 
+commands done : 35
+rra
+
+         a          b
+        11          4
+
+min-a    0 min-b    7
+max-a   14 max-b   13
+
+        81         97
+        60         75
+X      99X         58
+         6         96
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+        68 
+commands done : 36
+rra
+
+         a          b
+        11          4
+
+min-a    0 min-b    7
+max-a   14 max-b   13
+
+        68         97
+        81         75
+        60         58
+X      99X         96
+         6 
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+commands done : 37
+pa
+
+         a          b
+        12          3
+
+min-a    0 min-b    7
+max-a   14 max-b   12
+
+        97         75
+        68         58
+        81         96
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+commands done : 38
+rb
+
+         a          b
+        12          3
+
+min-a    0 min-b    7
+max-a   14 max-b   12
+
+        97         58
+        68         96
+        81         75
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+commands done : 39
+pa
+
+         a          b
+        13          2
+
+min-a    0 min-b   10
+max-a   14 max-b   12
+
+        58         96
+        97         75
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+commands done : 40
+ra
+
+         a          b
+        13          2
+
+min-a    0 min-b   10
+max-a   14 max-b   12
+
+        97         96
+        68         75
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+        58 
+commands done : 41
+pa
+
+         a          b
+        14          1
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        96         75
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+        58 
+commands done : 42
+rra
+
+         a          b
+        14          1
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        58         75
+        96 
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+         3 
+        12 
+commands done : 43
+rra
+
+         a          b
+        14          1
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        12         75
+        58 
+        96 
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+         3 
+commands done : 44
+rra
+
+         a          b
+        14          1
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+         3         75
+        12 
+        58 
+        96 
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+commands done : 45
+pa
+
+         a          b
+        15          0
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        75 
+         3 
+        12 
+        58 
+        96 
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+commands done : 46
+ra
+
+         a          b
+        15          0
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+         3 
+        12 
+        58 
+        96 
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+        75 
+commands done : 47
+ra
+
+         a          b
+        15          0
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        12 
+        58 
+        96 
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+        75 
+         3 
+commands done : 48
+ra
+
+         a          b
+        15          0
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        58 
+        96 
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+        75 
+         3 
+        12 
+commands done : 49
+ra
+
+         a          b
+        15          0
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        96 
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+        75 
+         3 
+        12 
+        58 
+commands done : 50
+ra
+
+         a          b
+        15          0
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        97 
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+        75 
+         3 
+        12 
+        58 
+        96 
+commands done : 51
+ra
+
+         a          b
+        15          0
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        68 
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+        75 
+         3 
+        12 
+        58 
+        96 
+        97 
+commands done : 52
+ra
+
+         a          b
+        15          0
+
+min-a    0 min-b   10
+max-a   14 max-b   10
+
+        81 
+        60 
+X      99X 
+         6 
+        11 
+        34 
+X       2X 
+        54 
+        75 
+         3 
+        12 
+        58 
+        96 
+        97 
+        68 
+commands done : 53
+KO

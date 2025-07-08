@@ -25,6 +25,7 @@
 		"functional": "c",
 		"regex": "c",
 		"tuple": "c",
-		"variant": "c"
+		"variant": "c",
+		"limits.h": "c"
 	}
 }

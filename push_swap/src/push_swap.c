@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/08 15:44:21 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/08 16:30:12 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return (0);
 	len = argc - 1;
-	if (!check_input(argc, argv))
-		return (write (2, "Error\n", 6));
+	// if (!check_input(argc, argv))
+	// 	return (write (2, "Error\n", 6));
 	swap = swap_init(swap, argv, len);
 	if (!is_circularly_sorted(swap->stack_a))
 	{
@@ -76,6 +76,7 @@ int	main(int argc, char *argv[])
 		sort(swap);
 	}
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
+	// debug_print_stacks(swap);
 	print_moves(swap->move);
 	free_all(swap);
 	return (0);

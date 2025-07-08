@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:39:06 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/20 01:52:37 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 10:49:20 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	ft_swap_two(t_stack *stack)
 {
-	t_swap_int *first;
-	t_swap_int *second;
-	
+	t_swap_int	*first;
+	t_swap_int	*second;
+
 	first = stack->first;
 	second = first->next;
 	first->next = second;
@@ -56,9 +56,6 @@ void	ft_swap(t_swap *swap, t_swap_int *elem)
 		ft_lstadd_back(&swap->move, ft_lstnew(ft_strdup("sb\n")));
 }
 
-
-
-
 void	ft_swap_ss(t_swap *swap)
 {
 	if (!swap)
@@ -66,4 +63,3 @@ void	ft_swap_ss(t_swap *swap)
 	ft_swap(swap, swap->stack_a->first);
 	ft_swap(swap, swap->stack_b->first);
 }
-// traiter les ss au tri de fin

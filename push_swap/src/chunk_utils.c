@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 15:59:46 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/02 16:01:13 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 11:02:06 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,6 @@ int	has_chunk(t_stack *stack, int chunk_min, int chunk_max)
 		i++;
 	}
 	return (0);
-}
-
-void	rotate_n_times(t_swap *swap, int n)
-{
-	while (n > 0)
-	{
-		ft_rotate(swap, swap->stack_a->first);
-		n--;
-	}
 }
 
 t_swap_int	*find_next_chunk_elem(t_swap_int *current, int chunk_min,

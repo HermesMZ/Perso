@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lock.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:24:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/01 21:10:06 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 10:55:27 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,6 @@ void	lock_all(t_swap *swap)
 	}
 }
 
-// void	lock_all(t_stack *stack_a)
-// {
-// 	size_t		i;
-// 	t_swap_int	*current;
-
-// 	i = 0;
-// 	current = stack_a->first;
-// 	while (i < stack_a->len)
-// 	{
-// 		if (!current->locked && to_lock(current))
-// 			current->locked = 1;
-// 		current = current->next;
-// 		i++;
-// 	}
-// }
-
 int	to_lock(t_swap *swap, t_swap_int *elem)
 {
 	t_swap_int	*prev_locked;
@@ -115,7 +99,6 @@ t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem)
 		if (current->locked && current->index > elem->index
 			&& current->index < target->index)
 			target = current;
-
 		current = current->next;
 		i++;
 	}

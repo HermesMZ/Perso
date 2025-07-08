@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:38:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/28 02:12:28 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:07:33 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,6 @@ static t_heads	*split_with_pivot(t_swap *swap, t_swap_int *pivot,
 	}
 	return (heads);
 }
-
-// static void	hard_sort_stacks(t_swap *swap, t_heads *heads)
-// {
-// 	ft_printf("DEBUT DU SORT\n");
-// 	debug_print_split(heads);
-// 	// debug_print_stacks(swap);
-// 	hard_sort(swap, heads->pushed, heads->push_count);
-// 	ft_printf("rotate\n");
-// 	debug_print_split(heads);
-
-// 	rotate_to(swap, heads->remaining);
-// 	hard_sort(swap, heads->remaining, heads->remaining_count);
-// 	ft_printf("FIN DU SORT\n");
-// 	debug_print_stacks(swap);
-// }
 
 t_swap_int	*recursive_split_call(t_swap *swap, t_swap_int *first, int count)
 {

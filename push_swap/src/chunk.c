@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:09:45 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/02 23:17:41 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 10:52:34 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,46 +51,3 @@ void	push_chunks(t_swap *swap, int nb_chunks)
 		i++;
 	}
 }
-
-// static void	process_chunk_element(t_swap *swap, t_swap_int *elem, int pivot)
-// {
-// 	ft_push(swap, elem);
-// 	if (elem->index >= pivot)
-// 		ft_rotate(swap, elem);
-// }
-
-// static void	rotate_for_chunk_element(t_swap *swap, t_swap_int *elem)
-// {
-// 	int	rotations;
-
-// 	rotations = r_or_rr(elem);
-// 	if (rotations > 0)
-// 	{
-// 		while (rotations--)
-// 			ft_rotate(swap, swap->stack_a->first);
-// 	}
-// 	else
-// 	{
-// 		while (rotations++)
-// 			ft_reverse_rotate(swap, swap->stack_a->first);
-// 	}
-// }
-
-// void	push_one_chunk(t_swap *swap, int chunk_min, int chunk_max)
-// {
-// 	int			pivot;
-// 	t_swap_int	*target_elem;
-
-// 	pivot = chunk_min + (chunk_max - chunk_min) / 2;
-// 	while (has_chunk(swap->stack_a, chunk_min, chunk_max))
-// 	{
-// 		target_elem = find_next_chunk_elem(swap->stack_a->first,
-// 				chunk_min, chunk_max);
-// 		if (!target_elem)
-// 			break ;
-// 		rotate_for_chunk_element(swap, target_elem);
-// 		process_chunk_element(swap, swap->stack_a->first, pivot);
-// 	}
-// }
-
-

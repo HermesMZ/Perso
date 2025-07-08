@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/02 23:33:42 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 12:10:45 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_cost	*find_cheapest_element(t_swap *swap, t_stack *source_stack,
 		if ((source_stack == swap->stack_a
 				&& (current->index >= chunk_min
 					&& current->index <= chunk_max))
-			|| source_stack == swap->stack_b)
+			|| (source_stack == swap->stack_b))
 			cheapest_cost = calculate_cost(swap, current, cheapest_cost);
 		current = current->next;
 		i++;

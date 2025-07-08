@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_sort_utils.c                             :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 23:49:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/24 10:22:52 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:06:51 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ int	is_circularly_sorted(t_stack *stack)
 	return (0);
 }
 
-// -1 decrease
-// 1 increase
-// 0 not sorted
 int	is_sorted(size_t len, t_swap_int *elem)
 {
 	t_swap_int	*current;
@@ -66,7 +63,6 @@ int	is_sorted(size_t len, t_swap_int *elem)
 	}
 	return (-order);
 }
-// simplifiable en comparant par rapport a len / 2
 
 int	r_or_rr(t_swap_int *target)
 {

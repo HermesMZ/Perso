@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:25:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/27 00:22:10 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 10:51:13 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,38 +95,3 @@ t_swap_int	*find_remaining_head_split(t_swap_int *pivot)
 		current = current->next;
 	return (current);
 }
-
-// prendre les heads finales 
-// t_swap_int	*find_pushed_head_split(t_swap *swap, t_swap_int *pivot, int count)
-// {
-// 	t_swap_int	*current;
-
-// 	ft_printf("pus\n");
-// 	current = pivot->stack->first;
-// 	ft_printf("pivot %d\n", pivot->value);
-// 	if (pivot->stack == swap->stack_a)
-// 		current = find_index(pivot->stack, pivot->index + 1);
-// 	else
-// 		current = find_max_in_split(pivot->stack->first, count);
-// 	ft_printf("hed\n");
-
-// 	return (current);
-// }
-
-// t_swap_int	*find_remaining_head_split(t_swap *swap, t_swap_int *pivot, int count)
-// {
-// 	t_swap_int	*current;
-
-// 	ft_printf("bouh\n");
-// 	current = pivot->stack->first;
-// 	ft_printf("pivot %d\n", pivot->value);
-// 	if (pivot->stack == swap->stack_a)
-// 		find_min_in_split(pivot->stack->first, count);
-// 	else
-// 		current = pivot;
-// 	ft_printf("teille\n");
-
-// 	return (current);
-// }
-
-

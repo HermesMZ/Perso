@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   min_max.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 16:15:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 16:16:50 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 10:54:33 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	update_min_max(t_swap *swap, t_swap_int *elem)
 	update_min_max_on_pop(swap, elem);
 	update_min_max_on_push(elem);
 }
-
 
 void	set_min_max(t_stack *stack)
 {

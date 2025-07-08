@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heads.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:59:49 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 01:34:45 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 10:50:04 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 t_heads	*update_heads_for_merge(t_swap *swap, t_heads *heads)
 {
-	// ft_printf("UPDATE\n");
-	// // debug_print_split(heads);
-	// debug_print_stacks(swap);
-	// ft_printf("pushed / src : %d\n", heads->pushed->index);
 	if (heads->remaining->stack == swap->stack_a)
 	{
-		heads->pushed = find_max_in_split(heads->pushed->stack->first, heads->push_count);
+		heads->pushed = find_max_in_split(heads->pushed->stack->first,
+				heads->push_count);
 		heads->remaining = find_min_in_split(heads->remaining->stack->first,
 				heads->remaining_count);
 	}
 	else
 	{
-		heads->pushed = find_min_in_split(heads->pushed->stack->first, heads->push_count);
+		heads->pushed = find_min_in_split(heads->pushed->stack->first,
+				heads->push_count);
 		heads->remaining = find_max_in_split(heads->remaining->stack->first,
 				heads->remaining_count);
 	}
-	// ft_printf("END UPDATE\n");
-	// debug_print_split(heads);
 	return (heads);
 }
 

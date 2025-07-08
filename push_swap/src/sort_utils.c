@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 23:49:09 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 11:06:51 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:25:02 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,32 +108,3 @@ void	rotate_to(t_swap *swap, t_swap_int *elem)
 		}
 	}
 }
-
-// void	first_cleaning(t_swap *swap)
-// {
-// 	t_swap_int	*current;
-
-// 	ft_printf("best_start %d\n", swap->best_start->value);
-// 	// rotate_to_start(swap);
-// 	debug_print_stacks(swap);
-// 	current = swap->stack_a->first;
-// 	while (!is_circularly_sorted(swap->stack_a))
-// 	{
-// 		if (current->value > current->next->value
-// 			&& current->next->value > current->prev->value)
-// 			swap_a(swap);
-// 		else if (current->value > current->prev->value
-// 			|| current == swap->best_start)
-// 		{
-// 			rotate_a(swap);
-// 			if (swap->stack_b->len > 0
-// 				&& swap->stack_b->first->value < current->value
-// 				&& swap->stack_b->first->value > current->prev->value)
-// 				push_a(swap);
-// 		}
-// 		else
-// 			push_b(swap);
-// 		current = swap->stack_a->first;
-// 	}
-// 	debug_print_stacks(swap);
-// }

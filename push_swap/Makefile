@@ -9,18 +9,16 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = \
+	check.c \
 	chunk_utils.c \
 	chunk.c \
 	cost.c \
-	cost_chunk.c \
 	cost_utils.c \
 	exec_moves.c \
 	hard_sort.c \
-	heads.c \
 	index.c \
 	init.c \
 	lock.c \
-	merge.c \
 	min_max.c \
 	push_swap_p.c \
 	push_swap_r.c \
@@ -29,9 +27,6 @@ SRCS = \
 	push_swap.c \
 	simple_math.c \
 	sort_utils.c \
-	sort.c \
-	split_utils.c \
-	split.c \
 	stack_utils.c \
 	stack.c \
 	utils_debug.c \

@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/08 12:11:13 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:44:21 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_moves(t_list *move)
 int	calculate_chunk_count(size_t len)
 {
 	if (len <= 100)
-		return (2);
+		return (1);
 	else if (len <= 500)
 		return (5);
 	else
@@ -40,15 +40,15 @@ int	calculate_chunk_count(size_t len)
 
 void	sort(t_swap *swap)
 {
-	int			pivot;
+	t_swap_int	*pivot;
 
-	pivot = swap->stack_a->min + (swap->stack_a->max - swap->stack_a->min) / 2;
+	pivot = find_median(swap->stack_a->first, swap->stack_a->len);
 	while (swap->stack_a->len > 3)
 	{
 		if (swap->stack_a->first->index == swap->max)
 			ft_rotate(swap, swap->stack_a->first);
 		ft_push(swap, swap->stack_a->first);
-		if (swap->stack_b->first->index > pivot)
+		if (swap->stack_b->first->index > pivot->index)
 			ft_rotate(swap, swap->stack_b->first);
 	}
 	hard_sort(swap, swap->stack_a->first, swap->stack_a->len);
@@ -59,14 +59,22 @@ int	main(int argc, char *argv[])
 {
 	size_t		len;
 	t_swap		*swap;
+	int			chunks;
 
 	swap = NULL;
 	if (argc < 2)
 		return (0);
 	len = argc - 1;
+	if (!check_input(argc, argv))
+		return (write (2, "Error\n", 6));
 	swap = swap_init(swap, argv, len);
-	push_chunks(swap, calculate_chunk_count(len));
-	sort(swap);
+	if (!is_circularly_sorted(swap->stack_a))
+	{
+		chunks = calculate_chunk_count(len);
+		if (chunks > 1)
+			push_chunks(swap, chunks);
+		sort(swap);
+	}
 	rotate_to(swap, find_index(swap->stack_a, swap->stack_a->min));
 	print_moves(swap->move);
 	free_all(swap);

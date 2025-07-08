@@ -6,40 +6,11 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:24:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 10:55:27 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:42:15 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	head_update(t_heads *heads)
-{
-	t_swap_int	*current;
-	int			i;
-
-	current = heads->pushed;
-	i = 0;
-	while (i < heads->push_count)
-	{
-		if (heads->pushed->locked)
-			heads->pushed = heads->pushed->next;
-		if (current->locked)
-			heads->push_count--;
-		current = current->next;
-		i++;
-	}
-	i = 0;
-	current = heads->remaining;
-	while (i < heads->remaining_count)
-	{
-		if (heads->remaining->locked)
-			heads->remaining = heads->remaining->next;
-		if (current->locked)
-			heads->remaining_count--;
-		current = current->next;
-		i++;
-	}
-}
 
 void	lock_all(t_swap *swap)
 {
@@ -81,26 +52,4 @@ int	to_lock(t_swap *swap, t_swap_int *elem)
 		}
 	}
 	return (0);
-}
-
-t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem)
-{
-	t_swap_int	*target;
-	t_swap_int	*current;
-	size_t		i;
-
-	if (!stack_a || !stack_a->first || !elem || stack_a->len == 0)
-		return (NULL);
-	i = 0;
-	current = find_first_free(stack_a);
-	target = find_index(stack_a, stack_a->max);
-	while (i < stack_a->len)
-	{
-		if (current->locked && current->index > elem->index
-			&& current->index < target->index)
-			target = current;
-		current = current->next;
-		i++;
-	}
-	return (target);
 }

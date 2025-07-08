@@ -6,54 +6,35 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 11:08:27 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:34:27 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	debug_print_stack_from(t_swap *swap, t_swap_int *start)
+void	print_elems(t_swap *swap, t_swap_int **a, t_swap_int **b, size_t i)
 {
-	if (!start || !start->stack)
+	if ((*a))
 	{
-		ft_printf("Invalid stack.\n");
-		return ;
+		if ((*a)->locked)
+			ft_printf("X%8dX ", (*a)->value);
+		else
+			ft_printf("%10d ", (*a)->value);
+		if ((*a)->next && i + 1 < swap->stack_a->len)
+			(*a) = (*a)->next;
+		else
+			(*a) = NULL;
 	}
-	if (start->stack == swap->stack_a)
-		ft_printf("=== src = STACK A ===\n");
 	else
-		ft_printf("=== src = STACK B ===\n");
-}
-
-void	debug_print_split(t_heads *heads)
-{
-	int			i;
-	int			j;
-	t_swap_int	*pushed;
-	t_swap_int	*remaining;
-
-	pushed = heads->pushed;
-	remaining = heads->remaining;
-	ft_printf(" =========================================================================== \n");
-	ft_printf("splitted groups : push %d, remain %d\n", heads->push_count, heads->remaining_count);
-	i = 0;
-	j = 0;
-
-	ft_printf("pushed :    ");
-	while (i < heads->push_count)
+		ft_printf("%11c", ' ');
+	if ((*b))
 	{
-		ft_printf("%2d ", pushed->value);
-		pushed = pushed->next;
-		i++;
+		ft_printf("%10d", (*b)->value);
+		if ((*b)->next && i + 1 < swap->stack_b->len)
+			(*b) = (*b)->next;
+		else
+			(*b) = NULL;
 	}
-	ft_printf("\nremaining : ");
-	while (j < heads->remaining_count)
-	{
-		ft_printf("%2d ", remaining->value);
-		remaining = remaining->next;
-		j++;
-	}
-	ft_printf("\n =========================================================================== \n");
 	ft_printf("\n");
 }
 
@@ -75,28 +56,7 @@ void	debug_print_stacks(t_swap *swap)
 	i = 0;
 	while (i < stack_a->len || i < stack_b->len)
 	{
-		if (a)
-		{
-			if (a->locked)
-				ft_printf("X%8dX ", a->value);
-			else
-				ft_printf("%10d ", a->value);
-			if (a->next && i + 1 < stack_a->len)
-				a = a->next;
-			else
-				a = NULL;
-		}
-		else
-			ft_printf("%11c", ' ');
-		if (b)
-		{
-			ft_printf("%10d", b->value);
-			if (b->next && i + 1 < stack_b->len)
-				b = b->next;
-			else
-				b = NULL;
-		}
-		ft_printf("\n");
+		print_elems(swap, &a, &b, i);
 		i++;
 	}
 	ft_printf("commands done : %d\n", ft_lstsize(swap->move) - 1);

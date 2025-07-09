@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 20:49:00 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 23:04:19 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,6 @@ t_swap_int	*get_target(t_swap *swap, t_swap_int *source);
 t_cost		*find_cheapest_element(t_swap *swap, t_stack *source_stack,
 				int chunk_min, int chunk_max);
 
+int			error(void);
 
 #endif /*PUSH_SWAP_H*/

@@ -6,7 +6,7 @@
 /*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/08 21:05:58 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/08 23:44:33 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char *argv[])
 	swap = swap_init(swap, argv, len);
 	if (!swap)
 		return (error());
-	if (!is_circularly_sorted(swap->stack_a))
+	if (is_circularly_sorted(swap->stack_a) != 1)
 	{
 		chunks = calculate_chunk_count(len);
 		if (chunks > 1)

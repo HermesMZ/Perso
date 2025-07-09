@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 18:05:08 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/09 17:37:56 by mzimeris         ###   ########.fr       */
+/*   Created: 2025/07/09 16:59:59 by mzimeris          #+#    #+#             */
+/*   Updated: 2025/07/09 17:48:29 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "fdf.h"
 
-# include "mlx.h"
-# include "mlx_int.h"
-# include <X11/keysym.h>
-# include <stdlib.h>
-# include "libft.h"
-
-typedef struct s_mlx_data
+static int	end_display(t_mlx_data *data)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-}	t_mlx_data;
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	free(data);
+	exit(1);
+}
 
-// hooks
-int	handle_input(int keysym, t_mlx_data *data);
-
-# endif /*FDF_H*/
+int	handle_input(int keysym, t_mlx_data *data)
+{
+	if (keysym == XK_Escape)
+		end_display(data);
+	return (0);
+}

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_dlstinit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 18:05:08 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/09 14:35:21 by mzimeris         ###   ########.fr       */
+/*   Created: 2025/06/11 14:53:06 by mzimeris          #+#    #+#             */
+/*   Updated: 2025/06/16 21:16:31 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include "mlx.h"
-# include "stdlib.h"
-# include "libft.h"
+t_dblist	*ft_dlstinit(void)
+{
+	t_dblist	*new_list;
 
-# endif /*FDF_H*/
+	new_list = malloc(sizeof(t_dblist));
+	if (!new_list)
+		return (NULL);
+	new_list->first = NULL;
+	new_list->last = NULL;
+	new_list->length = 0;
+	return (new_list);
+}

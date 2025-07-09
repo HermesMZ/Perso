@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: MZimeris <MZimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 18:05:08 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/09 14:35:21 by mzimeris         ###   ########.fr       */
+/*   Created: 2025/04/30 23:16:16 by MZimeris          #+#    #+#             */
+/*   Updated: 2025/04/30 23:16:17 by MZimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include "mlx.h"
-# include "stdlib.h"
-# include "libft.h"
-
-# endif /*FDF_H*/
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

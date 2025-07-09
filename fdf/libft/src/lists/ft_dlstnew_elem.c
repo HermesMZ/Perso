@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_dlstnew_elem.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 18:05:08 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/09 14:35:21 by mzimeris         ###   ########.fr       */
+/*   Created: 2025/06/11 14:00:11 by mzimeris          #+#    #+#             */
+/*   Updated: 2025/06/14 16:27:28 by zoum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include "mlx.h"
-# include "stdlib.h"
-# include "libft.h"
+t_elem	*ft_dlstnew_elem(void *content)
+{
+	t_elem	*new;
 
-# endif /*FDF_H*/
+	new = (malloc(sizeof(t_elem)));
+	if (!new)
+		return (NULL);
+	new->prev = NULL;
+	new->next = NULL;
+	new->content = content;
+	return (new);
+}

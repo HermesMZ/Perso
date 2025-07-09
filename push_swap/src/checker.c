@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 21:11:25 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 23:40:37 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/09 13:52:40 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,11 @@ int	check_end(t_swap *swap)
 	if (swap->stack_b->len == 0
 		&& is_sorted(swap->stack_a->len, swap->stack_a->first))
 	{
-		debug_print_stacks(swap);
 		write(1, "OK\n", 3);
 		return (1);
 	}
 	else
 	{
-		debug_print_stacks(swap);
 		write(1, "KO\n", 3);
 		return (0);
 	}

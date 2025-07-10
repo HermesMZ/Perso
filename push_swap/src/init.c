@@ -6,13 +6,72 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 16:46:38 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 15:50:18 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:23:04 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_stack_a(t_swap *swap, char *argv[], size_t len)
+static t_stack	*ft_stack_init(void)
+{
+	t_stack	*new_stack;
+
+	new_stack = malloc(sizeof(t_stack));
+	if (!new_stack)
+		return (NULL);
+	new_stack->first = NULL;
+	new_stack->last = NULL;
+	new_stack->len = 0;
+	new_stack->min = 0;
+	new_stack->max = 0;
+	return (new_stack);
+}
+
+static t_swap_int	*new_swap_int(int value)
+{
+	t_swap_int	*new_elem;
+
+	new_elem = malloc(sizeof(t_swap_int));
+	if (!new_elem)
+		return (NULL);
+	new_elem->value = value;
+	new_elem->index = 0;
+	new_elem->stack = NULL;
+	new_elem->next = NULL;
+	new_elem->prev = NULL;
+	new_elem->locked = 0;
+	return (new_elem);
+}
+
+static void	ft_stack_add_back(t_stack *stack, int value)
+{
+	t_swap_int	*new_elem;
+
+	if (!stack)
+		return ;
+	new_elem = new_swap_int(value);
+	if (!new_elem)
+		return ;
+	if (stack->len == 0)
+	{
+		stack->first = new_elem;
+		stack->last = new_elem;
+		new_elem->next = new_elem;
+		new_elem->prev = new_elem;
+	}
+	else
+	{
+		stack->last->next = new_elem;
+		new_elem->prev = stack->last;
+		stack->last = new_elem;
+		new_elem->next = stack->first;
+		stack->first->prev = new_elem;
+	}
+	new_elem->stack = stack;
+	stack->len++;
+}
+
+static void	init_stack_a(t_swap *swap, char *argv[], size_t len)
 {
 	size_t	i;
 

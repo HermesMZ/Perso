@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_debug.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:08:42 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 12:34:27 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:18:34 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_elems(t_swap *swap, t_swap_int **a, t_swap_int **b, size_t i)
+static void	print_elems(t_swap *swap, t_swap_int **a, t_swap_int **b, size_t i)
 {
 	if ((*a))
 	{
@@ -60,4 +60,44 @@ void	debug_print_stacks(t_swap *swap)
 		i++;
 	}
 	ft_printf("commands done : %d\n", ft_lstsize(swap->move) - 1);
+}
+
+static void	ft_del_swapint(t_swap_int *p_elem)
+{
+	if (!p_elem)
+		return ;
+	free(p_elem);
+}
+
+static void	ft_stack_clear(t_stack **p_lst, void (*del)(void*))
+{
+	t_swap_int	*current;
+	t_swap_int	*next_elem;
+
+	if (!p_lst || !*p_lst || !del)
+		return ;
+	if ((*p_lst)->len == 0)
+	{
+		free(*p_lst);
+		*p_lst = NULL;
+		return ;
+	}
+	(*p_lst)->last->next = NULL;
+	current = (*p_lst)->first;
+	while (current)
+	{
+		next_elem = current->next;
+		ft_del_swapint(current);
+		current = next_elem;
+	}
+	free(*p_lst);
+	*p_lst = NULL;
+}
+
+void	free_all(t_swap *swap)
+{
+	ft_lstclear(&swap->move, free);
+	ft_stack_clear(&swap->stack_a, free);
+	ft_stack_clear(&swap->stack_b, free);
+	free(swap);
 }

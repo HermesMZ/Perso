@@ -6,67 +6,84 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 02:05:53 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 12:10:45 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:39:57 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_swap_int	*get_target(t_swap *swap, t_swap_int *source)
+static t_cost	*cost_raw_rotations(t_swap_int *elem_a, t_swap_int *elem_b)
 {
-	if (source->stack == swap->stack_a)
-		return (get_target_in_b(swap->stack_b, source));
-	else
-		return (get_target_in_a(swap->stack_a, source));
-}
+	t_cost	*cost;
 
-t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b)
-{
-	t_swap_int	*current_a;
-
-	if (!stack_a || stack_a->len == 0)
+	cost = init_empty_cost();
+	if (!cost)
 		return (NULL);
-	current_a = stack_a->first;
-	if (elem_b->index < stack_a->min || elem_b->index > stack_a->max)
-		return (find_index(stack_a, stack_a->min));
-	while (current_a && current_a->next)
-	{
-		if (current_a->index < elem_b->index
-			&& elem_b->index < current_a->next->index)
-			return (current_a->next);
-		if (current_a->index == stack_a->max && elem_b->index < stack_a->min)
-			return (stack_a->first);
-		current_a = current_a->next;
-	}
-	return (NULL);
+	if (elem_a)
+		cost->ra = r_or_rr(elem_a);
+	if (elem_b)
+		cost->rb = r_or_rr(elem_b);
+	cost->elem = elem_a;
+	return (cost);
 }
 
-t_swap_int	*get_target_in_b(t_stack *stack_b, t_swap_int *elem_a)
+static t_cost	*calculate_cost_for_a_to_b(t_swap *swap, t_swap_int *elem_a)
 {
-	t_swap_int	*current_b;
+	t_cost		*cost;
 	t_swap_int	*target_b;
-	size_t		i;
 
-	target_b = NULL;
-	if (stack_b->len == 0)
+	target_b = get_target(swap, elem_a);
+	cost = cost_raw_rotations(elem_a, target_b);
+	if (!cost)
 		return (NULL);
-	current_b = stack_b->first;
-	i = 0;
-	while (i < stack_b->len)
+	if (cost->ra == 0)
+		cost->rb = 0;
+	if (cost->ra > 0 && cost->rb > 0 && cost->ra > cost->rb)
 	{
-		if (current_b->index < elem_a->index
-			&& current_b->prev->index > elem_a->index)
-		{
-			target_b = current_b;
-			break ;
-		}
-		current_b = current_b->next;
-		i++;
+		cost->rr = ft_min(cost->ra, cost->rb);
+		cost->ra -= cost->rr;
+		cost->rb -= cost->rr;
 	}
-	return (target_b);
+	else if (cost->ra < 0 && cost->rb < 0 && cost->ra < cost->rb)
+	{
+		cost->rr = ft_max(cost->ra, cost->rb);
+		cost->ra -= cost->rr;
+		cost->rb -= cost->rr;
+	}
+	cost->rb = 0;
+	cost->total = ft_abs(cost->ra) + ft_abs(cost->rb) + ft_abs(cost->rr) + 1;
+	cost->elem = elem_a;
+	return (cost);
 }
 
-t_cost	*calculate_cost(t_swap *swap, t_swap_int *current,
+static t_cost	*calculate_cost_for_b_to_a(t_swap *swap, t_swap_int *elem_b)
+{
+	t_cost		*cost;
+	t_swap_int	*target_a;
+
+	target_a = get_target(swap, elem_b);
+	cost = cost_raw_rotations(target_a, elem_b);
+	if (!cost)
+		return (NULL);
+	cost->rr = 0;
+	if (cost->ra > 0 && cost->rb > 0)
+	{
+		cost->rr = ft_min(cost->ra, cost->rb);
+		cost->ra -= cost->rr;
+		cost->rb -= cost->rr;
+	}
+	else if (cost->ra < 0 && cost->rb < 0)
+	{
+		cost->rr = ft_max(cost->ra, cost->rb);
+		cost->ra -= cost->rr;
+		cost->rb -= cost->rr;
+	}
+	cost->total = ft_abs(cost->ra) + ft_abs(cost->rb) + ft_abs(cost->rr) + 1;
+	cost->elem = elem_b;
+	return (cost);
+}
+
+static t_cost	*calculate_cost(t_swap *swap, t_swap_int *current,
 	t_cost *cheapest_cost)
 {
 	t_cost		*current_cost;

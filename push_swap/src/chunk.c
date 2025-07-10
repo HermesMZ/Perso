@@ -6,13 +6,13 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:09:45 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 15:48:56 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:41:34 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_one_chunk(t_swap *swap, int chunk_min, int chunk_max)
+static void	push_one_chunk(t_swap *swap, int chunk_min, int chunk_max)
 {
 	int		pivot;
 	t_cost	*cheapest_cost;

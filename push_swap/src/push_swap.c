@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:38:07 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/08 23:44:33 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/10 11:26:33 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_moves(t_list *move)
+static void	print_moves(t_list *move)
 {
 	t_list	*current;
 	int		total_commands;
@@ -28,7 +28,7 @@ void	print_moves(t_list *move)
 	}
 }
 
-int	calculate_chunk_count(size_t len)
+static int	calculate_chunk_count(size_t len)
 {
 	if (len <= 100)
 		return (1);
@@ -38,7 +38,7 @@ int	calculate_chunk_count(size_t len)
 		return (len / 25);
 }
 
-void	sort(t_swap *swap)
+static void	sort(t_swap *swap)
 {
 	t_swap_int	*pivot;
 
@@ -53,12 +53,6 @@ void	sort(t_swap *swap)
 	}
 	hard_sort(swap, swap->stack_a->first, swap->stack_a->len);
 	push_back_to_a_optimized(swap);
-}
-
-int	error(void)
-{
-	write (2, "Error\n", 6);
-	return (1);
 }
 
 int	main(int argc, char *argv[])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:32:51 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/08 20:50:17 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/10 11:26:36 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,11 @@ int	check_input(char *argv[])
 		return (0);
 	if (has_double(argv))
 		return (0);
+	return (1);
+}
+
+int	error(void)
+{
+	write (2, "Error\n", 6);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:56:11 by zoum              #+#    #+#             */
-/*   Updated: 2025/06/26 19:38:44 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:30:35 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	swap(int *a, int *b)
 	*b = tmp;
 }
 
-void	quick_sort(int tab[], int first, int last)
+static void	quick_sort(int tab[], int first, int last)
 {
 	int	pivot;
 	int	i;

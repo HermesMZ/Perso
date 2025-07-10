@@ -6,17 +6,11 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 21:11:25 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/09 13:52:40 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:55:06 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-int	error(void)
-{
-	write (2, "Error\n", 6);
-	return (1);
-}
 
 static char	*read_move(int fd)
 {
@@ -47,7 +41,7 @@ static char	*read_move(int fd)
 	return (line);
 }
 
-int	check_end(t_swap *swap)
+static int	check_end(t_swap *swap)
 {
 	if (swap->stack_b->len == 0
 		&& is_sorted(swap->stack_a->len, swap->stack_a->first))

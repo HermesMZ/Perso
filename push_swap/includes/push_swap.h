@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zoum <zoum@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 01:22:10 by zoum              #+#    #+#             */
-/*   Updated: 2025/07/08 23:04:19 by zoum             ###   ########.fr       */
+/*   Updated: 2025/07/10 11:52:04 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,31 +54,52 @@ typedef struct s_swap
 	t_list		*move;
 }	t_swap;
 
-// check
-int			check_input(char *argv[]);
-
-
-t_stack		*ft_stack_init(void);
-void		ft_stack_add_back(t_stack *stack, int value);
-void		ft_stack_add_front(t_stack *stack, int value);
-
+// init
 t_swap		*swap_init(t_swap *swap, char *argv[], size_t len);
+
+// check_input
+int			check_input(char *argv[]);
+int			error(void);
+
+// index
 void		fill_index(t_stack *stack);
 t_swap_int	*find_index(t_stack *stack, int i);
-void		quick_sort(int tab[], int first, int last);
 t_swap_int	*find_median(t_swap_int *first, int count);
 
+
+// sort_utils
 int			is_sorted(size_t length, t_swap_int *elem);
 int			is_circularly_sorted(t_stack *stack);
-void		hard_sort(t_swap *swap, t_swap_int *elem, int count);
 void		rotate_to(t_swap *swap, t_swap_int *elem);
 int			r_or_rr(t_swap_int *target);
 
-t_cost		calc_cost_to_insert(t_swap *swap, t_swap_int *node_b);
-void		free_all(t_swap *swap);
+// chunk
+void		push_chunks(t_swap *swap, int nb_chunks);
+int			has_chunk(t_stack *stack, int chunk_min, int chunk_max);
+t_swap_int	*find_next_chunk_elem(t_swap_int *current, int chunk_min,
+				int chunk_max);
 
-void		update_min_max(t_swap *swap, t_swap_int *elem);
+// hard_sort
+void		hard_sort(t_swap *swap, t_swap_int *elem, int count);
+
+// min_max
 void		set_min_max(t_stack *stack);
+void		update_min_max(t_swap *swap, t_swap_int *elem);
+
+// cost
+t_cost		*find_cheapest_element(t_swap *swap, t_stack *source_stack,
+				int chunk_min, int chunk_max);
+
+// cost_target
+t_swap_int	*get_target(t_swap *swap, t_swap_int *source);
+
+// cost_utils
+t_cost		*init_empty_cost(void);
+void		free_cost_if_not_null(t_cost **cost);
+
+// exec_moves
+void		execute_optimal_moves(t_swap *swap, t_cost *cost);
+void		push_back_to_a_optimized(t_swap *swap);
 
 // operations
 void		ft_push(t_swap *swap, t_swap_int *elem);
@@ -89,51 +110,13 @@ void		ft_rotate_rr(t_swap *swap);
 void		ft_reverse_rotate(t_swap *swap, t_swap_int *elem);
 void		ft_reverse_rotate_rr(t_swap *swap);
 
-// lock
-int			to_lock(t_swap *swap, t_swap_int *elem);
-t_swap_int	*find_closest_inf_locked(t_stack *stack_a, t_swap_int *elem);
-void		lock_all(t_swap *swap);
-// void		lock_all(t_stack *stack_a);
-
-// debug
-void		debug_print_stacks(t_swap *swap);
-
-// min_max
-void		set_min_max(t_stack *stack);
-void		update_min_max(t_swap *swap, t_swap_int *elem);
-void		update_min_max_on_push(t_swap_int *elem);
-void		update_min_max_on_pop(t_swap *swap, t_swap_int *elem);
-
-// exec_moves
-void		execute_optimal_moves(t_swap *swap, t_cost *cost);
-
 // simple maths
 int			ft_abs(int x);
 int			ft_min(int a, int b);
 int			ft_max(int a, int b);
 
-// cost
-t_cost		*init_empty_cost(void);
-t_cost		*calculate_node_cost(t_swap *swap, t_swap_int *elem_b);
-t_swap_int	*get_target_in_a(t_stack *stack_a, t_swap_int *elem_b);
-t_swap_int	*get_target_in_b(t_stack *stack_b, t_swap_int *elem_a);
-
-void		push_back_to_a_optimized(t_swap *swap);
-void		free_cost_if_not_null(t_cost **cost);
-
-void		push_chunks(t_swap *swap, int nb_chunks);
-void		push_one_chunk(t_swap *swap, int chunk_min, int chunk_max);
-int			has_chunk(t_stack *stack, int chunk_min, int chunk_max);
-void		rotate_n_times(t_swap *swap, int n);
-t_swap_int	*find_next_chunk_elem(t_swap_int *current, int chunk_min,
-				int chunk_max);
-
-t_cost		*calculate_cost_for_a_to_b(t_swap *swap, t_swap_int *elem_a);
-t_cost		*calculate_cost_for_b_to_a(t_swap *swap, t_swap_int *elem_b);
-t_swap_int	*get_target(t_swap *swap, t_swap_int *source);
-t_cost		*find_cheapest_element(t_swap *swap, t_stack *source_stack,
-				int chunk_min, int chunk_max);
-
-int			error(void);
+// utils
+void		debug_print_stacks(t_swap *swap);
+void		free_all(t_swap *swap);
 
 #endif /*PUSH_SWAP_H*/

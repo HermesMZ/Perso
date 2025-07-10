@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:05:08 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/09 17:37:56 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 14:54:57 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,23 @@
 # include <stdlib.h>
 # include "libft.h"
 
+typedef struct s_my_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_len;
+	int		endian;
+}	t_my_img;
+
 typedef struct s_mlx_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_my_img	img;
 }	t_mlx_data;
 
 // hooks
 int	handle_input(int keysym, t_mlx_data *data);
 
-# endif /*FDF_H*/
+#endif /*FDF_H*/

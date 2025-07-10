@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 16:59:59 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 15:19:10 by mzimeris         ###   ########.fr       */
+/*   Created: 2025/04/28 13:17:43 by mzimeris          #+#    #+#             */
+/*   Updated: 2025/04/28 13:22:28 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-static int	end_display(t_mlx_data *data)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	mlx_destroy_image(data->mlx_ptr, &data.img);
-	free(data->mlx_ptr);
-	// free(data);
-	exit(1);
-}
+	t_list	*new_lst;
+	t_list	*tmp;
 
-int	handle_input(int keysym, t_mlx_data *data)
-{
-	if (keysym == XK_Escape)
-		end_display(data);
-	ft_printf("The %d key has been pressed\n\n", keysym);
-	return (0);
+	if (!lst || !f || !del)
+		return (NULL);
+	new_lst = NULL;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+			return (ft_lstclear(&new_lst, del), NULL);
+		ft_lstadd_back(&new_lst, tmp);
+		lst = lst->next;
+	}
+	return (new_lst);
 }

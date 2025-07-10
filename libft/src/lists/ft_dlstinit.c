@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   ft_dlstinit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 16:59:59 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 15:19:10 by mzimeris         ###   ########.fr       */
+/*   Created: 2025/06/11 14:53:06 by mzimeris          #+#    #+#             */
+/*   Updated: 2025/06/16 21:16:31 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-static int	end_display(t_mlx_data *data)
+t_dblist	*ft_dlstinit(void)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	mlx_destroy_image(data->mlx_ptr, &data.img);
-	free(data->mlx_ptr);
-	// free(data);
-	exit(1);
-}
+	t_dblist	*new_list;
 
-int	handle_input(int keysym, t_mlx_data *data)
-{
-	if (keysym == XK_Escape)
-		end_display(data);
-	ft_printf("The %d key has been pressed\n\n", keysym);
-	return (0);
+	new_list = malloc(sizeof(t_dblist));
+	if (!new_list)
+		return (NULL);
+	new_list->first = NULL;
+	new_list->last = NULL;
+	new_list->length = 0;
+	return (new_list);
 }

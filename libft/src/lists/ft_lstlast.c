@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 16:59:59 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 15:19:10 by mzimeris         ###   ########.fr       */
+/*   Created: 2025/04/25 13:05:09 by mzimeris          #+#    #+#             */
+/*   Updated: 2025/04/25 14:44:49 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-static int	end_display(t_mlx_data *data)
+t_list	*ft_lstlast(t_list *lst)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	mlx_destroy_image(data->mlx_ptr, &data.img);
-	free(data->mlx_ptr);
-	// free(data);
-	exit(1);
-}
-
-int	handle_input(int keysym, t_mlx_data *data)
-{
-	if (keysym == XK_Escape)
-		end_display(data);
-	ft_printf("The %d key has been pressed\n\n", keysym);
-	return (0);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

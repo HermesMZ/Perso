@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:09 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 17:03:34 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:39:29 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ void	my_mlx_pixel_put(t_my_img *img, int x, int y, int color)
 	*((unsigned int *)(offset + img->addr)) = color;
 }
 
+void	init_map(t_map *map)
+{
+	map->columns = 0;
+	map->lines = 0;
+	map->array_map = NULL;
+}
+
 int	launch(t_mlx_data *data)
 {
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
@@ -39,20 +46,28 @@ int	launch(t_mlx_data *data)
 			&data->img.line_len, &data->img.endian);
 	my_mlx_pixel_put(&data->img, 5, 5, 0x00FF0000);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img, 0, 0);
-
+	init_map(&data->map);
 	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
 	t_mlx_data	data;
+	int			fd;
 
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	if (argc == 2 && argv[0])
-		launch(&data);
-		// ft_printf("%s\n", argv[1]);
+	if (argc == 2)
+	{
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+			return (ft_putstr("Error: Can't Open File\n"), 0);
+		if (check_extract_map(&data.map, fd))
+			return (ft_putstr("Error: Invalid map\n"), 0);
+	}
+	launch(&data);
+	// ft_printf("%s\n", argv[1]);
 
 	mlx_key_hook(data.win_ptr, handle_input, &data);
 	mlx_hook(data.win_ptr, 17, 0, end_display, &data);

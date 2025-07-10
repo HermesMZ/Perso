@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:09 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 17:39:29 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:27:12 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,24 @@ int	launch(t_mlx_data *data)
 	return (0);
 }
 
+void	print_map(t_mlx_data *data)
+{
+	int	l;
+	int	c;
+
+	l = 0;
+	while (l < data->map.lines)
+	{
+		c = 0;
+		while (c < data->map.columns)
+		{
+			ft_printf("%d ", data->map.array_map[l][c]);
+			c++;
+		}
+		l++;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_mlx_data	data;
@@ -62,11 +80,13 @@ int	main(int argc, char *argv[])
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
-			return (ft_putstr("Error: Can't Open File\n"), 0);
+			return (ft_putstr_fd("Error: Can't Open File\n", 2), 1);
 		if (check_extract_map(&data.map, fd))
-			return (ft_putstr("Error: Invalid map\n"), 0);
+			return (ft_putstr_fd("Error: Invalid map\n", 2), 1);
 	}
-	launch(&data);
+	
+	// launch(&data);
+	print_map(&data);
 	// ft_printf("%s\n", argv[1]);
 
 	mlx_key_hook(data.win_ptr, handle_input, &data);

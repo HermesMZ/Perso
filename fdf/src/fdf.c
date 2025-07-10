@@ -6,22 +6,22 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:09 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 14:53:20 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:46:54 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 #define MLX_ERROR       1
-#define WINDOW_WIDTH    400
-#define WINDOW_HEIGHT   400
+#define WINDOW_WIDTH    1000
+#define WINDOW_HEIGHT   1000
 
 void	my_mlx_pixel_put(t_my_img *img, int x, int y, int color)
 {
-	char	*dst;
+	int	offset;
 
-	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
-	*(unsigned int *) dst = color;
+	offset = (img->line_len * y) + (x * (img->bits_per_pixel / 8));
+	*((unsigned int *)(offset + img->addr)) = color;
 }
 
 int	main(void)
@@ -39,44 +39,12 @@ int	main(void)
 		free(data.mlx_ptr);
 		return (MLX_ERROR);
 	}
-	data.img->img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	data.img->addr = mlx_get_data_addr(data.img->img, &data.img->bits_per_pixel, &data.img->line_len, &data.img->endian);
-	my_mlx_pixel_put(data.img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img->img, 0, 0);
+	data.img.img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data.img.addr = mlx_get_data_addr(data.img.img, &data.img.bits_per_pixel,
+			&data.img.line_len, &data.img.endian);
+	my_mlx_pixel_put(&data.img, 5, 5, 0x00FF0000);
+	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img.img, 0, 0);
 	mlx_key_hook(data.win_ptr, handle_input, &data);
+	mlx_hook(data.win_ptr, 17, 0, end_display, &data);
 	mlx_loop(data.mlx_ptr);
 }
-
-// t_mlx_data	*init_mlx_data(void)
-// {
-// 	t_mlx_data	*data;
-// 	int			size_x;
-// 	int			size_y;
-
-// 	size_x = 500;
-// 	size_y = 500;
-// 	data = malloc(sizeof(t_mlx_data));
-// 	if (!data)
-// 		return (NULL);
-// 	data->mlx_ptr = mlx_init();
-// 	if (!data->mlx_ptr)
-// 		return (NULL);
-// 	data->win_ptr = mlx_new_window(data->mlx_ptr,
-// 			size_x, size_y, "MY WORLD");
-// 	if (!data->win_ptr)
-// 	{
-// 		mlx_destroy_display(data->mlx_ptr);
-// 		free(data->mlx_ptr);
-// 		return (NULL);
-// 	}
-// 	return (data);
-// }
-
-// int	main(void)
-// {
-// 	t_mlx_data	*data;
-
-// 	data = init_mlx_data();
-// 	mlx_key_hook(data->win_ptr, handle_input, &data);
-// 	mlx_loop(data->mlx_ptr);
-// }

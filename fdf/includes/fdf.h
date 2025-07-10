@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:05:08 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 14:54:57 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:22:03 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ typedef struct s_mlx_data
 
 // hooks
 int	handle_input(int keysym, t_mlx_data *data);
+int	end_display(t_mlx_data *data);
 
 #endif /*FDF_H*/

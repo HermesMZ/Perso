@@ -6,19 +6,18 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:59:59 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 15:19:10 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:36:04 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	end_display(t_mlx_data *data)
+int	end_display(t_mlx_data *data)
 {
+	mlx_destroy_image(data->mlx_ptr, data->img.img);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
-	mlx_destroy_image(data->mlx_ptr, &data.img);
 	free(data->mlx_ptr);
-	// free(data);
 	exit(1);
 }
 

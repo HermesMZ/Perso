@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:05:08 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 16:22:03 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:38:16 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,27 @@ typedef struct s_my_img
 	int		endian;
 }	t_my_img;
 
+typedef struct s_map
+{
+	int	lines;
+	int	columns;
+	int	**array_map;
+}	t_map;
+
 typedef struct s_mlx_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	t_map		map;
 	t_my_img	img;
 }	t_mlx_data;
 
 // hooks
 int	handle_input(int keysym, t_mlx_data *data);
 int	end_display(t_mlx_data *data);
+
+// map
+int	check_extract_map(t_map *map, int fd);
+
 
 #endif /*FDF_H*/

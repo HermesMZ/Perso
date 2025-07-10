@@ -6,7 +6,7 @@
 /*   By: mzimeris <mzimeris@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:09 by mzimeris          #+#    #+#             */
-/*   Updated: 2025/07/10 16:46:54 by mzimeris         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:03:34 by mzimeris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,36 @@ void	my_mlx_pixel_put(t_my_img *img, int x, int y, int color)
 	*((unsigned int *)(offset + img->addr)) = color;
 }
 
-int	main(void)
+int	launch(t_mlx_data *data)
+{
+	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
+			"MY WORLD !");
+	if (data->win_ptr == NULL)
+	{
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+		return (MLX_ERROR);
+	}
+	data->img.img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bits_per_pixel,
+			&data->img.line_len, &data->img.endian);
+	my_mlx_pixel_put(&data->img, 5, 5, 0x00FF0000);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img, 0, 0);
+
+	return (0);
+}
+
+int	main(int argc, char *argv[])
 {
 	t_mlx_data	data;
 
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
-			"MY WORLD !");
-	if (data.win_ptr == NULL)
-	{
-		mlx_destroy_display(data.mlx_ptr);
-		free(data.mlx_ptr);
-		return (MLX_ERROR);
-	}
-	data.img.img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	data.img.addr = mlx_get_data_addr(data.img.img, &data.img.bits_per_pixel,
-			&data.img.line_len, &data.img.endian);
-	my_mlx_pixel_put(&data.img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img.img, 0, 0);
+	if (argc == 2 && argv[0])
+		launch(&data);
+		// ft_printf("%s\n", argv[1]);
+
 	mlx_key_hook(data.win_ptr, handle_input, &data);
 	mlx_hook(data.win_ptr, 17, 0, end_display, &data);
 	mlx_loop(data.mlx_ptr);
